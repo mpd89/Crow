@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9E9C490D-C6FF-43C3-A350-92498B0DD159}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>ProjectWizard.My.MyApplication</StartupObject>
+    <RootNamespace>ProjectWizard</RootNamespace>
+    <AssemblyName>ProjectWizard</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ProjectWizard.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ProjectWizard.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataStreams, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DataStreams.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\daqartDLL\System.Data.SqlServerCe.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="ProjectWizard" />
+    <Import Include="ProjectWizard.My" />
+    <Import Include="ProjectWizard.My.Resources" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="addEquipment.Designer.vb">
+      <DependentUpon>addEquipment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="addEquipment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addSystemNumber.Designer.vb">
+      <DependentUpon>addSystemNumber.vb</DependentUpon>
+    </Compile>
+    <Compile Include="addSystemNumber.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editSystemNumber.Designer.vb">
+      <DependentUpon>editSystemNumber.vb</DependentUpon>
+    </Compile>
+    <Compile Include="editSystemNumber.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateEquipment.Designer.vb">
+      <DependentUpon>CreateEquipment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CreateEquipment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateProject.Designer.vb">
+      <DependentUpon>CreateProject.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CreateProject.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateSystemMnemonics.Designer.vb">
+      <DependentUpon>CreateSystemMnemonics.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CreateSystemMnemonics.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateSystemNumbers.Designer.vb">
+      <DependentUpon>CreateSystemNumbers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CreateSystemNumbers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EquipmentImport.Designer.vb">
+      <DependentUpon>EquipmentImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="removeEquipment.Designer.vb">
+      <DependentUpon>removeEquipment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="removeEquipment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="start.Designer.vb">
+      <DependentUpon>start.vb</DependentUpon>
+    </Compile>
+    <Compile Include="start.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemImport.Designer.vb">
+      <DependentUpon>SystemImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SystemImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wizard1.Designer.vb">
+      <DependentUpon>wizard1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="wizard1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WizardUtils.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="addEquipment.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>addEquipment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addSystemNumber.resx">
+      <DependentUpon>addSystemNumber.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editSystemNumber.resx">
+      <DependentUpon>editSystemNumber.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateEquipment.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CreateEquipment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateProject.resx">
+      <DependentUpon>CreateProject.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateSystemMnemonics.resx">
+      <DependentUpon>CreateSystemMnemonics.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateSystemNumbers.resx">
+      <DependentUpon>CreateSystemNumbers.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EquipmentImport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EquipmentImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="removeEquipment.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>removeEquipment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="start.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>start.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemImport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SystemImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wizard1.resx">
+      <DependentUpon>wizard1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_alert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animated_globe2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_add_data.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_add_layer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_apply_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_delete2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_delete.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_demote.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_down_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_duplicate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_extract.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_left_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_locate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_locate1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_open1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_right_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_server_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_server_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_server_test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_up_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo transparent2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_fc.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_fo.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CreateProjectTables.sql" />
+    <None Include="Resources\icon_delete.png" />
+    <None Include="Resources\ProjectPublication.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\daqartDLL\daqartDLL.vbproj">
+      <Project>{E113A9F1-B07E-4B4E-8E1C-D75EF6B63E86}</Project>
+      <Name>daqartDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SystemManager\SystemManager.vbproj">
+      <Project>{128B02F2-9AAE-44BC-B53C-3D14A269E2EC}</Project>
+      <Name>SystemManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document 1 Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\createDaqument001DB.sql" />
+    <None Include="Resources\createDaqument001Tables.sql" />
+    <None Include="Resources\createDaqumentTables.sql" />
+    <None Include="Resources\Document 1 Edit.png" />
+    <None Include="Resources\PublishDaqument.sql" />
+    <None Include="Resources\PublishDaqument001.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

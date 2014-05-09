@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BB266A01-175C-4436-A2EA-0295336D63DE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Daqument.My.MyApplication</StartupObject>
+    <RootNamespace>Daqument</RootNamespace>
+    <AssemblyName>Daqument</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Daqument.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Daqument.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>Daqument.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>Daqument.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataStreams, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DataStreams.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v13.2.Core, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Interop.IMAGECONVERTERLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\Interop.IMAGECONVERTERLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\daqartDLL\System.Data.SqlServerCe.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddEditSymbol.Designer.vb">
+      <DependentUpon>AddEditSymbol.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddEditSymbol.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category.Designer.vb">
+      <DependentUpon>Category.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Category.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaqumentImport.Designer.vb">
+      <DependentUpon>DaqumentImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DaqumentImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaqumentImportDefaults.Designer.vb">
+      <DependentUpon>DaqumentImportDefaults.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DaqumentImportDefaults.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocumentTypeSelect.Designer.vb">
+      <DependentUpon>DocumentTypeSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentTypeSelect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDaqumentInfo.Designer.vb">
+      <DependentUpon>EditDaqumentInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditDaqumentInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDaqumentLayerInfo.Designer.vb">
+      <DependentUpon>EditDaqumentLayerInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditDaqumentLayerInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDaqumentViewName.Designer.vb">
+      <DependentUpon>EditDaqumentViewName.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditDaqumentViewName.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTblImport.Designer.vb">
+      <DependentUpon>FrmTblImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTblImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportReadIndex.Designer.vb">
+      <DependentUpon>ImportReadIndex.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImportReadIndex.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectSelect.Designer.vb">
+      <DependentUpon>ProjectSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectSelect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolsMain.Designer.vb">
+      <DependentUpon>SymbolsMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolsMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TDraw.Designer.vb">
+      <DependentUpon>TDraw.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TDraw.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tlb_EditDaqument.designer.vb">
+      <DependentUpon>tlb_EditDaqument.vb</DependentUpon>
+    </Compile>
+    <Compile Include="tlb_EditDaqument.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CursorManager.vb" />
+    <Compile Include="DaqumentAddNewLayer.Designer.vb">
+      <DependentUpon>DaqumentAddNewLayer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DaqumentAddNewLayer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocumentPDF.Designer.vb">
+      <DependentUpon>DocumentPDF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentPDF.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaqumentMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaqumentMain.Designer.vb">
+      <DependentUpon>DaqumentMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDaqument.designer.vb">
+      <DependentUpon>EditDaqument.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditDaqument.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDaqumentUtil.vb" />
+    <Compile Include="EditFormNI.Designer.vb">
+      <DependentUpon>EditFormNI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditFormNI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditDoc.Designer.vb">
+      <DependentUpon>frmEditDoc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditDoc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImageList.Designer.vb">
+      <DependentUpon>frmImageList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImageList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrint.Designer.vb">
+      <DependentUpon>frmPrint.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrint.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSave.Designer.vb">
+      <DependentUpon>FrmSave.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSave.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImagePreview.Designer.vb">
+      <DependentUpon>ImagePreview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImagePreview.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadPDF.Designer.vb">
+      <DependentUpon>LoadPDF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoadPDF.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="P2I.vb" />
+    <Compile Include="Search.Designer.vb">
+      <DependentUpon>Search.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Search.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewAssociations.Designer.vb">
+      <DependentUpon>ViewAssociations.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAssociations.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewDaqument.Designer.vb">
+      <DependentUpon>ViewDaqument.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ViewDaqument.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeldLookupTbl.Designer.vb">
+      <DependentUpon>WeldLookupTbl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WeldLookupTbl.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeldMain.Designer.vb">
+      <DependentUpon>WeldMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WeldMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeldManager.vb" />
+    <Compile Include="WeldParametersCtrl.Designer.vb">
+      <DependentUpon>WeldParametersCtrl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WeldParametersCtrl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WeldTracking.Designer.vb">
+      <DependentUpon>WeldTracking.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WeldTracking.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeldWPSProcFormView.Designer.vb">
+      <DependentUpon>WeldWPSProcFormView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WeldWPSProcFormView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddEditSymbol.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AddEditSymbol.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Category.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaqumentImport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DaqumentImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaqumentImportDefaults.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DaqumentImportDefaults.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocumentTypeSelect.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DocumentTypeSelect.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDaqumentInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditDaqumentInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDaqumentLayerInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditDaqumentLayerInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDaqumentViewName.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditDaqumentViewName.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTblImport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmTblImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportReadIndex.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ImportReadIndex.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectSelect.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProjectSelect.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolsMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SymbolsMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TDraw.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TDraw.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tlb_EditDaqument.resx">
+      <DependentUpon>tlb_EditDaqument.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaqumentAddNewLayer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DaqumentAddNewLayer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocumentPDF.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DocumentPDF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaqumentMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DaqumentMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDaqument.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditDaqument.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditFormNI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditFormNI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditDoc.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEditDoc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImageList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmImageList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrint.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPrint.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSave.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmSave.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImagePreview.resx">
+      <DependentUpon>ImagePreview.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadPDF.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LoadPDF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Search.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Search.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewAssociations.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ViewAssociations.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewDaqument.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ViewDaqument.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeldLookupTbl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WeldLookupTbl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeldMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WeldMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeldParametersCtrl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WeldParametersCtrl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeldTracking.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WeldTracking.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeldWPSProcFormView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WeldWPSProcFormView.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonForms\CommonForms.vbproj">
+      <Project>{23823C26-7606-4078-84F4-C1AEAC2AB022}</Project>
+      <Name>CommonForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\daqartDLL\daqartDLL.vbproj">
+      <Project>{E113A9F1-B07E-4B4E-8E1C-D75EF6B63E86}</Project>
+      <Name>daqartDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportManager\ReportManager.vbproj">
+      <Project>{8E919518-AE2D-4A4E-92CF-45EC44CE8B67}</Project>
+      <Name>ReportManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Water lilies.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sunset.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Documents Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder 1 Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document Reload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Black List Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Document Reload.png" />
+    <None Include="Resources\move.png" />
+    <None Include="Resources\Cancel.png" />
+    <None Include="Resources\highlite.PNG" />
+    <None Include="Resources\Image.PNG" />
+    <None Include="Resources\Redo.png" />
+    <None Include="Resources\Fonts.PNG" />
+    <None Include="Resources\Floppy.png" />
+    <None Include="Resources\Printer Laser.png" />
+    <None Include="Resources\Printer.png" />
+    <None Include="Resources\plus.PNG" />
+    <None Include="Resources\minus.PNG" />
+    <None Include="Resources\Search_Zoom_In.ico" />
+    <None Include="Resources\redButtWeld.bmp" />
+    <None Include="Resources\blueButtWeld.bmp" />
+    <None Include="Resources\blueSocketWeld.bmp" />
+    <None Include="Resources\greenButtWeld.bmp" />
+    <None Include="Resources\greenSocketWeld.bmp" />
+    <None Include="Resources\orrangeButtWeld.bmp" />
+    <None Include="Resources\orrangeSocketWeld.bmp" />
+    <None Include="Resources\redButtWeld1.bmp" />
+    <None Include="Resources\redSocketWeld.bmp" />
+    <None Include="Resources\Calendar.png" />
+    <None Include="Resources\Folder 1 Open.png" />
+    <None Include="Resources\Save As.png" />
+    <None Include="Resources\Data_Feed.png" />
+    <None Include="Resources\pointer.png" />
+    <None Include="Resources\blueButtWeld.png" />
+    <None Include="Resources\greenButtWeld.png" />
+    <None Include="Resources\orrangeButtWeld.png" />
+    <None Include="Resources\redButtWeld1.png" />
+    <None Include="Resources\Navigation Blue Previous.png" />
+    <None Include="Resources\Navigation Blue Next.png" />
+    <None Include="Resources\Navigation Blue Previous1.png" />
+    <None Include="Resources\Navigation Blue Next1.png" />
+    <None Include="Resources\BlankPage.png" />
+    <None Include="Resources\Navigation Green Previous.png" />
+    <None Include="Resources\Navigation Green Next.png" />
+    <None Include="Resources\Document 1 Add.png" />
+    <None Include="Resources\Document 1 Delete.png" />
+    <None Include="Resources\Find.png" />
+    <Content Include="Resources\Search Zoom In.png" />
+    <None Include="Resources\Search_Zoom_Out.ico" />
+    <Content Include="Resources\Search Zoom Out.png" />
+    <None Include="Resources\yellowButtWeld.bmp" />
+    <None Include="Resources\yellowSocketWeld.bmp" />
+    <None Include="Resources\Table_Column_Add_After.png" />
+    <None Include="Resources\yellowButtWeld.png" />
+    <None Include="Resources\transparent.bmp" />
+    <None Include="Resources\WPS_Page1.png" />
+    <None Include="Resources\WPS_Page2.png" />
+    <None Include="Resources\WPS_Page11.png" />
+    <None Include="Resources\WPS_Page1 scaled.png" />
+    <None Include="Resources\WPS_Page2 scaled.png" />
+    <Content Include="ZoomIn.cur" />
+    <Content Include="ZoomOut.cur" />
+    <None Include="Resources\Undo.png" />
+    <None Include="Resources\Text Document.png" />
+    <None Include="Resources\Symbol Edit.png" />
+    <None Include="Resources\Width5.PNG" />
+    <None Include="Resources\Width4.PNG" />
+    <None Include="Resources\Width3.PNG" />
+    <None Include="Resources\Width2.PNG" />
+    <None Include="Resources\Width1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

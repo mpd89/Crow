@@ -1,0 +1,209 @@
+Daqart Client Software by Industry Systems Software, Inc.
+2.1.0.93 - 13 Apr 2011
+	-added, ENI001 Server - custom sign-off
+
+2.1.0.92 - 16 Feb 2011
+	-added, Parent select box in Project>Systems in order to move sub-system and associated packages / punchlist items.
+
+2.1.0.91 - 8 FEB 2011
+	-fixed, Error on System View where some sub-systems would not show
+	-fixed, Daqument export to PDF not showing all mark-ups when viewing all layers
+
+2.1.0.90 - 24 Jan 2011
+	-added, BP001 Server - modifications to Punchlist edit and search screen
+
+2.1.0.89 - 15 Jan 2011
+	-added, ENI001 Server - modifications to Custom Handover Package Export
+	-fixed, bug in Reference documents for path in Windows 7 64bit
+
+2.1.0.88 - 28 Nov 2010
+	-added, Discrepancy flag on ITS
+	-added, Punchlist tracking field
+
+2.1.0.87 - 10 Nov 2010
+	-added, ENI001 Server - Custom Handover Package Export
+	-added, Discrepancy Column on ITS Report, will show red cell if Open or Pending Discrepancies exist
+
+2.1.0.86 - 10 Nov 2010
+	-fixed, BP001 Server - IWL Report MC1 Grouping error
+
+2.1.0.85 - 7 Nov 2010
+	-fixed, bug in Form Viewer would return false status causing incomplete forms to be locked
+	-added, Project ITS button on System View above the system select menu
+
+2.1.0.84 - 5 Nov 2010
+	-fixed, System Select - bug while selecting systems
+	-added, System ITS - open Package from ITS
+	-fixed, BP001 Server - IWL Report formatting, added MC1 to group structure
+	-fixed, BP001 Server - IWL Grouping / Sorting Menu added when exporting
+
+2.1.0.83 - 1 Nov 2010
+	-fixed, System Select - bug when selecting only a sub tier the Select button was disabled
+	-fixed, BP001 Server - error populating Contractor on formatted report
+	-fixed, BP001 Server - IWL Report group header repeating
+	-fixed, BP001 Server - IWL Report sort by item number
+	-fixed, BP001 Server - Edit IWL item, ability to remove name from Listed By, Contractor, QA, BP fields
+	
+2.1.0.82 - 31 Oct 2010
+	-fixed, System View - Error populating packages / ITS from the highest tier level
+	-fixed, BP001 Server - IWL Report formatting, custom labels
+	-fixed, System View - Document Summary when exporting / printing
+
+2.1.0.81 - 23 Oct 2010
+	-fixed, System View - Not populating packages properly
+	-fixed, BP001 Server - IWL Report formatting
+
+2.1.0.80 - 22 Oct 2010
+	-fixed, internal query affecting System View ITS results
+	-fixed, UserLog error causing synchronization error when connecting in Online mode
+	-added, "Un-Submit" button on Form Viewer that will allow the user to recall a form that was submitted in error before it has been synchronized
+	-fixed, BP001 Server - IWL Report formatting
+	-fixed, System View - Print System Package now uses up to date code library for printing and exporting to PDF
+	-fixed, Last Synchronization date/time on Main window now populates correctly on log in
+
+2.1.0.79 - 12 Oct 2010
+	-added, New System Handover Report
+	-added, Add Punchlist save last System, User, Entry Date
+	-fixed, error on Periodic Report if tag/Package has been deleted after form entry
+	
+2.1.0.78 - 21 Sep 2010
+	-added, New Punchlist Report
+
+2.1.0.77 - 16 Sep 2010
+	-added, New PDF converter for exporting
+	-added, Punchlist Editor - Manual entry for sign-off names and dates and change of status
+
+2.1.0.76 - 4 Sep 2010
+	-added, Rejected Packages button on Package Select toolbar in Package Viewer
+	-fixed, Package export to PDF smaller pdf size amd faster export.
+
+2.1.0.75 - 29 Aug 2010
+	-added, Package Viewer Audit Statistics
+
+2.1.0.74 - 13 Aug 2010
+	-added, Submitted Certificate count in Periodic Report
+	-fixed, default hilite color
+
+2.1.0.73 - 10 Aug 2010
+	-added, Periodic Report launched from Main Menu for reporting on date ranges
+	-fixed, error on Package Viewer in Engineering Documents when opening
+	-fixed, default color for hi-liting now blue
+	
+2.1.0.72 - 16 Jul 2010
+	-fixed, Package print/export on 11x17
+	-added, Notes can be made Public for viewing by all Project users
+	-fixed, Package View document revision translation error
+
+2.1.0.71 - 8 Jul 2010
+	-fixed, Package Viewer select list rrefresh was not working
+	-fixed, Package export to PDF
+	-fixed, Package Viewer, Engineering Info update error	
+		
+2.1.0.70 - 2 Jul 2010
+	-fixed, query error in System View when populating package of first subsystem
+	-added, System View-Punchlist Tab, red alert on MC Priority 1 and SH Priority A
+	-added, Open forms from ITS
+	-added, Open punchlist items from System View
+	-added, export Punchlist grid from System View
+	-added, Punchlist target date changed count on results datagrid
+	
+2.1..0.69 - 25 Jun 2010
+	-fixed, date errors on punchlist results
+
+2.1.0.68 - 20 Jun 2010
+	-fixed, Document Import existing documents bug
+	-added, additional functionality ti Punchlist/IWL Module
+	
+2.1.0.67 - 2 Jun 2010
+	-fixed, Tag Import, row counts Maximum
+	-added, Document Association, override checkbox for adding references to missing documents
+	-fixed, Login change password error
+	-fixed, Data Manager, user list sort
+	
+2.1.0.66 - 19 May 2010
+	-fixed, unhandled exception in Package Document Edit
+	-fixed, path for Windows Vista/7 32 bit for reference library and symbols
+	-added, performance improvement in various modules
+	
+2.1.0.65 - 9 May 2010
+	-added, store last document zoom while viewing
+	-added, colored fields to ITS; removed unused columns
+	-fixed, various cursors
+	-added, blue as default hilite color
+	-fixed, bottom margin printing documents cutting off document number
+	-added, manual project status on main menu
+	-fixed, single quote error while adding/editing Notes
+	-added, projects assigned to specific users in user properties
+	-fixed, PDF package export, documents not scaling properly
+
+2.1.0.64 - 30 Apr 2010
+	-added, document search field in Daqument
+	-enabled, symbols library
+	-fixed, various cursors while loading documents/forms
+	-added, System view ITS
+	
+2.1.0.63 - 22 APR 2010
+	-added, Document search on Daqument Main menu
+
+2.1.0.62 - 17 APR 2010
+	-fixed, check user active status on login
+
+2.1.0.61 - 9 APR 2010
+	-fixed, Daqument print to table
+
+2.1.0.60 - 8 APR 2010
+	-fixed, Aux Data Update error
+	-fixed, Package View update package data
+	-fixed, Notes edit
+	-fixed, Discrepancy Status change error
+	-fixed, Calendar size
+	-fixed, Daqument Reload saving document
+
+2.1.0.59 - 2 APR 2010
+	-added, Package Priorities affects package import, package view, system view
+	-fixed, Daqument no longer generates full document list on opening
+	
+2.1.0.58 - 26 MAR 2010
+	-fixed, added deletion of package document reference when deleting document
+	-fixed, error populating documents on certificates
+	-fixed, error getting modified auxiliary data on certificates	
+
+2.1.0.57 - 24 MAR 2010
+	-added, System Priority Highlighting in System View
+
+2.1.0.56 - 19 MAR 2010
+	-fixed, error populating tags on multi-element documents
+	
+2.1.0.55 - 15 MAR 2010
+	-fixed, error when updating package auxiliary data
+
+2.1.0.54 - 10 MAR 2010
+	-fixed, printing error, some pre-populated fields were clipped
+	-fixed, pdf printing error, forms were rotated
+
+2.1.0.52 - 11 FEB 2010
+	-added,	user name on Main window status bar
+	-added,	Document Association column in Daqument list
+	-added,	Document Association screen to open when you right click on main document list
+	-fixed,	When using Online/Offline toggle, synchronized first to eliminate duplicity sync error
+	-added,	In Package Viewer, can right click on 
+	-fixed,	When changing projects package list was nor refreshing.
+	-added,	In Package Viewer, can associate multiple documents at one time
+	-fixed,	In Package Viewer, add engineering documents, Document category change from drop down 
+			to select dialog
+	-added, In Package Viewer, new tab for Reference Documents, uses the reference Library to store
+			multipage, multi-format documents that can be associated to a package
+	
+
+2.1.0.51 - 2 FEB 2010
+	-fixed, changed MID method to generate on first connect to server and store in registry
+	-fixed, Changed intitial caching of data to Offline to speed up cahing of data.
+
+2.1.0.50
+	-added, user can use 'Enter'' or 'Return' button on login menu instead of having to click 'Login'.
+	-fixed, System Select would not pre-populate forcing user to re-select all systems before applying.
+	-added, Online/Offline toggle button on Main Menu toolbar allows user to switch modes without exiting program.
+
+2.1.0.49
+	-added, View Change Log under Help on main menu
+	-start of changelog

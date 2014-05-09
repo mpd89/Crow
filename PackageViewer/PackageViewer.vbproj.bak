@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5A634C6F-6428-49F7-A14C-A479CE36A3EB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>PackageViewer.My.MyApplication</StartupObject>
+    <RootNamespace>PackageViewer</RootNamespace>
+    <AssemblyName>PackageViewer</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>PackageViewer.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>PackageViewer.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DevExpress.Data.v8.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DevExpress.Utils.v8.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DevExpress.XtraEditors.v8.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DevExpress.XtraGrid.v8.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DevExpress.XtraVerticalGrid.v8.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PdfVision, Version=3.1.7.26, Culture=neutral, PublicKeyToken=9c847e093dd15dbf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Users\Tommy\Downloads\Image to PDF Converters\pdf_vision_net_full\PDF Vision .Net Full (3.1.7.26)\Net 2.0, 3.0 and 3.5\PdfVision.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\daqartDLL\System.Data.SqlServerCe.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddPackageDocument.Designer.vb">
+      <DependentUpon>AddPackageDocument.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddPackageDocument.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditPackageDocument.Designer.vb">
+      <DependentUpon>EditPackageDocument.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditPackageDocument.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManualStatus.Designer.vb">
+      <DependentUpon>ManualStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ManualStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageAuditStats.Designer.vb">
+      <DependentUpon>PackageAuditStats.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PackageAuditStats.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageList.Designer.vb">
+      <DependentUpon>PackageList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PackageList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageUtils.vb" />
+    <Compile Include="PackagePrint.Designer.vb">
+      <DependentUpon>PackagePrint.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PackagePrint.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageViewerMain.Designer.vb">
+      <DependentUpon>PackageViewerMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PackageViewerMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageView.Designer.vb">
+      <DependentUpon>PackageView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PackageView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageViewerManager.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PkgSelect.Designer.vb">
+      <DependentUpon>PkgSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PkgSelect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RejectedForms.Designer.vb">
+      <DependentUpon>RejectedForms.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RejectedForms.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Taglist.Designer.vb">
+      <DependentUpon>Taglist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Taglist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddPackageDocument.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AddPackageDocument.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditPackageDocument.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditPackageDocument.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualStatus.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ManualStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageAuditStats.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PackageAuditStats.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PackageList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackagePrint.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PackagePrint.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageViewerMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PackageViewerMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PackageView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PkgSelect.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PkgSelect.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RejectedForms.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RejectedForms.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Taglist.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Taglist.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonForms\CommonForms.vbproj">
+      <Project>{23823C26-7606-4078-84F4-C1AEAC2AB022}</Project>
+      <Name>CommonForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomMods\CustomMods.vbproj">
+      <Project>{7D2B66E2-F59E-47C3-8E8C-E3A187A1A1D2}</Project>
+      <Name>CustomMods</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\daqartDLL\daqartDLL.vbproj">
+      <Project>{E113A9F1-B07E-4B4E-8E1C-D75EF6B63E86}</Project>
+      <Name>daqartDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Daqument\Daqument.vbproj">
+      <Project>{BB266A01-175C-4436-A2EA-0295336D63DE}</Project>
+      <Name>Daqument</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DiscrepancyManager\DiscrepancyManager.vbproj">
+      <Project>{C2B9EBB3-4970-4EEA-B5E7-8DD425B97775}</Project>
+      <Name>DiscrepancyManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FormDesigner\FormDesigner.vbproj">
+      <Project>{0017A5AD-8B16-40D8-8385-38A8333B6A6D}</Project>
+      <Name>FormDesigner</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PunchlistManager\PunchlistManager.vbproj">
+      <Project>{F25536B0-1EE6-4AD1-9847-7854C1F78F6C}</Project>
+      <Name>PunchlistManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReferenceLibrary\ReferenceLibrary.vbproj">
+      <Project>{A1280ED1-A474-40FE-BCBC-2AE6DC04D682}</Project>
+      <Name>ReferenceLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SystemManager\SystemManager.vbproj">
+      <Project>{128B02F2-9AAE-44BC-B53C-3D14A269E2EC}</Project>
+      <Name>SystemManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Table_Column.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Table_Row.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cut 1 Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Post Note.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document 1 Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document 1 Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document 1 Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blank_cover.jpg" />
+    <Content Include="Resources\Document 1 Add.png" />
+    <None Include="Resources\Thumbs Down.png" />
+    <None Include="Resources\Task Information.png" />
+    <None Include="Resources\Navigation Blue Left.png" />
+    <None Include="Resources\Navigation Blue Next.png" />
+    <None Include="Resources\Navigation Blue Right.png" />
+    <None Include="Resources\Folder 1 Open.png" />
+    <None Include="Resources\Tools Add.png" />
+    <None Include="Resources\Tools.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

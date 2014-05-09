@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3D2515A9-840B-4869-8432-1D53967F8986}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>DataManager.My.MyApplication</StartupObject>
+    <RootNamespace>DataManager</RootNamespace>
+    <AssemblyName>DataManager</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>DataManager.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>DataManager.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1" />
+    <Reference Include="DevExpress.XtraGrid.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\daqartDLL\System.Data.SqlServerCe.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddCompany.Designer.vb">
+      <DependentUpon>AddCompany.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddCompany.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUser.Designer.vb">
+      <DependentUpon>AddUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editSignOff.Designer.vb">
+      <DependentUpon>editSignOff.vb</DependentUpon>
+    </Compile>
+    <Compile Include="editSignOff.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataManagerMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataManagerMain.Designer.vb">
+      <DependentUpon>DataManagerMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRecord.Designer.vb">
+      <DependentUpon>frmRecord.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRecord.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUser.Designer.vb">
+      <DependentUpon>frmUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageEquipment.Designer.vb">
+      <DependentUpon>ManageEquipment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ManageEquipment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageRequirements.Designer.vb">
+      <DependentUpon>ManageRequirements.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ManageRequirements.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MERequirement.Designer.vb">
+      <DependentUpon>MERequirement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MERequirement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="RequirementsManager.Designer.vb">
+      <DependentUpon>RequirementsManager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RequirementsManager.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddCompany.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AddCompany.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddUser.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AddUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataManagerMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DataManagerMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editSignOff.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>editSignOff.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecord.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRecord.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUser.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageEquipment.resx">
+      <DependentUpon>ManageEquipment.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageRequirements.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ManageRequirements.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MERequirement.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MERequirement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequirementsManager.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RequirementsManager.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="My Project.Resources.Designer.vb.dll" />
+    <None Include="Resources\Group Workgroup 11.png" />
+    <None Include="Resources\Navigation Blue Down.png" />
+    <None Include="Resources\Navigation Blue Up.png" />
+    <None Include="Resources\Home 3.png" />
+    <None Include="Resources\Toolbox 1.png" />
+    <None Include="Resources\Keys Blue.png" />
+    <None Include="Resources\Network_Security_Blue.png" />
+    <None Include="Resources\Group Workgroup 1.png" />
+    <None Include="Resources\User Business Male 2.png" />
+    <None Include="Resources\Refresh.png" />
+    <None Include="Resources\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonForms\CommonForms.vbproj">
+      <Project>{23823C26-7606-4078-84F4-C1AEAC2AB022}</Project>
+      <Name>CommonForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\daqartDLL\daqartDLL.vbproj">
+      <Project>{E113A9F1-B07E-4B4E-8E1C-D75EF6B63E86}</Project>
+      <Name>daqartDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectWizard\ProjectWizard.vbproj">
+      <Project>{9E9C490D-C6FF-43C3-A350-92498B0DD159}</Project>
+      <Name>ProjectWizard</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

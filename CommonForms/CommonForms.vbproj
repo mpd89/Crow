@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{23823C26-7606-4078-84F4-C1AEAC2AB022}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>CommonForms.My.MyApplication</StartupObject>
+    <RootNamespace>CommonForms</RootNamespace>
+    <AssemblyName>CommonForms</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>CommonForms.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>CommonForms.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>CommonForms.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>CommonForms.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataStreams, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DataStreams.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v13.2.Core, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\daqartDLL\System.Data.SqlServerCe.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddUser.Designer.vb">
+      <DependentUpon>AddUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendar.Designer.vb">
+      <DependentUpon>Calendar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Calendar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes.vb" />
+    <Compile Include="DataExport.designer.vb">
+      <DependentUpon>DataExport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DataExport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditLookupTable.Designer.vb">
+      <DependentUpon>EditLookupTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditLookupTable.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelect.designer.vb">
+      <DependentUpon>FormSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormSelect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManualSynchronize.Designer.vb">
+      <DependentUpon>ManualSynchronize.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ManualSynchronize.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="OwnerSelect.Designer.vb">
+      <DependentUpon>OwnerSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OwnerSelect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageDetails.vb" />
+    <Compile Include="PackageList.Designer.vb">
+      <DependentUpon>PackageList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PackageList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectStatus.Designer.vb">
+      <DependentUpon>ProjectStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignOffProxy.Designer.vb">
+      <DependentUpon>SignOffProxy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SignOffProxy.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SingleElementFormDataExport.vb" />
+    <Compile Include="Sync.Designer.vb">
+      <DependentUpon>Sync.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sync.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Taglist.Designer.vb">
+      <DependentUpon>Taglist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Taglist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportCSV.designer.vb">
+      <DependentUpon>ImportCSV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImportCSV.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TagStatusReport.Designer.vb">
+      <DependentUpon>TagStatusReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TagStatusReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tag_List_Export.vb" />
+    <Compile Include="XtraGridPrinting.Designer.vb">
+      <DependentUpon>XtraGridPrinting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="XtraGridPrinting.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddUser.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AddUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendar.resx">
+      <DependentUpon>Calendar.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataExport.resx">
+      <DependentUpon>DataExport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditLookupTable.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditLookupTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSelect.resx">
+      <DependentUpon>FormSelect.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualSynchronize.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ManualSynchronize.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OwnerSelect.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OwnerSelect.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageList.resx">
+      <DependentUpon>PackageList.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectStatus.resx">
+      <DependentUpon>ProjectStatus.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignOffProxy.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SignOffProxy.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sync.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Sync.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Taglist.resx">
+      <DependentUpon>Taglist.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportCSV.resx">
+      <DependentUpon>ImportCSV.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TagStatusReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TagStatusReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraGridPrinting.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraGridPrinting.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\daqartDLL\daqartDLL.vbproj">
+      <Project>{E113A9F1-B07E-4B4E-8E1C-D75EF6B63E86}</Project>
+      <Name>daqartDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SystemManager\SystemManager.vbproj">
+      <Project>{128B02F2-9AAE-44BC-B53C-3D14A269E2EC}</Project>
+      <Name>SystemManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

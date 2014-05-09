@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0017A5AD-8B16-40D8-8385-38A8333B6A6D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>FormDesigner.FormMain</StartupObject>
+    <RootNamespace>FormDesigner</RootNamespace>
+    <AssemblyName>FormDesigner</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>FormDesigner.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>FormDesigner.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v8.1.Design, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="Interop.Print2eDocSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\Interop.Print2eDocSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\daqartDLL\System.Data.SqlServerCe.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Daq.Designer.vb">
+      <DependentUpon>Daq.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Daq.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAuxTemplate.Designer.vb">
+      <DependentUpon>FormAuxTemplate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormAuxTemplate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImport.Designer.vb">
+      <DependentUpon>FormImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStatus.Designer.vb">
+      <DependentUpon>FormStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVerifyUser.Designer.vb">
+      <DependentUpon>FormVerifyUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormVerifyUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdd.Designer.vb">
+      <DependentUpon>FormAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDesignerMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDesignerMain.Designer.vb">
+      <DependentUpon>FormDesignerMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditManager.vb" />
+    <Compile Include="FormMain.designer.vb">
+      <DependentUpon>FormMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelect.Designer.vb">
+      <DependentUpon>FormSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormSelect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSubmit.Designer.vb">
+      <DependentUpon>formSubmit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formSubmit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUtils.vb" />
+    <Compile Include="FormView.Designer.vb">
+      <DependentUpon>FormView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SignatureEntry.designer.vb">
+      <DependentUpon>SignatureEntry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SignatureEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm.Designer.vb">
+      <DependentUpon>SubForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditing.designer.vb">
+      <DependentUpon>FormEditing.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditing.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ValueEntry.Designer.vb">
+      <DependentUpon>ValueEntry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ValueEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YNSelect.designer.vb">
+      <DependentUpon>YNSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="YNSelect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Daq.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Daq.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdd.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAuxTemplate.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormAuxTemplate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDesignerMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormDesignerMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormImport.resx">
+      <DependentUpon>FormImport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSelect.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormSelect.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStatus.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formSubmit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>formSubmit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVerifyUser.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormVerifyUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditing.resx">
+      <DependentUpon>FormEditing.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignatureEntry.resx">
+      <DependentUpon>SignatureEntry.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SubForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ValueEntry.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ValueEntry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YNSelect.resx">
+      <DependentUpon>YNSelect.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\daqartDLL\daqartDLL.vbproj">
+      <Project>{E113A9F1-B07E-4B4E-8E1C-D75EF6B63E86}</Project>
+      <Name>daqartDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Daqument\Daqument.vbproj">
+      <Project>{BB266A01-175C-4436-A2EA-0295336D63DE}</Project>
+      <Name>Daqument</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StatusManager\StatusManager.vbproj">
+      <Project>{AA3C7EAF-BAE9-40E2-A711-453F6B65D038}</Project>
+      <Name>StatusManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SystemManager\SystemManager.vbproj">
+      <Project>{128B02F2-9AAE-44BC-B53C-3D14A269E2EC}</Project>
+      <Name>SystemManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\DataSources\FormDesignerMain.formItem.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Text Document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rename.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pcSizeGrip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\XPO-tutorials.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tutorials.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataType.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Weight.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_locate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_add_layer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Navigation Blue First2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Navigation Blue Previous1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Navigation Blue Next1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Navigation Blue Last1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Objects.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Printer Laser Information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Contacts List Orange Find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Contacts List Orange Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder 1 Restricted.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Floppy Drive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Floppy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CD Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CD Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clipboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Thumbs Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Thumbs Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help File.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Security Gold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document Check-Out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomIn.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomOut.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search Zoom In.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search Zoom Out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Symbol Unsecured.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Text Document1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Text Ascending.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Text Descending.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blank_cover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Email 2 Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Antenna.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\highlite.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\marking.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Width1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Width2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Width3.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Width4.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Width5.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Symbol Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ungroup.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clipboard Delete.png" />
+    <None Include="Resources\Clipboard Check.png" />
+    <Content Include="Resources\Symbol Edit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,102 @@
+END USER LICENSE AGREEMENT
+
+	This End User License Agreement (“Agreement”), effective upon installation,  is between Industry Systems Software, Inc. (“ISSI”) and _______ (“Licensee”) for use of an ISSI software product.  The parties agree as follows.
+
+1.	DEFINITIONS
+
+License Term: The “License Term” means the period beginning on the effective date and ending upon termination of the Project.
+
+Permitted Computers: “Permitted Computers” means servers, PC tablets, and other equipment provided by ISSI. 
+
+Product: “Product” means any equipment (such as printers, computers, servers, or other hardware).
+
+Project: The “Project” means the project described in the contract between ___ and Licensee dated ____.
+
+Software: “Software” means (a) the executable code version of the computer program known as DAQARTTM, (b) printed and electronic user manuals and documentation accompanying or published for the program that may be provided by ISSI in its sole discretion, (c) any updates of the program and manuals and documentation provided by ISSI from time to time, and (d) any copies of the foregoing.
+
+2.	LICENSE 
+
+	2.1 License.  Conditioned upon Licensee’s performance of its obligations under this Agreement and under the any other agreement between ISSI or any affiliated company relating to Licensee’s use of the Software, ISSI grants to Licensee a non-exclusive, non-transferable, license during the License Term to use the Product and Software for the Project.
+
+	2.2  Conditions and Restrictions.  As a precondition for the license granted, Licensee shall comply with each of the following:
+
+A.	Prohibited uses: Licensee shall not use or permit others to use the Software for any purpose other for the Project.
+
+B.	Permitted Users:  Licensee shall not use or permit use of the Software by any person other than a Permitted User.
+
+C.	Permitted Computers.  Licensee shall not install or use the Software or permit installation or use of the Software on any equipment other than Permitted Computers.
+
+D.	Prohibited Copies and Derivative Works.  Licensee shall not make any back-up copies of the Software, and Licensee shall not otherwise copy, modify, or create any derivative works of the Software and shall not permit others to do so.
+
+E.	Prohibited Reverse Engineering.  Licensee shall not decompile, disassemble, reverse engineer, or attempt to derive the source code for the Software, and shall not permit others to do so.
+
+F.	Prohibited Transfer.  Licensee shall not distribute, sell, rent, lease, sublicense or otherwise transfer rights to the Software, and shall not permit others to do so.
+
+G.	Marks and Notices.  Licensee shall not remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols, or labels on the Software, and shall not permit others to do so.
+
+H.	Compliance with Laws.  Licensee shall comply with all export laws and regulations of the United States or any other government and agrees not to export or re-export the Software in violation of any such laws or regulations.  Licensee shall comply with all applicable laws and regulations with respect to the import into any country or the use in any country of the Software.
+
+3.	WARRANTIES, REMEDIES, LIMITATIONS, INDEMNITIES
+
+	3.1	Limited Warranty.  ISSI warrants that, until termination of the Project, if operated as directed, and used on the Permitted Computers and in accordance with all documentation, the Software will substantially achieve the functionality described in the user manual.  This limited warranty shall not apply if Licensee is in breach of this Agreement.
+
+	3.2	Exclusion of other warranties.  EXCEPT AS EXPRESSLY PROVIDED, LICENSEE ACCEPTS THE SOFTWARE "AS-IS".  EXCEPT AS EXPRESSLY PROVIDED, ISSI AND ITS AFFILIATES, SUPPLIERS, AND RESELLERS MAKE NO WARRANTY OF ANY KIND AS TO THE INSTALLATION, USE, OR PERFORMANCE OF THE SOFTWARE OR THE RESULTS OBTAINED FROM USE OF THE SOFTWARE.  EXCEPT AS EXPRESSLY PROVIDED, ISSI AND ITS AFFILIATES DO NOT WARRANT THAT THE SOFTWARE IS FREE OF DEFECTS, MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING OF THIRD PARTY RIGHTS, AND DISCLAIM AND EXCLUDE ALL WARRANTIES, EXPRESS, IMPLIED, OR STATUTORY, WITH RESPECT TO THE SOFTWARE, ITS USE, PERFORMANCE, RESULTS, OR APPLICATION OR ANY INFORMATION PROVIDED REGARDING THE SOFTWARE.
+
+	3.3	Sole and Exclusive Remedy.  This section provides Licensee's sole and exclusive remedy for any breach of the limited warranty in Section 3.1 or for any other failure of or defect or nonconformity in the Software.
+
+1.	Licensee must provide to ISSI written notice of any claim of breach of warranty no later than the end of the Warranty Period.  Licensee shall have no remedy if Licensee fails to provide timely notice or if Licensee fails to describe the breach of warranty with reasonable specificity in a timely notice.
+
+2.	Upon receipt of a timely and proper notice, then, at ISSI's sole discretion, ISSI shall:
+
+(a)	provide repaired or corrected Software or a user manual or other documentation; or
+(b)	provide instructions as to how Licensee may achieve substantially the same functionality with the Software as described in the user manual accompanying the Software; or
+(c)	terminate this Agreement and provide a refund of the License Fee and the Subscription Fee paid by Licensee.
+
+3.	Licensee shall have no other rights or remedies against ISSI for any breach of the limited warranty in section 3.1 or for any other failure of or defect or nonconformity in the Software.
+
+	3.4  Limitation Of Liability.  ISSI AND ITS AFFILIATES WILL NOT BE LIABLE FOR ANY INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE POSSESSION OF, USE OF, FAILURE OF, OR INABILITY TO USE THE SOFTWARE, INCLUDING, WITHOUT LIMITATION, LOST PROFITS, LOSS OF GOODWILL, WORK STOPPAGE, DATA LOSS, OR COMPUTER FAILURE OR MALFUNCTION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, AND REGARDLESS WHETHER THE CLAIM OR LIABILITY IS BASED UPON ANY CONTRACT, TORT, BREACH OF WARRANTY, OR OTHER LEGAL OR EQUITABLE THEORY, AND NOTWITHSTANDING THAT ANY REMEDY HEREIN FAILS OF ITS ESSENTIAL PURPOSE. THE MAXIMUM LIABILITY OF ISSI AND ITS AFFILIATES, SUPPLIERS, AND RESELLERS TO LICENSEE SHALL IN ANY EVENT NOT EXCEED THE SUM OF THE LICENSE FEE PAID BY LICENSEE FOR THE SOFTWARE (REGARDLESS WHETHER LIABILITY ARISES FROM BREACH OF THE LIMITED WARRANTY OR BREACH OF THIS AGREEMENT, OR BASED ON CONTRACT, TORT, BREACH OF WARRANTY, OR OTHER LEGAL OR EQUITABLE THEORIES).  SOME STATES AND JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION OF IMPLIED WARRANTIES OR LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES, AND ANY SUCH LIMITATIONS CONTAINED IN THIS AGREEMENT SHALL NOT APPLY IN THOSE JURISDICTIONS.
+
+	3.5  Intellectual Property Indemnification.  Subject to the limitations in Section 3.4 (including the maximum liability of ISSI to Licensee), ISSI shall defend, indemnify, and hold Licensee harmless from and against all costs, expenses, liabilities, and judgments (including reasonable attorneys' fees and costs), reasonably incurred as a result of claims and lawsuits instituted by third parties against Licensee alleging that the Software infringes the intellectual property rights of such third party.  Licensee shall provide written notice to ISSI of any claim or lawsuit for which indemnity is sought, promptly upon becoming aware of such claim or lawsuit and in any event within ten (10) days after receiving written notice of such claim or lawsuit.  Licensee shall fully cooperate in the defense or settlement of any such claim or lawsuit, and if requested by ISSI, shall tender the defense to ISSI and permit ISSI to control the defense or settlement thereof, including the selection of counsel.  Licensee shall obtain the prior written agreement of ISSI to any settlement or proposal of settlement of such claim or lawsuit.
+
+4.	OWNERSHIP AND CONFIDENTIALITY
+
+Except for the license rights granted to Licensee hereunder, ISSI retains all right, title, and interest in the Software, including any rights under patent, trademark, copyright, trade secrets, and other intellectual property laws, and this Agreement does not grant to Licensee any intellectual property rights in the Software.  The structure, organization, and code underlying the Software are the valuable trade secrets of ISSI.  Licensee shall not take any action to jeopardize, limit, or interfere in any manner with ISSI’s rights, shall not disclose or permit others to disclose any of ISSI’s trade secrets, and shall take all reasonable precautions necessary to protect the confidentiality of ISSI’s trade secrets.
+
+5.	TERM AND TERMINATION
+
+	5.1    Termination.  This Agreement will terminate:
+
+	1	upon termination of the Project;
+2	if Licensee has provided to ISSI written notice of termination; or
+3	if, upon written notice from ISSI that Licensee is in breach, Licensee fails to cure the breach within thirty (30) days after such notice; or 
+4	if ISSI terminates this Agreement as expressly permitted in this Agreement.
+
+	5.2	Procedure upon termination.  Upon termination of this Agreement, Licensee shall:
+
+1	discontinue any and all use of the Software,
+2	purge the Software from all Permitted Equipment that Licensee has purchased,
+3	return all other Permitted Equipment, and
+4	deliver to ISSI certification that Licensee has complied with these termination obligations.  
+
+	5.3	Surviving Terms.  Sections 2.2, 3.2, 3.3(3), 3.4, 3.5, 4, 5, and 6 shall survive termination of this Agreement.
+
+6.	General
+
+	6.1  Modifications.  No modification, amendment, or waiver of any provision of this Agreement shall be effective unless signed by authorized representatives of ISSI and Licensee.
+
+	6.2  U.S. Government End-Users.  The Software is a "commercial item," as that term is defined in 48 C.F.R. 2.101, consisting of "commercial computer software" and "commercial computer software documentation," as such terms are used in 48 C.F.R. 12.212.  Consistent with 48 C.F.R. 12.212 and 48 C.F.R. 227.7202-1 through 227.7202-4, all United States Government end-users acquire the Software only as a "commercial item" and only with those rights that are granted to all other end-users pursuant to the terms and conditions of this Agreement.
+
+6.3  Governing Law.  This Agreement shall be governed by the laws of the State of Louisiana (excluding conflicts of laws provisions), and not by the United Nations Convention on Contracts for the International Sale of Goods.
+
+6.4  Severability.  If any provision in this Agreement should be held invalid or unenforceable, such provision shall be modified to the extent necessary to render it valid or enforceable or severed from this Agreement if no such modification is possible, and the other provisions of this Agreement shall remain in full force and effect.
+
+6.5  No assignment by Licensee.  Licensee may not assign its rights or delegate its obligations under this Agreement without the prior written consent of ISSI, which consent may be withheld in the sole discretion of ISSI.  This Agreement shall be binding on and inure to the benefit of the parties and their successors and assigns.
+
+6.6  No Other Agreements.  This Agreement is the entire agreement of the parties with respect to the Software, and there are no other agreements, written, oral, electronic, or otherwise, with respect to the Software.
+
+Industry Systems Software, Inc.		[Name of licensee]
+
+By: 						By: 					
+Print name: 					Print name: 				
+Title: 						Title: 					
+Date: 						Date: 					

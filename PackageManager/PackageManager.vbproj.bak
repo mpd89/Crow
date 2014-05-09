@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{72F1F3FA-4BAA-40BC-B88D-BC01289F0572}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>package.My.MyApplication</StartupObject>
+    <RootNamespace>package</RootNamespace>
+    <AssemblyName>package</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>package.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>package.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataStreams, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DataStreams.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DevExpress.Data.v8.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DevExpress.Utils.v8.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DevExpress.XtraEditors.v8.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\DevExpress.XtraGrid.v8.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v8.1, Version=8.1.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Interop.Print2eDocSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\daqartDLL\Interop.Print2eDocSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\daqartDLL\System.Data.SqlServerCe.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="equipmentImport.Designer.vb">
+      <DependentUpon>equipmentImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="equipmentImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pkgAuxTemplate.Designer.vb">
+      <DependentUpon>pkgAuxTemplate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="pkgAuxTemplate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PkgCoversheet.Designer.vb">
+      <DependentUpon>PkgCoversheet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PkgCoversheet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PkgEdit.Designer.vb">
+      <DependentUpon>PkgEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PkgEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PkgExport.Designer.vb">
+      <DependentUpon>PkgExport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PkgExport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PkgFormAdd.Designer.vb">
+      <DependentUpon>PkgFormAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PkgFormAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TagFormAdd.Designer.vb">
+      <DependentUpon>TagFormAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TagFormAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tagSelect.Designer.vb">
+      <DependentUpon>tagSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="tagSelect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fieldmap.vb">
+    </Compile>
+    <Compile Include="PackageMain.designer.vb">
+      <DependentUpon>PackageMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PackageMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="pkgImport.Designer.vb">
+      <DependentUpon>pkgImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="pkgImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pkgViewNew.Designer.vb">
+      <DependentUpon>pkgViewNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="pkgViewNew.vb">
+    </Compile>
+    <Compile Include="TagImport.Designer.vb">
+      <DependentUpon>TagImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TagImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PkgSelect.Designer.vb">
+      <DependentUpon>PkgSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PkgSelect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskImport.Designer.vb">
+      <DependentUpon>TaskImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TaskImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="equipmentImport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>equipmentImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pkgAuxTemplate.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>pkgAuxTemplate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PkgCoversheet.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PkgCoversheet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PkgEdit.resx">
+      <DependentUpon>PkgEdit.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PkgExport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PkgExport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PkgFormAdd.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PkgFormAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TagFormAdd.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TagFormAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tagSelect.resx">
+      <DependentUpon>tagSelect.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="PackageMain.resx">
+      <DependentUpon>PackageMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pkgImport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>pkgImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PkgSelect.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PkgSelect.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pkgViewNew.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>pkgViewNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TagImport.resx">
+      <DependentUpon>TagImport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskImport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TaskImport.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonForms\CommonForms.vbproj">
+      <Project>{23823C26-7606-4078-84F4-C1AEAC2AB022}</Project>
+      <Name>CommonForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\daqartDLL\daqartDLL.vbproj">
+      <Project>{E113A9F1-B07E-4B4E-8E1C-D75EF6B63E86}</Project>
+      <Name>daqartDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PackageViewer\PackageViewer.vbproj">
+      <Project>{5A634C6F-6428-49F7-A14C-A479CE36A3EB}</Project>
+      <Name>PackageViewer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SystemManager\SystemManager.vbproj">
+      <Project>{128B02F2-9AAE-44BC-B53C-3D14A269E2EC}</Project>
+      <Name>SystemManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder 1 Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Data_Feed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Data Green Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Data Blue Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Floppy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Floppy1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

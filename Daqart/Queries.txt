@@ -1,0 +1,65 @@
+
+//This is for getting |Package|Description|EarnedMH|RequiredMH|PercentComplete|
+
+SELECT     package.PackageNumber, package.Description, package_status.CurrentLevel, package_status.EarnedManHours, package_status.RequiredManHours, 
+                      CASE WHEN package_status.RequiredManHours = '0' THEN 0 ELSE Round(package_status.EarnedManHours / package_status.RequiredManHours * 100,
+                       2) END AS PercentComplete
+FROM         package, package_status
+WHERE     package.PackageID = package_status.PackageID
+
+
+
+//On system overview to get package status datatable
+SELECT     package.PackageID, package.PackageNumber, package.Description, package_status.CurrentLevel, package_status.EarnedManHours, 
+                      package_status.RequiredManHours
+FROM         package RIGHT OUTER JOIN package_status ON package.PackageID = package_status.PackageID
+
+//System Features Insert Statements
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘ProjectAdd’, ‘PRO001’, ‘Add a Project’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘ProjectArchive’, ‘PRO002’, ‘Archive a Project’, ‘0’, ‘0’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘ProjectRestore’, ‘PRO003’, ‘Restore a project’, ‘0’, ‘0’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘ProjectDelete’, ‘PRO004’, ‘Delete a Project’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘SystemAdd’, ‘SYS001’, ‘Add a System Number’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘SystemEdit’, ‘SYS002’, ‘Edit a System Number’, ‘0’, ‘0’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘SystemDelete’, ‘SYS003’, ‘Delete a System Number’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PackageManage’, ‘PKG001’, ‘Manage Packages’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PackageEdit’, ‘PKG002’, ‘Edit a Package’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PackageAdd’, ‘PKG003’, ‘Add a Package’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PackageDelete’, ‘PKG004’, ‘Delete a Package’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PackageImport’, ‘PKG005’, ‘Import Packages’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PackageExport’, ‘PKG006’, ‘Export Packages’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PackageCover’, ‘PKG007’, ‘Import Package Coversheet’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘TagAdd’, ‘TAG001’, ‘Add a Tag’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘TagEdit’, ‘TAG002’, ‘Edit a Tag’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘TagDelete’, ‘TAG003’, ‘Delete a Tag’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘TagImport’, ‘TAG004’, ‘Import Tags’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘TagExport’, ‘TAG005’, ‘Export Tags’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PackageEditAuxInfo’, ‘PKG008’, ‘Edit Package Auxiliary Info’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PackageAddDoc’, ‘PKG009’, ‘Add Package Document Association’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PackageEditDoc’, ‘PKG010’, ‘Edit Package Document Association’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PackageDeleteDoc’, ‘PKG011’, ‘Delete Package Document Association’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘TagEditEngData’, ‘TAG006’, ‘Edit Tag Engineering Data’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘TagEditAuxInfo’, ‘TAG007’, ‘Edit Tag Auxiliary Data’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PunchlistAdd’, ‘PUN001’, ‘Add a Punchlist Item’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PunchlistOpen’, ‘PUN002’, ‘Open a Punchlist Item’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PunchlistComplete’, ‘PUN003’, ‘Complete a Punchlist Item’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PunchlistClose’, ‘PUN004’, ‘Close a Punchlist Item’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘PunchlistEdit’, ‘PUN005’, ‘Edit a Punchlist Item’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DiscrepancyAdd’, ‘DIS001’, ‘Add a Package Discrepancy’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DiscrepancyEdit’, ‘DIS002’, ‘Edit a Package Discrepancy’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DataManagerCompany’, ‘DMR001’, ‘Manage Companies’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DataManagerDiscipline’, ‘DMR002’, ‘Manage Disciplines’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DataManagerGroups’, ‘DMR003’, ‘Manage Groups’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DataManagerLevels’, ‘DMR004’, ‘Manage Permission Levels’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DataManagerOwners’, ‘DMR005’, ‘Manage Owners’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DataManagerUsers’, ‘DMR006’, ‘Manage Users’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DataManagerEquipmentTypes’, ‘DMR007’, ‘Manage Equipment Types’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DataManagerFormRequirements’, ‘DMR008’, ‘Manage Form Requirements’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DataManagerSignOff’, ‘DMR009’, ‘Manage For Sign-Off Configuration’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘FormBuilderManager’, ‘FMB001’, ‘Use Form Designer’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DaqumentManageCategory’, ‘DAQ001’, ‘Add Document Categories’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DaqumentAddDocument’, ‘DAQ002’, ‘Add a Document’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DaqumentEditDocument’, ‘DAQ003’, ‘Edit a Document’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘DaqumentDeleteDocument’, ‘DAQ004’, ‘Delete a Document’, ‘1’, ‘1’)
+ INSERT INTO SystemFeatures (Name,Code,Description,Status,Active) VALUES (‘ToolsManage’, ‘TLS001’, ‘Access System Tools’, ‘1’, ‘1’)
+

@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8E919518-AE2D-4A4E-92CF-45EC44CE8B67}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>ReportManager.My.MyApplication</StartupObject>
+    <RootNamespace>ReportManager</RootNamespace>
+    <AssemblyName>ReportManager</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ReportManager.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ReportManager.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.XtraEditors.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuditItems.vb" />
+    <Compile Include="DaqumentItems.vb" />
+    <Compile Include="DaqumentReport.Designer.vb">
+      <DependentUpon>DaqumentReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DaqumentReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscrepancyItems.vb" />
+    <Compile Include="DiscrepancyReport.Designer.vb">
+      <DependentUpon>DiscrepancyReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DiscrepancyReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotesItems.vb" />
+    <Compile Include="NotesReport.Designer.vb">
+      <DependentUpon>NotesReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NotesReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectImage.vb" />
+    <Compile Include="ProjectStatus.Designer.vb">
+      <DependentUpon>ProjectStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectStatusItems.vb" />
+    <Compile Include="PunchlistItems.vb" />
+    <Compile Include="PunchlistReport.Designer.vb">
+      <DependentUpon>PunchlistReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PunchlistReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportView.Designer.vb">
+      <DependentUpon>ReportView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReportView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewerManager.vb" />
+    <Compile Include="ReportViewerMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewerMain.Designer.vb">
+      <DependentUpon>ReportViewerMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SystemAuditReport.Designer.vb">
+      <DependentUpon>SystemAuditReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SystemAuditReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemOverview.Designer.vb">
+      <DependentUpon>SystemOverview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SystemOverview.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemOverviewItems.vb" />
+    <Compile Include="SystemStatusItems.vb" />
+    <Compile Include="WeldNDEPcntComplete.Designer.vb">
+      <DependentUpon>WeldNDEPcntComplete.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WeldNDEPcntComplete.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeldReport.Designer.vb">
+      <DependentUpon>WeldReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WeldReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeldReportItems.vb" />
+    <Compile Include="WeldTrackingItems.vb" />
+    <Compile Include="WeldTrackingReport.Designer.vb">
+      <DependentUpon>WeldTrackingReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WeldTrackingReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DaqumentReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DaqumentReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscrepancyReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DiscrepancyReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IWL.rdlc" />
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscrepancyReport.rdlc" />
+    <EmbeddedResource Include="NotesReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NotesReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectStatus.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProjectStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectStatusReport.rdlc" />
+    <EmbeddedResource Include="PunchlistReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PunchlistReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PunchlistReport.rdlc" />
+    <EmbeddedResource Include="Daqumentreport.rdlc" />
+    <EmbeddedResource Include="NotesReport.rdlc" />
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="WeldNDEPcntComplete.rdlc" />
+    <EmbeddedResource Include="WeldNDEPcntComplete.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WeldNDEPcntComplete.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeldReport.rdlc" />
+    <EmbeddedResource Include="SystemAuditReport.rdlc" />
+    <EmbeddedResource Include="ReportView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ReportView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewerMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ReportViewerMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemAuditReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SystemAuditReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemOverview.rdlc" />
+    <EmbeddedResource Include="SystemOverview.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SystemOverview.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeldReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WeldReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeldTrackingReport.rdlc" />
+    <EmbeddedResource Include="WeldTrackingReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WeldTrackingReport.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\AuditItems.datasource" />
+    <None Include="My Project\DataSources\DaqumentItems.datasource" />
+    <None Include="My Project\DataSources\DiscrepancyItems.datasource" />
+    <None Include="My Project\DataSources\NotesItems.datasource" />
+    <None Include="My Project\DataSources\ProjectStatusItems.datasource" />
+    <None Include="My Project\DataSources\PunchlistItems.datasource" />
+    <None Include="My Project\DataSources\SystemOverviewItems.datasource" />
+    <None Include="My Project\DataSources\SystemStatusItems.datasource" />
+    <None Include="My Project\DataSources\WeldReportItems.datasource" />
+    <None Include="My Project\DataSources\WeldTrackingItems.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\daqartDLL\daqartDLL.vbproj">
+      <Project>{E113A9F1-B07E-4B4E-8E1C-D75EF6B63E86}</Project>
+      <Name>daqartDLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

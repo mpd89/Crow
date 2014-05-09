@@ -1,0 +1,16 @@
+Daqart Client Software by Industry Systems Software, Inc
+
+2.1.0.51
+	--fixed, changed MID method to generate on first connect to server and store ni registry
+	--performance, modified initial cache sequence to go OFFLINE->CACHE TABLES->ONLINE to increase loading time
+	--added, View Change Log under Help menu item
+	--fixed, user log was not properly recording user log out
+
+2.1.0.50
+	--added, user can use 'Enter'' or 'Return' button on login menu instead of having to click 'Login'.
+	--fixed, System Select would not pre-populate forcing user to re-select all systems before applying.
+	--added, Online/Offline toggle button on Main Menu toolbar allows user to switch modes without exiting program.
+
+
+2.1.0.49
+	--start of changelog
