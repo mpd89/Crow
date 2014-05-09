@@ -9,13 +9,15 @@ Public NotInheritable Class splash1
 
         'TODO: Customize the application's assembly information in the "Application" pane of the project 
         '  properties dialog (under the "Project" menu).
-
+        Debug.Print("HIT splash1_load")
         'Application title
         If My.Application.Info.Title <> "" Then
-            ApplicationTitle.Text = My.Application.Info.Title
+            '  ApplicationTitle.Text = My.Application.Info.Title
+            ApplicationTitle.Text = "DeathStar"
         Else
             'If the application title is missing, use the application name, without the extension
-            ApplicationTitle.Text = System.IO.Path.GetFileNameWithoutExtension(My.Application.Info.AssemblyName)
+            '   ApplicationTitle.Text = System.IO.Path.GetFileNameWithoutExtension(My.Application.Info.AssemblyName)
+            ApplicationTitle.Text = System.IO.Path.GetFileNameWithoutExtension("DeathStar")
         End If
 
         'Format the version information using the text set into the Version control at design time as the

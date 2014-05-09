@@ -7,7 +7,7 @@ Public NotInheritable Class splash1
 
     Private Sub splash1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
-
+            Debug.Print("daqART SPLASH1 HIT ")
             'Set up the dialog text at runtime according to the application's assembly information.  
 
             'TODO: Customize the application's assembly information in the "Application" pane of the project 
@@ -15,7 +15,8 @@ Public NotInheritable Class splash1
 
             'Application title
             If My.Application.Info.Title <> "" Then
-                ApplicationTitle.Text = My.Application.Info.Title
+                '  ApplicationTitle.Text = My.Application.Info.Title
+                ApplicationTitle.Text = "DEATHSTAR"
             Else
                 'If the application title is missing, use the application name, without the extension
                 ApplicationTitle.Text = System.IO.Path.GetFileNameWithoutExtension(My.Application.Info.AssemblyName)

@@ -14,7 +14,7 @@ Imports DevExpress.XtraVerticalGrid
 Imports DevExpress.Utils
 Public Class WeldParametersCtrl
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
-    Private defaultWeld As EditDaqumentUtil.WeldPoint '= New EditDaqumentUtil.WeldPoint
+    Private defaultWeld As EditDaqumentUtil.WeldPoint = New EditDaqumentUtil.WeldPoint
     Private selectedInfo As String = ""
 
     Private Sub SetDefaultValue(ByVal dr As DataRow)

@@ -94,56 +94,14 @@ Public Class EditDaqumentUtil
             'Case enumWeldStatus.WeldCreated
             Return (Color.Yellow)
         End Function
-        'Public Shared Function GetStatus(ByVal st As String) As enumWeldStatus
-        '    Select Case st
-        '        Case "Weld Assigned"
-        '            Return enumWeldStatus.WeldAssignedForWork
-        '        Case "Weld Inspection"
-        '            Return enumWeldStatus.WeldAssignedForInspection
-        '        Case "Weld Passed"
-        '            Return enumWeldStatus.WeldPassed
-        '        Case "Weld Reject"
-        '            Return enumWeldStatus.WeldReject
-        '        Case "Weld Reassigned"
-        '            Return enumWeldStatus.WeldReassigned
-        '    End Select
-        '    'Case enumWeldStatus.WeldCreated
-        '    Return "Weld Created"
-        'End Function
-        'Public Shared Function GetStatusName(ByVal st As enumWeldStatus) As String
-        '    Select Case st
-        '        Case enumWeldStatus.WeldAssignedForWork
-        '            Return "Weld Assigned"
-        '        Case enumWeldStatus.WeldAssignedForInspection
-        '            Return "Weld Inspection"
-        '        Case enumWeldStatus.WeldPassed
-        '            Return "Weld Passed"
-        '        Case enumWeldStatus.WeldReject
-        '            Return "Weld Reject"
-        '        Case enumWeldStatus.WeldReassigned
-        '            Return "Weld Reassigned"
-        '    End Select
-        '    'Case enumWeldStatus.WeldCreated
-        '    Return "Weld Created"
-        'End Function
+     
 
     End Class
 
-    'Public Function GetWeldStatusColor()
-    '    For Each s As WeldStatusColors In SystemList
-    '        If s.Name = SystemName Then
-    '            nameExist = True
-    '        End If
-    '    Next
-    'End Function
-    'Public WeldStatusColorMap As New List(Of WeldStatusColors)
-
-    'Private connDaqument As SqlCeConnection = daqartDLL.connections.DaqumentConnect(connDaqument)
-    '   Private connServer As SqlCeConnection = daqartDLL.connections.serverDBConnect(connServer)
+    
     Private _LayerInfoTbl As DataTable = New DataTable
     Private _SpoolInfoTbl As DataTable = New DataTable
-    'Private _imgList As New List(Of Image)
-    '    Private _LayerID As New List(Of Integer)
+   
     Private _AllVectors As New List(Of Vector)
     Public LayerVectorArray As New List(Of Vector)
     Public WeldPointInfoTable As DataTable
@@ -152,10 +110,10 @@ Public Class EditDaqumentUtil
     Public Sheet As Integer
 
 
-    'Private docStore As New DocumentStore
+
     Private _CurrentImage As Image
     Private OriginalDocImage As Image
-    'Public Shared DrawingLayerID As Integer = 0
+
     Public Structure WeldPoint
         Dim ID As String
         Dim Disc As String
@@ -196,7 +154,6 @@ Public Class EditDaqumentUtil
         Dim DrawingID As String
         Dim Aux05 As Integer ' use it as a temporary link to vector
     End Structure
-
     Public Structure Vector
         Dim vectorID As String
         Dim seqNumber As Integer
@@ -245,73 +202,78 @@ Public Class EditDaqumentUtil
 
     Public Sub New(ByVal DocumentID As String)
         _DocumentID = DocumentID
-        '        connProject.Open()
-        '       connServer.Open()
-        'connDaqument.Open()
+
+        ''
         Dim query As String = "select * from document_store  where DocumentMUID = '" + _DocumentID + "'"
-        'Dim sqlDocUtils As DataUtils = New DataUtils("Daqument001")
-        'sqlDocUtils.OpenConnection()
+    
         Dim dt As DataTable = runtime.SQLDaqument001.ExecuteQuery(query)
 
-        'sqlDocUtils.CloseConnection()
-
-
-        'Dim sqlDocument As DataUtils = New DataUtils("Daqument")
-        'sqlDocument.OpenConnection()
-
         query = "select * from documents where MUID = '" + _DocumentID + "'"
+
+
         Dim dt_Info As DataTable = runtime.SQLDaqument.ExecuteQuery(query)
+
+        ''If there are any documents returned then
+        ''Me.EngineeringCode field is pulled from that table
+        ''Me.Sheet field is pulled from that table
+
         If dt_Info.Rows.Count > 0 Then
             Me.EngineeringCode = dt_Info.Rows(0)(2)
             Me.Sheet = dt_Info.Rows(0)(7)
         End If
-        'sqlDocument.CloseConnection()
 
-
-
+        ''If there are no documents returned from documentStore then return
 
         If dt.Rows.Count = 0 Then Return
+
+        ''Otherwise create a memorystream and set the local variable originalDocImage to the 
+        ''image in bytecode from the document_store
         Dim imagedata() As Byte
         Dim imageBytedata As MemoryStream
         imagedata = dt.Rows(0)("DocumentImage")
         imageBytedata = New MemoryStream(imagedata)
         OriginalDocImage = Image.FromStream(imageBytedata)
 
-        'docStore.DocumentImage = MakeTransparent(docStore.DocumentImage)
+        ''If the CurrentImage variable is already exists dispose of it
+        ''create a new image clone from OriginalDocImage
         ReLoadBaseImage()
-        InitializeWeldPointInfo()
+
+
     End Sub
 
+    '/* •——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————•
+    ' |                                                                                                                                              |
+    ' |     Private Sub InitializeWeldPointInfo()                                                                                                    |
+    ' |         If Not WeldPointInfoTable Is Nothing Then                                                                                            |
+    ' |             WeldPointInfoTable.Dispose()                                                                                                     |
+    ' |         End If                                                                                                                               |
+    ' |         Dim tmpVector As Vector = New Vector                                                                                                 |
+    ' |         tmpVector.DrawingID = 0                                                                                                              |
+    ' |         tmpVector.text = ""                                                                                                                  |
+    ' |         'this will give us an empty vector info table                                                                                        |
+    ' |         AddToWeldPointInfoTable(tmpVector)                                                                                                   |
+    ' |         'WeldStatusColorMap.Add(New WeldStatusColors(enumWeldStatus.WeldCreated, "Weld Created", Color.Blue, Color.Aqua))                    |
+    ' |         'WeldStatusColorMap.Add(New WeldStatusColors(enumWeldStatus.WeldAssignedForWork, "Weld Assigned", Color.Yellow, Color.YellowGreen))  |
+    ' |         'WeldStatusColorMap.Add(New WeldStatusColors(enumWeldStatus.WeldAssignedForInspection, "Weld Inspection", Color.Brown, Color.Beige)) |
+    ' |         'WeldStatusColorMap.Add(New WeldStatusColors(enumWeldStatus.WeldReject, "Weld Reject", Color.Red, Color.RosyBrown))                  |
+    ' |         'WeldStatusColorMap.Add(New WeldStatusColors(enumWeldStatus.WeldReassigned, "Weld Reassigned", Color.Orange, Color.OrangeRed))       |
+    ' |         'WeldStatusColorMap.Add(New WeldStatusColors(enumWeldStatus.WeldPassed, "Weld Passed", Color.Green, Color.GreenYellow))              |
+    ' |                                                                                                                                              |
+    ' |     End Sub                                                                                                                                  |
+    ' •——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————• */
 
-    Private Sub InitializeWeldPointInfo()
-        If Not WeldPointInfoTable Is Nothing Then
-            WeldPointInfoTable.Dispose()
-        End If
-        Dim tmpVector As Vector = New Vector
-        tmpVector.DrawingID = 0
-        tmpVector.text = ""
-        'this will give us an empty vector info table
-        AddToWeldPointInfoTable(tmpVector)
-        'WeldStatusColorMap.Add(New WeldStatusColors(enumWeldStatus.WeldCreated, "Weld Created", Color.Blue, Color.Aqua))
-        'WeldStatusColorMap.Add(New WeldStatusColors(enumWeldStatus.WeldAssignedForWork, "Weld Assigned", Color.Yellow, Color.YellowGreen))
-        'WeldStatusColorMap.Add(New WeldStatusColors(enumWeldStatus.WeldAssignedForInspection, "Weld Inspection", Color.Brown, Color.Beige))
-        'WeldStatusColorMap.Add(New WeldStatusColors(enumWeldStatus.WeldReject, "Weld Reject", Color.Red, Color.RosyBrown))
-        'WeldStatusColorMap.Add(New WeldStatusColors(enumWeldStatus.WeldReassigned, "Weld Reassigned", Color.Orange, Color.OrangeRed))
-        'WeldStatusColorMap.Add(New WeldStatusColors(enumWeldStatus.WeldPassed, "Weld Passed", Color.Green, Color.GreenYellow))
-
-    End Sub
 
     Public Function AddToWeldPointInfoTable(ByVal thisVector As Vector) As String
         Dim retStr = ""
-        'Dim sqlPrjUtils As DataUtils = New DataUtils("project")
-        'sqlPrjUtils.OpenConnection()
+        'Dim sqlPrjUtils As DataUtils = New DataUtils("project")                    
+        'sqlPrjUtils.OpenConnection()                                                
         Try
 
             Dim qry As String = " SELECT " + _
                     "MUID" + "," + _
                     "TagNo" + "," + _
                     "WeldStatus" + "," + _
-                    "SystemMUID" + "," + _
+                     "SystemMUID" + "," + _
                     "Area" + "," + _
                     "DWGNO" + "," + _
                     "TestPkgNo" + "," + _
@@ -320,46 +282,46 @@ Public Class EditDaqumentUtil
                     "SpoolTo" + "," + _
                     "SpoolFrom" + "," + _
                     "PipeSize" + "," + _
-                    "ConstCode" + "," + _
-                    "WeldInches" + "," + _
-                    "ForemanName" + "," + _
+                     "ConstCode" + "," + _
+                     "WeldInches" + "," + _
+                     "ForemanName" + "," + _
                     "SVCSPEC" + "," + _
                     "WPS" + "," + _
-                    "NDEPcntReq" + "," + _
-                    "Material" + "," + _
+                     "NDEPcntReq" + "," + _
+                     "Material" + "," + _
                     "WallThk" + "," + _
-                    "WeldType" + "," + _
-                    "WeldStn" + "," + _
-                    "NDEType" + "," + _
+                     "WeldType" + "," + _
+                     "WeldStn" + "," + _
+                     "NDEType" + "," + _
                     "DateTested" + "," + _
-                    "AdvancedTesting" + "," + _
-                    "TestResult" + "," + _
-                    "VisInspDate" + "," + _
-                    "VisInspName" + "," + _
+                     "AdvancedTesting" + "," + _
+                     "TestResult" + "," + _
+                     "VisInspDate" + "," + _
+                     "VisInspName" + "," + _
                     "PMIDate" + "," + _
                     "PMIResult" + "," + _
                     "RejInches" + "," + _
-                    "PWHT" + "," + _
+                     "PWHT" + "," + _
                     "BHN" + "," + _
-                    "Comments" + "," + _
-                    "Revision" + "," + _
-                    "DrawingMUID" + "," + _
+                     "Comments" + "," + _
+                     "Revision" + "," + _
+                     "DrawingMUID" + "," + _
                     "Disc" + "," + _
                     "VectorLink" + _
-                    " FROM tblWeldTracking WHERE DrawingMUID ='" + _
+                     " FROM tblWeldTracking WHERE DrawingMUID ='" + _
                        thisVector.DrawingID.ToString + "'"
             If thisVector.DrawingID = "0" Then
                 If Not WeldPointInfoTable Is Nothing Then
                     WeldPointInfoTable.Dispose()
                 End If
                 qry = qry + " AND TagNo ='" + thisVector.text + "'"
-                'Make a new initialized WeldPointInfoTable with no row
-                'WeldPointInfoTable = Utilities.ExecuteQuery(qry, "project")
+                'Make a new initialized WeldPointInfoTable with no row               
+                'WeldPointInfoTable = Utilities.ExecuteQuery(qry, "project")         
                 WeldPointInfoTable = runtime.SQLProject.ExecuteQuery(qry)
 
             Else
                 If thisVector.text > "" Then
-                    'Get Data Row from the DataBase
+                    'Get Data Row from the DataBase                                  
                     qry = qry + " AND TagNo ='" + thisVector.text + "'"
 
                     Dim dr As DataRow = runtime.SQLProject.ExecuteQuery(qry).Rows(0)
@@ -370,7 +332,7 @@ Public Class EditDaqumentUtil
                     WeldPointInfoTable.Rows.Add(wdr)
                     retStr = dr("TagNo")
                 Else
-                    'Get Data Row from registry for new weld
+                    'Get Data Row from registry for new weld                         
                     Dim dr As DataRow = GetDefaultWeldPointRowFromRegistry()
                     dr("DrawingMUID") = thisVector.DrawingID
                     dr("DWGNO") = DocumentName()
@@ -382,368 +344,11 @@ Public Class EditDaqumentUtil
         Catch ex As Exception
             MessageBox.Show("Failed to add Weld Point info:")
         End Try
-        'sqlPrjUtils.CloseConnection()
+        'sqlPrjUtils.CloseConnection()                                               
         Return retStr
     End Function
 
 
-    Public ReadOnly Property AllVectors() As List(Of Vector)
-        Get
-            Return _AllVectors
-        End Get
-    End Property
-
-    Public ReadOnly Property CurrentImage() As Image
-        Get
-            Return _CurrentImage
-        End Get
-    End Property
-    Public ReadOnly Property OriginalDrawingSize() As Size
-        Get
-            Return OriginalDocImage.Size
-        End Get
-    End Property
-
-    Public Class VectorMap
-        Dim _Vector As Vector
-        Public Sub New(ByVal myVector As Vector)
-            _Vector = myVector
-        End Sub
-        Public Property seqNumber() As Integer
-            Get
-                Return _Vector.seqNumber
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.seqNumber = Val
-            End Set
-        End Property
-        Public Property vectorID() As Integer
-            Get
-                Return _Vector.vectorID
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.vectorID = Val
-            End Set
-        End Property
-        Public Property OrgScaleX() As Single
-            Get
-                Return _Vector.OrgScaleX
-            End Get
-            Set(ByVal Val As Single)
-                _Vector.OrgScaleX = Val
-            End Set
-        End Property
-        Public Property OrgScaleY() As Single
-            Get
-                Return _Vector.OrgScaleY
-            End Get
-            Set(ByVal Val As Single)
-                _Vector.OrgScaleY = Val
-            End Set
-        End Property
-        Public Property ObjectDeleted() As Boolean
-            Get
-                Return _Vector.ObjectDeleted
-            End Get
-            Set(ByVal Val As Boolean)
-                _Vector.ObjectDeleted = Val
-            End Set
-        End Property
-        Public Property NewObjectFlag() As Boolean
-            Get
-                Return _Vector.newObjectFlag
-            End Get
-            Set(ByVal Val As Boolean)
-                _Vector.newObjectFlag = Val
-            End Set
-        End Property
-        Public Property VectorModified() As Boolean
-            Get
-                Return _Vector.VectorModified
-            End Get
-            Set(ByVal Val As Boolean)
-                _Vector.VectorModified = Val
-            End Set
-        End Property
-        Public ReadOnly Property thisVector() As Vector
-            Get
-                Return _Vector
-            End Get
-        End Property
-        Public ReadOnly Property VectorCopy(ByVal vec As Vector) As Vector
-            Get
-                Dim vect As Vector = New Vector
-                vect = vec
-                Return vect
-            End Get
-        End Property
-
-        Public Property itmSelected() As Boolean
-            Get
-                Return _Vector.itmSelected
-            End Get
-            Set(ByVal Val As Boolean)
-                _Vector.itmSelected = Val
-            End Set
-        End Property
-        Public Property tBox() As TextBox
-            Get
-                Return _Vector.tBox
-            End Get
-            Set(ByVal Val As TextBox)
-                _Vector.tBox = Val
-            End Set
-        End Property
-        Public Property pBox() As PictureBox
-            Get
-                Return _Vector.pBox
-            End Get
-            Set(ByVal Val As PictureBox)
-                _Vector.pBox = Val
-            End Set
-        End Property
-        Public Property VectorObjectType() As String
-            Get
-                Return _Vector.VectorObjectType
-            End Get
-            Set(ByVal Val As String)
-                _Vector.VectorObjectType = Val
-            End Set
-        End Property
-        Public Property DrawingID() As String
-            Get
-                Return _Vector.DrawingID
-            End Get
-            Set(ByVal Val As String)
-                _Vector.DrawingID = Val
-            End Set
-        End Property
-        Public Property VectorType() As Integer
-            Get
-                Return _Vector.VectorType
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.VectorType = Val
-            End Set
-        End Property
-        Public Property StartPointX() As Integer
-            Get
-                Return _Vector.StartPointX
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.StartPointX = Val
-            End Set
-        End Property
-        Public Property StartPointY() As Integer
-            Get
-                Return _Vector.StartPointY
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.StartPointY = Val
-            End Set
-        End Property
-        Public Property endPointX() As Integer
-            Get
-                Return _Vector.endPointX
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.endPointX = Val
-            End Set
-        End Property
-        Public Property endPointY() As Integer
-            Get
-                Return _Vector.endPointY
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.endPointY = Val
-            End Set
-        End Property
-        Public Property OrgStartPointX() As Integer
-            Get
-                Return _Vector.OrgStartPointX
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.OrgStartPointX = Val
-            End Set
-        End Property
-        Public Property OrgStartPointY() As Integer
-            Get
-                Return _Vector.OrgStartPointY
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.OrgStartPointY = Val
-            End Set
-        End Property
-        Public Property OrgEndPointX() As Integer
-            Get
-                Return _Vector.OrgEndPointX
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.OrgEndPointX = Val
-            End Set
-        End Property
-        Public Property OrgEndPointY() As Integer
-            Get
-                Return _Vector.OrgEndPointY
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.OrgEndPointY = Val
-            End Set
-        End Property
-        Public Property OrgLineWidth() As Integer
-            Get
-                Return _Vector.OrgLineWidth
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.OrgLineWidth = Val
-            End Set
-        End Property
-        Public Property ScaledlineWidth() As Integer
-            Get
-                Return _Vector.ScaledLineWidth
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.ScaledLineWidth = Val
-            End Set
-        End Property
-        Public Property lineEnd() As Integer
-            Get
-                Return _Vector.lineEnd
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.lineEnd = Val
-            End Set
-        End Property
-        Public Property penArgb() As Integer
-            Get
-                Return _Vector.penArgb
-            End Get
-            Set(ByVal Val As Integer)
-                _Vector.penArgb = Val
-            End Set
-        End Property
-        Public Property vectorImage() As Image
-            Get
-                Return _Vector.VectorImage
-            End Get
-            Set(ByVal Val As Image)
-                _Vector.VectorImage = Val
-            End Set
-        End Property
-
-        Public Property text() As String
-            Get
-                Return _Vector.text
-            End Get
-            Set(ByVal value As String)
-                _Vector.text = value
-            End Set
-        End Property
-        Public Property fontFamily() As String
-            Get
-                Return _Vector.fontfamily
-            End Get
-            Set(ByVal value As String)
-                _Vector.fontfamily = value
-            End Set
-        End Property
-        Public Property CabinetID() As String
-            Get
-                Return _Vector.CabinetID
-            End Get
-            Set(ByVal value As String)
-                _Vector.CabinetID = value
-            End Set
-        End Property
-        Public Property fontSize() As Integer
-            Get
-                Return _Vector.fontsize
-            End Get
-            Set(ByVal value As Integer)
-                _Vector.fontsize = value
-            End Set
-        End Property
-        Public Property fontforecolor() As Integer
-            Get
-                Return _Vector.fontforecolor
-            End Get
-            Set(ByVal value As Integer)
-                _Vector.fontforecolor = value
-            End Set
-        End Property
-        Public Property fontbackcolor() As Integer
-            Get
-                Return _Vector.fontbackcolor
-            End Get
-            Set(ByVal value As Integer)
-                _Vector.fontbackcolor = value
-            End Set
-        End Property
-        Public Property layerID() As String
-            Get
-                Return _Vector.layerID
-            End Get
-            Set(ByVal value As String)
-                _Vector.layerID = value
-            End Set
-        End Property
-        Public Property layerRevDate() As Date
-            Get
-                Return _Vector.DateCreated
-            End Get
-            Set(ByVal value As Date)
-                _Vector.DateCreated = value
-            End Set
-        End Property
-        Public Property lastUser() As String
-            Get
-                Return _Vector.lastUser
-            End Get
-            Set(ByVal value As String)
-                _Vector.lastUser = value
-            End Set
-        End Property
-        Public Property layerStatus() As Integer
-            Get
-                Return _Vector.layerStatus
-            End Get
-            Set(ByVal value As Integer)
-                _Vector.layerStatus = value
-            End Set
-        End Property
-        Public Property layerDescription() As String
-            Get
-                Return _Vector.layerDescription
-            End Get
-            Set(ByVal value As String)
-                _Vector.layerDescription = value
-            End Set
-        End Property
-        Public Property DateCreated() As Date
-            Get
-                Return _Vector.DateCreated
-            End Get
-            Set(ByVal value As Date)
-                _Vector.DateCreated = value
-            End Set
-        End Property
-        Public Property ObjectMode() As String
-            Get
-                Return _Vector.ObjectMode
-            End Get
-            Set(ByVal value As String)
-                _Vector.ObjectMode = value
-            End Set
-        End Property
-        Public Property SQLID() As String
-            Get
-                Return _Vector.SQLID
-            End Get
-            Set(ByVal value As String)
-                _Vector.SQLID = value
-            End Set
-        End Property
-    End Class
 
 
     Public Function CheckTitle(ByVal title As String) As Boolean
@@ -764,6 +369,7 @@ Public Class EditDaqumentUtil
 
 
     Public Sub ReLoadBaseImage()
+        'If currentImage isnt nothing
         If Not _CurrentImage Is Nothing Then
             _CurrentImage.Dispose()
         End If
@@ -782,6 +388,7 @@ Public Class EditDaqumentUtil
         Return (OriginalDocImage)
     End Function
 
+
     Public Function IsWeldInfoEntryModified(ByVal odr As DataRow, ByVal ndr As DataRow)
         For j As Integer = 0 To WeldPointInfoTable.Columns.Count - 1
             If odr(j) <> ndr(j) Then
@@ -795,18 +402,7 @@ Public Class EditDaqumentUtil
         Return True
     End Function
 
-    '    Public Function GetWeldProperty(ByVal TagNo As String) As DataTable
-    '        Dim dt As DataTable = 
-    '        For i As Integer = 0 To WeldPointInfoTable.Rows.Count - 1
-    '            If WeldPointInfoTable.Rows(i)("TagNo") <> TagNo Then
-    'WeldPointInfoTable.Rows(i).
-    '                Dim dr As DataRow = WeldPointInfoTable.Rows(i)
-    '                Return dr
-    '                Exit For
-    '            End If
-    '        Next
-    '        Return Nothing
-    '    End Function
+
     Public Function GetWeldPointColor1(ByVal TagNo As String) As Color
 
         For i As Integer = 0 To WeldPointInfoTable.Rows.Count - 1
@@ -850,33 +446,6 @@ Public Class EditDaqumentUtil
                 Return dt
 
 
-                'For j As Integer = 0 To WeldPointInfoTable.Columns.Count - 1
-                '    If WeldPointInfoTable.Columns(j).ColumnName = "WeldStatus" Then
-                '        dt.Columns.Add(New DataColumn(WeldPointInfoTable.Columns(j).ColumnName, _
-                '            System.Type.GetType("System.String")))
-                '    Else
-                '        dt.Columns.Add(New DataColumn(WeldPointInfoTable.Columns(j).ColumnName, _
-                '            WeldPointInfoTable.Columns(j).DataType))
-                '    End If
-
-                'Next
-
-                'Dim dr As DataRow = dt.NewRow
-                'For j As Integer = 0 To WeldPointInfoTable.Columns.Count - 1
-                '    If WeldPointInfoTable.Columns(j).ColumnName = "WeldStatus" Then
-                '        dr(j) = WeldStatusColorMap(0).ToString 'WeldCreated
-                '        For Each s As WeldStatusColors In WeldStatusColorMap
-                '            If s.st = enumWeldStatus.WeldCreated Then
-                '                dr(j) = s.ToString
-                '                Exit For
-                '            End If
-                '        Next
-                '    Else
-                '        dr(j) = WeldPointInfoTable.Rows(i)(j)
-                '    End If
-                'Next
-                'dt.Rows.Add(dr)
-                'Return dt
             End If
         Next
         Return Nothing
@@ -1084,45 +653,6 @@ Public Class EditDaqumentUtil
         dr("MUID") = 0 'Registry.GetValue(regKey, "ID", Nothing)
         Return dr
     End Function
-    'Private Sub CreateWeldPointRegistryValues()
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\Disc")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\AdvancedTesting")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\Area")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\BHN")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\TagNo")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\System")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\DWGNO")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\DrawingID")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\TestPkgNo")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\EnteredBy")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\DateEntered")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\SpoolTo")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\SpoolFrom")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\PipeSize")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\ConstCode")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\WeldInches")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\ForemanName")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\SVCSPEC")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\WPS")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\NDEPcntReq")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\Material")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\WallThk")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\WeldType")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\WeldStn")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\NDEType")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\DateTested")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\TestResult")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\VisInspDate")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\VisInspName")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\PMIDate")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\PMIResult")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\RejInches")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\PWHT")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\BHN")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\Comments")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\Revision")
-    '    'Registry.LocalMachine.CreateSubKey(regKey + "\ID")
-    'End Sub
 
 
     Public Sub LoadLayerVectors(ByVal LayerID As String)
@@ -1210,43 +740,6 @@ Public Class EditDaqumentUtil
         'sqlCabinetUtils.CloseConnection()
     End Sub
 
-
-    'Public ReadOnly Property WeldPointInfoTbl() As DataTable
-    '    Get
-    '        'Dim useStr = "USE [" + runtime.selectedProject + "] "
-    '        'Dim qry As String = "SELECT TagNo,Area,DWGNO,TestPkgNo,AdvancedTesting,BHN,System,SpoolTo,SpoolFrom,PipeSize," + _
-    '        '            "WeldInches,ForemanName,SVCSPEC,WPS,NDEPcntReq,Material,WallThk,WeldType," + _
-    '        '            "WeldStn,NDEType,TestResult,VisInspName,PWHT,DateEntered, Comments,DrawingID, ID"
-    '        'Return (daqartDLL.Utilities.ExecuteRemoteQuery(useStr + qry + " FROM tblWeldTracking WHERE DrawingID =" + _DocumentID.ToString, "No Welders List"))
-    '        Dim qry As String = "SELECT TagNo,Area,DWGNO,TestPkgNo,AdvancedTesting,BHN,System,SpoolTo,SpoolFrom,PipeSize," + _
-    '                    "WeldInches,ForemanName,SVCSPEC,WPS,NDEPcntReq,Material,WallThk,WeldType," + _
-    '                    "WeldStn,NDEType,TestResult,VisInspName,PWHT,DateEntered, Comments,DrawingID, ID, WeldStatus "
-    '        Return (daqartDLL.Utilities.ExecuteQuery(qry + " FROM tblWeldTracking WHERE DrawingID =" + _DocumentID.ToString, "project"))
-    '    End Get
-    'End Property
-
-
-    'Public Sub WeldPointDeleteAll()
-    '    'Dim useStr = "USE [" + runtime.selectedProject + "] "
-    '    'Dim qry As String = "DELETE * "
-    '    'daqartDLL.Utilities.ExecuteRemoteNonQuery(useStr + "DELETE FROM tblWeldTracking WHERE DrawingID =" + _DocumentID.ToString, "No Welders List")
-
-    '    Dim qry As String = "DELETE * "
-    '    daqartDLL.Utilities.ExecuteNonQuery("DELETE FROM tblWeldTracking WHERE DrawingID =" + _DocumentID.ToString, "project")
-
-    '    Dim dt As DataTable = Me.WeldLayerInfoTbl()
-    '    Dim cabID = GetCabinetID(dt.Rows(0)(0))
-    '    Dim connCabinet As SqlCeConnection = daqartDLL.connections.DaqumentStorageConnect(connCabinet, cabID)
-    '    connCabinet.Open()
-    '    Dim cmd As SqlCeCommand = connCabinet.CreateCommand()
-    '    Dim query = "DELETE drawing_objects WHERE DrawingID = " + _DocumentID.ToString + " AND LayerID =" + _
-    '            Me.GetLayerID("Welds").ToString
-    '    'cmd.Dispose()
-    '    cmd.CommandText = query
-    '    cmd.ExecuteNonQuery()
-    '    cmd.Dispose()
-    '    connCabinet.Close()
-    'End Sub
 
 
 
@@ -1669,13 +1162,7 @@ Public Class EditDaqumentUtil
     End Function
 
     Public Sub UpdateLayerVector(ByVal vec As VectorMap)
-        '" Aux01 " + _ 'VectorObjectType
-        '" Aux02 " + _ 'OrgScaleX
-        '" Aux03 " + _ 'OrgScaleY
-        '" Aux04 " + _ 'ObjectMode
 
-        'Dim sqlCabinetUtils As DataUtils = New DataUtils("Daqument001") ', vec.CabinetID)
-        'sqlCabinetUtils.OpenConnection()
 
         If vec.text Is Nothing Then
             vec.text = ""
@@ -1728,17 +1215,6 @@ Public Class EditDaqumentUtil
 
             runtime.SQLDaqument001.ExecuteNonQuery(query, dt_param)
 
-            If vec.VectorObjectType = "Pic" Then
-                'Dim m As New MemoryStream
-                'vec.vectorImage.Save(m, ImageFormat.Png)
-
-                'buffer = m.GetBuffer
-                'query = "UPDATE drawing_objects SET vectorImage =" + _
-                '        "@vectorImage WHERE MUID = '" + vec.SQLID.ToString + "'"
-                ''retID = Utilities.ExecuteSingleParameterizedScalar _
-                ''    (qry, "@vectorImage", buffer, daqCabinet)
-                'sqlCabinetUtils.ExecuteSingleParameterizedQuery(query, "@vectorImage", buffer)
-            End If
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -1761,27 +1237,6 @@ Public Class EditDaqumentUtil
             MessageBox.Show(ex.Message)
         End Try
     End Sub
-    'Public Function GetLayerProperties() As DataTable
-    '    Dim hdrs() As String = {"Name", "Type", "Tag", "Owner", "User", "LastModified", "Last UserAction", "Form Current Levl", "percentComplete", "RequireMhrs", "EarnedMhrs", "Comment"}
-    '    Dim DisplayTable As DataTable = New DataTable("FormProperties")
-    '    For Each s As String In hdrs
-    '        Dim ThisColumn As DataColumn = New DataColumn(s, GetType(String))
-    '        ThisColumn.ColumnName = s
-    '        DisplayTable.Columns.Add(ThisColumn)
-    '    Next
-    '    Dim imageColumn As DataColumn = New DataColumn("Esign", GetType(Image))
-    '    imageColumn.ColumnName = "Esign"
-    '    DisplayTable.Columns.Add(imageColumn)
-
-    '    Dim dRow As DataRow = DisplayTable.NewRow
-    '    Dim i As Integer = 0
-    '    For i = 0 To hdrs.Length - 1
-    '        '            dRow(hdrs(i)) = myVal(i)
-    '    Next
-    '    '    dRow("Esign") = _FormESign
-    '    DisplayTable.Rows.Add(dRow)
-    '    Return DisplayTable
-    'End Function
 
     Private Function MakeTransparent(ByVal Img As Image) As Image
         Try
@@ -1797,5 +1252,363 @@ Public Class EditDaqumentUtil
 
     End Function
 
+
+    Public ReadOnly Property AllVectors() As List(Of Vector)
+        Get
+            Return _AllVectors
+        End Get
+    End Property
+
+    Public ReadOnly Property CurrentImage() As Image
+        Get
+            Return _CurrentImage
+        End Get
+    End Property
+    Public ReadOnly Property OriginalDrawingSize() As Size
+        Get
+            Return OriginalDocImage.Size
+        End Get
+    End Property
+
+    Public Class VectorMap
+        Dim _Vector As Vector
+        Public Sub New(ByVal myVector As Vector)
+            _Vector = myVector
+        End Sub
+        Public Property seqNumber() As Integer
+            Get
+                Return _Vector.seqNumber
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.seqNumber = Val
+            End Set
+        End Property
+        Public Property vectorID() As Integer
+            Get
+                Return _Vector.vectorID
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.vectorID = Val
+            End Set
+        End Property
+        Public Property OrgScaleX() As Single
+            Get
+                Return _Vector.OrgScaleX
+            End Get
+            Set(ByVal Val As Single)
+                _Vector.OrgScaleX = Val
+            End Set
+        End Property
+        Public Property OrgScaleY() As Single
+            Get
+                Return _Vector.OrgScaleY
+            End Get
+            Set(ByVal Val As Single)
+                _Vector.OrgScaleY = Val
+            End Set
+        End Property
+        Public Property ObjectDeleted() As Boolean
+            Get
+                Return _Vector.ObjectDeleted
+            End Get
+            Set(ByVal Val As Boolean)
+                _Vector.ObjectDeleted = Val
+            End Set
+        End Property
+        Public Property NewObjectFlag() As Boolean
+            Get
+                Return _Vector.newObjectFlag
+            End Get
+            Set(ByVal Val As Boolean)
+                _Vector.newObjectFlag = Val
+            End Set
+        End Property
+        Public Property VectorModified() As Boolean
+            Get
+                Return _Vector.VectorModified
+            End Get
+            Set(ByVal Val As Boolean)
+                _Vector.VectorModified = Val
+            End Set
+        End Property
+        Public ReadOnly Property thisVector() As Vector
+            Get
+                Return _Vector
+            End Get
+        End Property
+        Public ReadOnly Property VectorCopy(ByVal vec As Vector) As Vector
+            Get
+                Dim vect As Vector = New Vector
+                vect = vec
+                Return vect
+            End Get
+        End Property
+
+        Public Property itmSelected() As Boolean
+            Get
+                Return _Vector.itmSelected
+            End Get
+            Set(ByVal Val As Boolean)
+                _Vector.itmSelected = Val
+            End Set
+        End Property
+        Public Property tBox() As TextBox
+            Get
+                Return _Vector.tBox
+            End Get
+            Set(ByVal Val As TextBox)
+                _Vector.tBox = Val
+            End Set
+        End Property
+        Public Property pBox() As PictureBox
+            Get
+                Return _Vector.pBox
+            End Get
+            Set(ByVal Val As PictureBox)
+                _Vector.pBox = Val
+            End Set
+        End Property
+        Public Property VectorObjectType() As String
+            Get
+                Return _Vector.VectorObjectType
+            End Get
+            Set(ByVal Val As String)
+                _Vector.VectorObjectType = Val
+            End Set
+        End Property
+        Public Property DrawingID() As String
+            Get
+                Return _Vector.DrawingID
+            End Get
+            Set(ByVal Val As String)
+                _Vector.DrawingID = Val
+            End Set
+        End Property
+        Public Property VectorType() As Integer
+            Get
+                Return _Vector.VectorType
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.VectorType = Val
+            End Set
+        End Property
+        Public Property StartPointX() As Integer
+            Get
+                Return _Vector.StartPointX
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.StartPointX = Val
+            End Set
+        End Property
+        Public Property StartPointY() As Integer
+            Get
+                Return _Vector.StartPointY
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.StartPointY = Val
+            End Set
+        End Property
+        Public Property endPointX() As Integer
+            Get
+                Return _Vector.endPointX
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.endPointX = Val
+            End Set
+        End Property
+        Public Property endPointY() As Integer
+            Get
+                Return _Vector.endPointY
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.endPointY = Val
+            End Set
+        End Property
+        Public Property OrgStartPointX() As Integer
+            Get
+                Return _Vector.OrgStartPointX
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.OrgStartPointX = Val
+            End Set
+        End Property
+        Public Property OrgStartPointY() As Integer
+            Get
+                Return _Vector.OrgStartPointY
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.OrgStartPointY = Val
+            End Set
+        End Property
+        Public Property OrgEndPointX() As Integer
+            Get
+                Return _Vector.OrgEndPointX
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.OrgEndPointX = Val
+            End Set
+        End Property
+        Public Property OrgEndPointY() As Integer
+            Get
+                Return _Vector.OrgEndPointY
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.OrgEndPointY = Val
+            End Set
+        End Property
+        Public Property OrgLineWidth() As Integer
+            Get
+                Return _Vector.OrgLineWidth
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.OrgLineWidth = Val
+            End Set
+        End Property
+        Public Property ScaledlineWidth() As Integer
+            Get
+                Return _Vector.ScaledLineWidth
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.ScaledLineWidth = Val
+            End Set
+        End Property
+        Public Property lineEnd() As Integer
+            Get
+                Return _Vector.lineEnd
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.lineEnd = Val
+            End Set
+        End Property
+        Public Property penArgb() As Integer
+            Get
+                Return _Vector.penArgb
+            End Get
+            Set(ByVal Val As Integer)
+                _Vector.penArgb = Val
+            End Set
+        End Property
+        Public Property vectorImage() As Image
+            Get
+                Return _Vector.VectorImage
+            End Get
+            Set(ByVal Val As Image)
+                _Vector.VectorImage = Val
+            End Set
+        End Property
+
+        Public Property text() As String
+            Get
+                Return _Vector.text
+            End Get
+            Set(ByVal value As String)
+                _Vector.text = value
+            End Set
+        End Property
+        Public Property fontFamily() As String
+            Get
+                Return _Vector.fontfamily
+            End Get
+            Set(ByVal value As String)
+                _Vector.fontfamily = value
+            End Set
+        End Property
+        Public Property CabinetID() As String
+            Get
+                Return _Vector.CabinetID
+            End Get
+            Set(ByVal value As String)
+                _Vector.CabinetID = value
+            End Set
+        End Property
+        Public Property fontSize() As Integer
+            Get
+                Return _Vector.fontsize
+            End Get
+            Set(ByVal value As Integer)
+                _Vector.fontsize = value
+            End Set
+        End Property
+        Public Property fontforecolor() As Integer
+            Get
+                Return _Vector.fontforecolor
+            End Get
+            Set(ByVal value As Integer)
+                _Vector.fontforecolor = value
+            End Set
+        End Property
+        Public Property fontbackcolor() As Integer
+            Get
+                Return _Vector.fontbackcolor
+            End Get
+            Set(ByVal value As Integer)
+                _Vector.fontbackcolor = value
+            End Set
+        End Property
+        Public Property layerID() As String
+            Get
+                Return _Vector.layerID
+            End Get
+            Set(ByVal value As String)
+                _Vector.layerID = value
+            End Set
+        End Property
+        Public Property layerRevDate() As Date
+            Get
+                Return _Vector.DateCreated
+            End Get
+            Set(ByVal value As Date)
+                _Vector.DateCreated = value
+            End Set
+        End Property
+        Public Property lastUser() As String
+            Get
+                Return _Vector.lastUser
+            End Get
+            Set(ByVal value As String)
+                _Vector.lastUser = value
+            End Set
+        End Property
+        Public Property layerStatus() As Integer
+            Get
+                Return _Vector.layerStatus
+            End Get
+            Set(ByVal value As Integer)
+                _Vector.layerStatus = value
+            End Set
+        End Property
+        Public Property layerDescription() As String
+            Get
+                Return _Vector.layerDescription
+            End Get
+            Set(ByVal value As String)
+                _Vector.layerDescription = value
+            End Set
+        End Property
+        Public Property DateCreated() As Date
+            Get
+                Return _Vector.DateCreated
+            End Get
+            Set(ByVal value As Date)
+                _Vector.DateCreated = value
+            End Set
+        End Property
+        Public Property ObjectMode() As String
+            Get
+                Return _Vector.ObjectMode
+            End Get
+            Set(ByVal value As String)
+                _Vector.ObjectMode = value
+            End Set
+        End Property
+        Public Property SQLID() As String
+            Get
+                Return _Vector.SQLID
+            End Get
+            Set(ByVal value As String)
+                _Vector.SQLID = value
+            End Set
+        End Property
+    End Class
 
 End Class

@@ -122,65 +122,36 @@ Public Class EditDaqument
     End Sub
 
 
-    'Private Sub SetupGridControls()
-    '    InfoTblForm = Nothing
-    '    InfoTblForm = New Form
-    '    InfoTblForm.Size = New Size(500, 300)
-    '    InfoTblForm.Location = New Point(200, 150)
-    '    InfoTblForm.Controls.Add(gdv_Info)
-    '    InfoTblForm.Controls.Add(gdv_WeldInfo)
-    '    InfoTblForm.Controls.Add(dgvMenuStrip)
-    '    InfoTblForm.Controls.Add(VGridControl1)
-    '    InfoTblForm.ControlBox = False
-    '    'InfoTblForm.Controls.Add(btn_gdvGroupPanelClose)
-    '    'gdv_Info.Dock = DockStyle.Fill
-    '    'btn_gdvGroupPanelClose.Location = New Point(gdv_Info.Width - 100, 20)
-    '    Dim ParentView As GridView = gdv_Info.DefaultView
-    '    ParentView.ColumnsCustomization()
-    '    ParentView.CustomizationForm.Hide()
-    '    'gdv_WeldInfo.Dock = DockStyle.Fill
-    '    'btn_gdvGroupPanelClose.Location = New Point(gdv_Info.Width - 100, 20)
-    '    Dim ParentView1 As GridView = gdv_WeldInfo.DefaultView
-    '    ParentView1.ColumnsCustomization()
-    '    ParentView1.CustomizationForm.Hide()
-
-
-    '    InfoTblForm.Visible = False
-
-    '    riCboEdit.Name = "myCboEdit"
-
-    '    riCboEdit.Items.Add("0")
-    '    riCboEdit.Items.Add("1")
-    '    riCboEdit.Items.Add("2")
-    '    riCboEdit.Items.Add("3")
-    '    riCboEdit.Items.Add("4")
-    '    riCboEdit.Items.Add("5")
-    '    'riCboEdit.Items.Add(EditDaqumentUtil.enumWeldStatus.WeldCreated)
-    '    'riCboEdit.Items.Add(EditDaqumentUtil.enumWeldStatus.WeldAssignedForWork)
-    '    'riCboEdit.Items.Add(EditDaqumentUtil.enumWeldStatus.WeldAssignedForInspection)
-    '    'riCboEdit.Items.Add(EditDaqumentUtil.enumWeldStatus.WeldReject)
-    '    'riCboEdit.Items.Add(EditDaqumentUtil.enumWeldStatus.WeldPassed)
-    '    'riCboEdit.Items.Add(EditDaqumentUtil.enumWeldStatus.WeldReassigned)
-    '    riCboEdit.ReadOnly = False
-    '    VGridControl1.RepositoryItems.Add(riCboEdit)
-    '    'VGridControl1.DataSource = myDoc.WeldPointInfoTable
-    '    'VGridControl1.Rows("rowWeldStatus").Properties.RowEdit = riCboEdit
-
-    'End Sub
-
     Private Sub EditDaqument_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Loading = True
 
         Try
+
+            ''EditDaqumentUtil selects all from the documents table that match the DocumentID
+            ''And selects all from the documents_store that match the DocumentID
+            ''The image in the documents_store is loaded into the CurrentImage variable for 
+            ''later use
             myDoc = New EditDaqumentUtil(DocumentID)
-            '            Dim thisItem As ToolStripMenuItem = Me.btnViewLayers.DropDownItems(0)
-            'thisItem.Checked = True
+
+
+            ''If OriginalDocImage is Nothing it DocumentImageAvailable returns false
             If Not myDoc.DocumentImageAvailable() Then
                 MessageBox.Show("No image available for this document")
                 Me.Close()
             End If
+
+
             localStartPoint = New Point(0, 0)
+
+            ''AddLayerTitles selects all of the layers from drawing_layers where the DrawingMUID = DocumentID
+            ''It then populates the tsmi_selectlayers dropdown menu with the name and description of each
             AddLayerTitles()
+
+
+            ''ShowPkgLayers goes through all of the tsmi_selectedlayers items and if the text(description) is 
+            ''"RL-" + pkgNum or "HL-" + pkgNum then the item then gets checked
+            ''Then it runs through that list again and for each checked item it adds that same item to the 
+            ''btn_ActiveLayer ToolStripMenuItem drop down menu
             ShowPkgLayers()
 
             ResizePageWidth()
@@ -259,6 +230,7 @@ Public Class EditDaqument
             DocumentID = DocumentMUID
 
             myDoc = New EditDaqumentUtil(DocumentID)
+
 
             If Not myDoc.DocumentImageAvailable() Then
                 MessageBox.Show("No image available for this document")
@@ -378,9 +350,7 @@ Public Class EditDaqument
                 LayerID = LayerInfoTbl.Rows(layerCtr)(0)
                 For Each vec As EditDaqumentUtil.VectorMap In Vectors
                     If Not vec.ObjectDeleted And vec.ObjectMode = "Marking" And vec.layerID = LayerID Then
-                        If vec.VectorObjectType = "Pic" Then
-                            Dim test As String = "stop"
-                        End If
+                       
                         embedLayerObjectOverlay(vec.thisVector)
                         'OverlayBM.Save("c:\vec" + vec.vectorID.ToString + ".png", ImageFormat.Png)
                     End If
@@ -403,104 +373,46 @@ Public Class EditDaqument
 
 
     Private Sub ShowInfoTable(ByVal infoTbl As DataTable, ByVal myCaption As String)
-        'InfoTblForm.Text = myCaption
-        'If Not gdv_Info.DataSource Is Nothing Then
-        '    gdv_Info.DataSource.Dispose()
-        'End If
-        'Dim ParentView As GridView = gdv_Info.DefaultView
-        'ParentView.Columns.Clear()
-        'gdv_Info.DataSource = infoTbl 'ds.Tables(0)
-        'gdv_Info.Refresh()
-        'gdv_Info.Visible = True
-        'gdv_Info.BringToFront()
-        'ParentView.RefreshData()
-        'For i As Integer = 0 To ParentView.Columns.Count - 1
-        '    ParentView.Columns(i).Visible = False
-        'Next
-        'Dim max As Integer = ParentView.Columns.Count - 1
-        'If max > 12 Then max = 12
-        'For i As Integer = 0 To max
-        '    ParentView.Columns(i).Visible = True
-        'Next
-        'gdv_Info.Visible = True
-        'ParentView.GroupPanelText = myCaption
-        'InfoTblForm.Visible = True
-        'InfoTblForm.BringToFront()
-
-        ''If Not GridControl1 Is Nothing Then
-
-        ''    GridControl1.Dispose()
-        ''    GridControl1 = Nothing
-        ''End If
-
-        ''GridControl1 = New DevExpress.XtraGrid.GridControl
-        ''GridControl1.Location = New System.Drawing.Point(0, 30)
-        ''GridControl1.Name = "GridControl1"
-        ''GridControl1.Visible = False
-        ''GridControl1.Dock = DockStyle.Top
-        ''GridControl1.Bounds = New Rectangle(40, 100, 500, 200)
-        ''GridControl1.Size = New System.Drawing.Size(300, 200)
-
-        ''            Dim gView As GridView = GridControl1.MainView
-
-        ''        VGridControl1.Rows(0).Height = 50
-        ''AddHandler GridControl1.Click, AddressOf GridControl1_Click
-        ''Dim ds As DataSet = New DataSet
-        ''Dim infoTbl As DataTable = myDoc.LayerInfoTbl
-        ''ds.Tables.Add(infoTbl)
-        ''Dim View As ColumnView = GridControl1.MainView
-        ''gView.AddNewRow()
-        ''View.ClearSelection()
-        ''            gView.GetVisibleColumn(0).Visible = False
-        ''           gView.Columns.View.ClearSelection()
-        ''        gView.Columns(0).Visible = False
-        ''Dim RIMemoEdit As RepositoryItemMemoEdit = CType(GridControl1.RepositoryItems.Add("MemoEdit"), _
-        ''   RepositoryItemMemoEdit)
-        ''RIMemoEdit.WordWrap = True
-        ''GridControl1.RepositoryItems.Add(RIMemoEdit)
-        ''InfoTblForm.Bounds = New Rectangle(40, 100, 500, 200) 'GridControl1.Bounds
-        ''InfoTblForm.Show()
-        ''Dim gView As GridView = GridControl1.MainView
-        ''gView.BestFitColumns()
-        ''GridControl1.BringToFront()
-        ''InfoTblForm.BringToFront()
-        ''Dim RowEsign As RepositoryItemImageEdit = CType(GridControl1.RepositoryItems.Add("ImageEdit"), _
-        ''   RepositoryItemImageEdit)
+     
     End Sub
 
 
+    ''' AddLayerTitles populates the ToolStripMenuItem tsmi_SelectLayers with
+    ''' all of the layers that match the documentID
+    ''' </summary>
+
     Private Sub AddLayerTitles()
         Try
+
+            ''If the layerInfoTbl has data in it dispose of it
             If Not LayerInfoTbl Is Nothing Then
                 LayerInfoTbl.Dispose()
                 LayerInfoTbl = Nothing
             End If
+
+            ''Selects MUID layerTitle, LayerDescription, LayerRevDate Revision, lastUserMUID
+            ''layerStatus, DateCreated, Cabinet, and DrawingMUID from drawing_layers
+            ''where DrawingMUID = DocumentID
             LayerInfoTbl = myDoc.LayerInfoTbl()
+
+            ''tsmi_selectedLayers is the ToolStripMenuItem that holds all of the Layers for
+            ''each document 
             tsmi_SelectLayers.DropDownItems.Clear()
 
 
-
+            ''For every layer in the LayerInfoTbl add a tool stripMenuItem
+            ''with a name and description in the tsmi_selectLayers ToolStripMenuItem
             For i As Integer = 0 To LayerInfoTbl.Rows.Count - 1
                 Dim ts As ToolStripMenuItem = New ToolStripMenuItem
                 ts.Name = LayerInfoTbl.Rows(i)(0)
                 ts.Text = LayerInfoTbl.Rows(i)(1)
 
-                'Dim tsExists As Boolean = False
-                'For Each tsitm As ToolStripMenuItem In Me.tsmi_SelectLayers.DropDownItems
-
-                '    If tsitm.Text = LayerInfoTbl.Rows(i)(1) Then
-                '        tsExists = True
-                '    End If
-                'Next
-
-                'If Not tsExists Then
-                tsmi_SelectLayers.DropDownItems.Add(ts) ' LayerInfoTbl.Rows(i)(1))
+                
+                tsmi_SelectLayers.DropDownItems.Add(ts)
                 AddHandler ts.Click, AddressOf btnLayer_Click
-                'End If
+
 
             Next
-
-
 
         Catch ex As Exception
 
@@ -751,7 +663,7 @@ Public Class EditDaqument
 
         Dim bmp_Image As Bitmap
         bmp_Image = myDoc.ResizeImage(newSize)
-        'bmp_Image.MakeTransparent(bmp_Image.GetPixel(2, 2))
+
         For i As Integer = 0 To 3
             bmp_Image.MakeTransparent(Color.FromArgb(255, 255 - i, 255 - i, 255 - i))
         Next
@@ -764,6 +676,8 @@ Public Class EditDaqument
         PictureBox1.Size = PictureBox1.Image.Size
 
         CurrentScaleFactor = PictureBox1.Size.Width / myDoc.OriginalDrawingSize.Width
+
+
 
         CreatePageOverlay(bmp_Image)
         CreateOverlay()
@@ -812,14 +726,6 @@ Public Class EditDaqument
             vec.OrgEndPointX = vec.endPointX
             vec.OrgEndPointY = vec.endPointY
 
-            'vec.StartPointX = Control.MousePosition.X + Me.ScreenOffsetX
-            'vec.StartPointY = Control.MousePosition.Y + Me.ScreenOffsetY
-            'vec.endPointX = vec.StartPointX + W
-            'vec.endPointY = vec.StartPointY + H
-            'vec.OrgStartPointX = vec.StartPointX
-            'vec.OrgStartPointY = vec.StartPointY
-            'vec.OrgEndPointX = vec.endPointX
-            'vec.OrgEndPointY = vec.endPointY
 
             dragStartPoint = System.Windows.Forms.Control.MousePosition
             ControlPaint.DrawReversibleFrame(vectorScreenBoundRectangle(vec.thisVector), Me.BackColor, FrameStyle.Dashed)
@@ -1917,24 +1823,7 @@ Public Class EditDaqument
         Else
             Return True
         End If
-        'Dim i As Integer = CurrentLayer
-        ''For Each thisItem As ToolStripMenuItem In Me.btnViewLayers.DropDownItems
-        ''    If thisItem.Checked Then
-        ''        i = i + 1
-        ''    End If
-        ''Next
-        'If i = 0 Then
-        '    MessageBox.Show("Please Select a drawing layer")
-        '    Return False
-        '    'Else
-        '    '    If i <> 1 Then
-        '    '        MessageBox.Show("Please Select a single drawing layer")
-        '    '        Return False
-        '    '    End If
-        'End If
-
-
-        'Return True
+  
     End Function
 
 
@@ -2530,12 +2419,14 @@ Public Class EditDaqument
 
             End If
 
-            If myVector.VectorObjectType = "Weld" Then
-                myVector.text = vec.text
-                myVector.VectorType = EditDaqumentUtil.mode.EmbedWeld
-                myVector.itmSelected = False
-                myDoc.AddToWeldPointInfoTable(vec)
-            End If
+            '   /* •———————————————————————————————————————————————————————————•
+            ' | If myVector.VectorObjectType = "Weld" Then                |
+            ' |     myVector.text = vec.text                              |
+            ' |     myVector.VectorType = EditDaqumentUtil.mode.EmbedWeld |
+            ' |     myVector.itmSelected = False                          |
+            ' |     myDoc.AddToWeldPointInfoTable(vec)                    |
+            ' | End If                                                    |
+            '        •———————————————————————————————————————————————————————————• */
 
             Vectors.Add(New EditDaqumentUtil.VectorMap(myVector))
         Next
@@ -2645,31 +2536,7 @@ Public Class EditDaqument
 
     End Sub
 
-  
-    'Private Sub btnViewLayers_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnViewLayers.Click
-    '    Try
-    '        Dim i As Integer = 0
-    '        For Each thisItem As ToolStripMenuItem In Me.btnViewLayers.DropDownItems
-    '            i = i + 1
-    '        Next
-    '        If i = 0 Then
-    '            Dim msgResult As DialogResult = MessageBox.Show("No layer has been added to the Drawing; do you wish to add a new layer?", "Add Layer", MessageBoxButtons.YesNo)
-    '            If msgResult = Windows.Forms.DialogResult.Yes Then
-    '                Dim myForm As DaqumentAddNewLayer = New DaqumentAddNewLayer(myDoc)
-    '                myForm.ShowDialog()
-    '                AddLayerTitles()
-    '                Dim thisItem As ToolStripMenuItem = Me.btnViewLayers.DropDownItems(0)
-    '                'Private Sub TestingToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TestingToolStripMenuItem.Click
-    '                thisItem.Checked = True
-    '                thisItem.CheckOnClick = True
-    '            End If
-    '        End If
-    '        If i > 1 Then
 
-    '        End If
-    '    Catch ex As Exception
-    '    End Try
-    'End Sub
 
     Private Sub btnCreateNewLayer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCreateNewLayer.Click
         Dim myForm As DaqumentAddNewLayer = New DaqumentAddNewLayer(myDoc, PkgNum)
@@ -3217,58 +3084,6 @@ Public Class EditDaqument
         Next
         Redraw()
     End Sub
-
-    'Private Sub btnUndo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUndo.Click
-    '    If UserActionList.Count > 0 Then
-    '        Dim act As UserAction = UserActionList(UserActionList.Count - 1)
-    '        Dim oldVec As EditDaqumentUtil.Vector
-    '        For Each myVector As EditDaqumentUtil.VectorMap In Vectors
-    '            If myVector.vectorID = oldVec.vectorID Then
-    '                myVector.VectorModified = oldVec.VectorModified
-    '                myVector.ObjectDeleted = False
-    '                myVector.OrgScaleX = oldVec.OrgScaleX
-    '                myVector.OrgScaleY = oldVec.OrgScaleY
-    '                myVector.OrgStartPointX = oldVec.OrgStartPointX
-    '                myVector.OrgStartPointY = oldVec.OrgStartPointY
-    '                myVector.OrgEndPointX = oldVec.OrgEndPointX
-    '                myVector.OrgEndPointY = oldVec.OrgEndPointY
-    '                myVector.OrgLineWidth = oldVec.OrgLineWidth
-    '                myVector.StartPointX = oldVec.StartPointX
-    '                myVector.StartPointY = oldVec.StartPointY
-    '                myVector.endPointX = oldVec.endPointX
-    '                myVector.endPointY = oldVec.endPointY
-    '                myVector.ScaledlineWidth = oldVec.ScaledLineWidth
-    '                myVector.penArgb = oldVec.penArgb
-    '                myVector.lineEnd = oldVec.lineEnd
-    '            End If
-    '        Next
-    '    Else
-    '        For i As Integer = Vectors.Count - 1 To 0 Step -1
-    '            If Not Vectors(i).ObjectDeleted Then
-    '                Dim vecID = Vectors(i).vectorID
-    '                For Each myVector As EditDaqumentUtil.VectorMap In Vectors
-    '                    If myVector.vectorID = vecID Then
-    '                        myVector.ObjectDeleted = True
-    '                    End If
-    '                Next
-    '            End If
-    '        Next
-    '    End If
-    '    Redraw()
-    'End Sub
-
-    'Private Sub btnRedo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRedo.Click
-    '    For i As Integer = Vectors.Count - 1 To 0 Step -1
-    '        If Not Vectors(i).ObjectDeleted Then
-    '            Dim vecID = Vectors(i).vectorID
-    '            For Each myVector As EditDaqumentUtil.VectorMap In Vectors
-    '                If myVector.vectorID = vecID Then
-    '                    myVector.ObjectDeleted = True
-    '                End If
-    '            Next
-    '        End If
-    '    Next
-    'End Sub
 
     Private Sub EditDaqument_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
         If Loaded Then
@@ -3834,65 +3649,7 @@ Public Class EditDaqument
         PictureBox1.Cursor = Cursors.Cross
 
     End Sub
-    'Private Sub ShowWeldInfoTable()
-    '    InfoTblForm.Text = "Weld Layer Info"
-    '    Dim ParentView As GridView = gdv_WeldInfo.DefaultView
-    '    gdv_WeldInfo.Refresh()
-    '    gdv_WeldInfo.Visible = True
-    '    ParentView.RefreshData()
-    '    For i As Integer = 0 To ParentView.Columns.Count - 1
-    '        ParentView.Columns(i).Visible = False
-    '    Next
-    '    Dim max As Integer = ParentView.Columns.Count - 1
-    '    If max > 12 Then max = 12
-    '    For i As Integer = 2 To max
-    '        ParentView.Columns(i).Visible = True
-    '    Next
-    '    ParentView.GroupPanelText = InfoTblForm.Text
-    '    InfoTblForm.Visible = True
-    '    gdv_WeldInfo.BringToFront()
-    '    InfoTblForm.BringToFront()
-
-    '    'If Not GridControl1 Is Nothing Then
-
-    '    '    GridControl1.Dispose()
-    '    '    GridControl1 = Nothing
-    '    'End If
-
-    '    'GridControl1 = New DevExpress.XtraGrid.GridControl
-    '    'GridControl1.Location = New System.Drawing.Point(0, 30)
-    '    'GridControl1.Name = "GridControl1"
-    '    'GridControl1.Visible = False
-    '    'GridControl1.Dock = DockStyle.Top
-    '    'GridControl1.Bounds = New Rectangle(40, 100, 500, 200)
-    '    'GridControl1.Size = New System.Drawing.Size(300, 200)
-
-    '    '            Dim gView As GridView = GridControl1.MainView
-
-    '    '        VGridControl1.Rows(0).Height = 50
-    '    'AddHandler GridControl1.Click, AddressOf GridControl1_Click
-    '    'Dim ds As DataSet = New DataSet
-    '    'Dim infoTbl As DataTable = myDoc.LayerInfoTbl
-    '    'ds.Tables.Add(infoTbl)
-    '    'Dim View As ColumnView = GridControl1.MainView
-    '    'gView.AddNewRow()
-    '    'View.ClearSelection()
-    '    '            gView.GetVisibleColumn(0).Visible = False
-    '    '           gView.Columns.View.ClearSelection()
-    '    '        gView.Columns(0).Visible = False
-    '    'Dim RIMemoEdit As RepositoryItemMemoEdit = CType(GridControl1.RepositoryItems.Add("MemoEdit"), _
-    '    '   RepositoryItemMemoEdit)
-    '    'RIMemoEdit.WordWrap = True
-    '    'GridControl1.RepositoryItems.Add(RIMemoEdit)
-    '    'InfoTblForm.Bounds = New Rectangle(40, 100, 500, 200) 'GridControl1.Bounds
-    '    'InfoTblForm.Show()
-    '    'Dim gView As GridView = GridControl1.MainView
-    '    'gView.BestFitColumns()
-    '    'GridControl1.BringToFront()
-    '    'InfoTblForm.BringToFront()
-    '    'Dim RowEsign As RepositoryItemImageEdit = CType(GridControl1.RepositoryItems.Add("ImageEdit"), _
-    '    '   RepositoryItemImageEdit)
-    'End Sub
+   
 
     Private Sub btn_WeldList_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_WeldList.Click
         Dim myForm As New EditDaqumentInfo(myDoc, "Daqument Weld List")
