@@ -228,19 +228,7 @@ Public Class EditDaqument
         ShowPkgLayers()
 
 
-        ' Select Case DocumentMode
-
-        '   Case "Welds"
-        '      Dim ts As ToolStripMenuItem = New ToolStripMenuItem
-        '       ts.Text = "Select Weld Layer"
-        '    'gdv_WeldInfo.DataSource = myDoc.WeldPointInfoTable
-        '        TestToolStripMenuItem.DropDownItems.Add(ts)
-        '        AddHandler ts.Click, AddressOf tsmi_ViewWeldLayer_Click
-
-        '         ShowWeldLayers()
-        '         btnCreateNewLayer.Enabled = False
-        '          DeleteActiveLayerToolStripMenuItem.Enabled = False
-        'End Select
+     
 
     End Sub
 
@@ -312,18 +300,7 @@ Public Class EditDaqument
 
         Loaded = True
         ShowPkgLayers()
-        Select Case DocumentMode
-            Case "Welds"
-                Dim ts As ToolStripMenuItem = New ToolStripMenuItem
-                ts.Text = "Select Weld Layer"
-                'gdv_WeldInfo.DataSource = myDoc.WeldPointInfoTable
-                TestToolStripMenuItem.DropDownItems.Add(ts)
-                AddHandler ts.Click, AddressOf tsmi_ViewWeldLayer_Click
-
-                ShowWeldLayers()
-                btnCreateNewLayer.Enabled = False
-                DeleteActiveLayerToolStripMenuItem.Enabled = False
-        End Select
+     
 
     End Sub
 
@@ -533,49 +510,12 @@ Public Class EditDaqument
                 Dim endPoint As Point = New Point(vec.endPointX, vec.endPointY)
                 g.DrawLine(myPen, startPoint, endPoint)
             ElseIf vec.VectorObjectType = "Weld" Then
-                DrawWeld(vec)
+                '        DrawWeld(vec)
             End If
         End If
     End Sub
 
 
-    Private Sub DrawWeld(ByVal vec As EditDaqumentUtil.Vector)
-        Dim g As Graphics = Graphics.FromImage(Me.PictureBox1.Image)
-        Dim weldColor As Color = myDoc.GetWeldPointColor1(vec.text)
-        Dim weldColor2 As Color = myDoc.GetWeldPointColor2(vec.text)
-        Dim myPen As Pen = New Pen(New SolidBrush(weldColor), 1)
-        Dim myPen2 As Pen = New Pen(New SolidBrush(weldColor2), 1)
-
-        Dim scFactor As Single = CurrentScaleFactor ' / vec.OrgScaleX
-        Dim Dia As Integer = 15 * scFactor
-
-        'myPen.StartCap = Drawing2D.LineCap.NoAnchor
-        myPen.EndCap = Drawing2D.LineCap.ArrowAnchor
-        Dim startPoint As Point = New Point(vec.StartPointX, vec.StartPointY)
-        Dim endPoint As Point = New Point(vec.endPointX, vec.endPointY)
-
-        g.DrawArc(Pens.Blue, endPoint.X - Dia, endPoint.Y - Dia, 2 * Dia, 2 * Dia, 0, 360)
-        Dim deltaX = Math.Abs(endPoint.X - startPoint.X) : Dim deltaY = Math.Abs(startPoint.Y - endPoint.Y)
-        If deltaX < 1 Then deltaX = 1
-        Dim angle = Math.Atan(Math.Abs(deltaY / deltaX))
-        Dim x As Integer = Math.Cos(angle) * Dia : Dim y As Integer = Math.Sin(angle) * Dia
-        g.DrawLine(myPen, endPoint, startPoint)
-        g.FillEllipse(myPen.Brush, endPoint.X - Dia, endPoint.Y - Dia, 2 * Dia, 2 * Dia)
-        'Dim myFont = New Font(vec.fontfamily, vec.tBox.Font.Size * (CurrentScaleFactor / vec.OrgScaleX), _
-        ' vec.tBox.Font.Style, GraphicsUnit.Point)
-        'Dim Red As Integer = weldColor.R : Dim Blue As Integer = weldColor.B : Dim Green As Integer = weldColor.G
-        'Dim reverseColor As Color = Color.FromArgb(RGB(255 - Red, 255 - Green, 255 - Blue))
-        Dim fSize As Integer = 10 * scFactor
-        Dim MyFont As Font = New Font("Verdana", fSize)
-        Dim wd As SizeF = g.MeasureString("BW", MyFont, 2 * Dia)
-        Dim wdX = Convert.ToInt32(wd.Width) : Dim wdY = Convert.ToInt32(wd.Height)
-        g.DrawString("BW", MyFont, myPen2.Brush, endPoint.X + 1 - (wdX / 2), endPoint.Y)
-        Dim wdTag As SizeF = g.MeasureString(vec.text, MyFont, 2 * Dia)
-        wd = g.MeasureString(vec.text, MyFont, 2 * Dia)
-        wdX = Convert.ToInt32(wd.Width) : wdY = Convert.ToInt32(wd.Height)
-        g.DrawString(vec.text, MyFont, myPen2.Brush, endPoint.X - (wdX / 2), endPoint.Y - (fSize + Dia / 2))
-
-    End Sub
 
     ''If the vector object isn't deleted and it isnt visible and its objectMode is a marking then
     ''draw the appropriate graphic for Text, Pic, and Line.
@@ -895,27 +835,28 @@ Public Class EditDaqument
                 '    vec.pBox.Image = myDoc.ResizeImage(vec.pBox.Image.Clone, New Size(vec.vectorImage.Width, vec.vectorImage.Height))
                 'End If
 
-                If vec.VectorObjectType = "Weld" And vec.layerID = CurrentLayer And vec.ObjectDeleted = False Then
-                    If IsWeldPointHeadSelected(ClientPoint, vec.thisVector) Then
-                        daqMode = EditDaqumentUtil.mode.WeldHeadSelected
-                        vec.itmSelected = True
-                        lineEndPoint = New Point(System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y)
-                        Dim pt As Point = New Point(vec.endPointX + ScreenOffsetX, vec.endPointY + ScreenOffsetY)
-                        lineStartPoint = New Point(PointToScreen(pt))
-                        tmpVectors.Clear()
-                        Exit For
-                    ElseIf IsWeldPointTailSelected(ClientPoint, vec.thisVector) Then
-                        vec.itmSelected = True
-                        daqMode = EditDaqumentUtil.mode.WeldTailSelected
-                        lineEndPoint = New Point(System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y)
-                        Dim pt As Point = New Point(vec.StartPointX + ScreenOffsetX, vec.StartPointY + ScreenOffsetY)
-                        lineStartPoint = New Point(PointToScreen(pt))
-                        tmpVectors.Clear()
-                        Exit For
-                    Else
-                        Dim test As String = "xxx"
-                    End If
-                End If
+                '                If vec.VectorObjectType = "Weld" And vec.layerID = CurrentLayer And vec.ObjectDeleted = False Then
+                'If IsWeldPointHeadSelected(ClientPoint, vec.thisVector) Then
+                'daqMode = EditDaqumentUtil.mode.WeldHeadSelected
+                'vec.itmSelected = True
+                '              lineEndPoint = New Point(System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y)
+                '             Dim pt As Point = New Point(vec.endPointX + ScreenOffsetX, vec.endPointY + ScreenOffsetY)
+                '            lineStartPoint = New Point(PointToScreen(pt))
+                '           tmpVectors.Clear()
+                '          Exit For
+                '         ElseIf IsWeldPointTailSelected(ClientPoint, vec.thisVector) Then
+                '        vec.itmSelected = True
+                '       daqMode = EditDaqumentUtil.mode.WeldTailSelected
+                ''      lineEndPoint = New Point(System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y)
+                '    Dim pt As Point = New Point(vec.StartPointX + ScreenOffsetX, vec.StartPointY + ScreenOffsetY)
+                '   lineStartPoint = New Point(PointToScreen(pt))
+                '  tmpVectors.Clear()
+                ' Exit For
+                '        Else
+                '        Dim test As String = "xxx"
+                '        End If
+                '        End If
+                '       */
             Next
         End If
 
@@ -1039,18 +980,7 @@ Public Class EditDaqument
         End If
 
     End Sub
-    Private Function IsWeldPointHeadSelected(ByVal sp As Point, ByVal vec As EditDaqumentUtil.Vector) As Boolean
-        Dim scX = vec.StartPointX / vec.OrgStartPointX : Dim scY = vec.StartPointY / vec.OrgStartPointY
-        Dim myX = (vec.StartPointX - 10) : Dim myY = (vec.StartPointY - 10)
-        Dim myWd = (20 * scX) : Dim myHt = (20 * scY)
-
-        Dim WeldHeadRectangle As Rectangle = New Rectangle(New Point(myX, myY), New Size(myWd, myHt))
-        If WeldHeadRectangle.Contains(sp) Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
+   
     Private Function IsWeldPointTailSelected(ByVal sp As Point, ByVal vec As EditDaqumentUtil.Vector) As Boolean
 
         Dim scX = vec.endPointX / vec.OrgEndPointX : Dim scY = vec.endPointY / vec.OrgEndPointY
@@ -1084,14 +1014,7 @@ Public Class EditDaqument
             Vectors.Add(New EditDaqumentUtil.VectorMap(vec))
             embedLayerObject(vec)
             PictureBox1.Refresh()
-        ElseIf daqMode = EditDaqumentUtil.mode.InserWeld Then
-
-            ControlPaint.DrawReversibleLine(lineStartPoint, lineEndPoint, Color.Gray)
-            Dim vec As EditDaqumentUtil.Vector = MakeNewWeldVector(localStartPoint, e.Location)
-            Vectors.Add(New EditDaqumentUtil.VectorMap(vec))
-            embedLayerObject(vec)
-            PictureBox1.Refresh()
-
+      
         ElseIf daqMode = EditDaqumentUtil.mode.None Then
 
             If theRectangle.Size.Width < 0 Then
@@ -1111,38 +1034,11 @@ Public Class EditDaqument
                     vec.itmSelected = True
                 End If
             Next
-        ElseIf daqMode = EditDaqumentUtil.mode.WeldHeadSelected Then
-            For Each vec As EditDaqumentUtil.VectorMap In Vectors
-                If vec.VectorObjectType = "Weld" And vec.layerID = CurrentLayer _
-                        And vec.ObjectDeleted = False And vec.itmSelected Then
-                    vec.itmSelected = False
 
-                    ControlPaint.DrawReversibleLine(lineStartPoint, lineEndPoint, Color.Gray)
-                    Dim myStartPoint = New Point(vec.StartPointX, vec.StartPointY)
-                    Dim myEndPoint = New Point(vec.endPointX, vec.endPointY)
-                    MoveWeldVector(e.Location, myEndPoint, vec)
-                    PictureBox1.Refresh()
-                    daqMode = EditDaqumentUtil.mode.None
-                    Me.Invalidate()
-                    Exit For
-                End If
-            Next
-        ElseIf daqMode = EditDaqumentUtil.mode.WeldTailSelected Then
-            For Each vec As EditDaqumentUtil.VectorMap In Vectors
-                If vec.VectorObjectType = "Weld" And vec.layerID = CurrentLayer _
-                        And vec.ObjectDeleted = False And vec.itmSelected Then
-                    vec.itmSelected = False
+            '    ElseIf daqMode = EditDaqumentUtil.mode.WeldHeadSelected Then
+        
+       
 
-                    ControlPaint.DrawReversibleLine(lineStartPoint, lineEndPoint, Color.Gray)
-                    Dim myEndPoint = New Point(vec.endPointX, vec.endPointY)
-                    Dim myStartPoint = New Point(vec.StartPointX, vec.StartPointY)
-                    MoveWeldVector(myStartPoint, e.Location, vec)
-                    PictureBox1.Refresh()
-                    daqMode = EditDaqumentUtil.mode.None
-                    Me.Invalidate()
-                    Exit For
-                End If
-            Next
 
         End If
 
@@ -1338,55 +1234,7 @@ Public Class EditDaqument
         'PictureBox1.Image.Save("c:\pbx3.png", ImageFormat.Png)
 
     End Sub
-    Private Sub MoveWeldVectorHead(ByRef myVector As EditDaqumentUtil.VectorMap, _
-                ByVal StartPt As Point, ByVal EndPt As Point)
-        'myVector.VectorModified = True
-        'myVector.StartPointX = StartPt.X : myVector.StartPointY = StartPt.Y
-        'myVector.endPointX = EndPt.X : myVector.endPointY = EndPt.Y
-        'myVector.OrgStartPointX = myVector.StartPointX : myVector.OrgStartPointY = myVector.StartPointY
-        'myVector.OrgEndPointX = myVector.endPointX : myVector.OrgEndPointY = myVector.endPointY
-        ''myVector.OrgScaleX = Convert.ToSingle(PictureBox1.Image.Size.Width) / Convert.ToSingle(myDoc.OriginalDrawingSize.Width)
-        'myVector.OrgScaleY = Convert.ToSingle(PictureBox1.Image.Size.Height) / Convert.ToSingle(myDoc.OriginalDrawingSize.Height)
-        'Dim act As UserAction = New UserAction(UserAction.ActionType.Add, myVector.vectorID)
-        'UserActionList.Add(act)
-
-
-
-        myVector.VectorModified = True
-        myVector.StartPointX = EndPt.X : myVector.StartPointY = EndPt.Y
-        'myVector.endPointX = EndPt.X : myVector.endPointY = EndPt.Y
-        myVector.OrgStartPointX = EndPt.X : myVector.OrgStartPointY = EndPt.Y
-        'myVector.OrgEndPointX = EndPt.X : myVector.OrgEndPointY = EndPt.Y
-        '            myVector.boundRectangle = New Rectangle(Control.MousePosition.X, Control.MousePosition.Y, 0, 0)
-        myVector.OrgScaleX = Convert.ToSingle(PictureBox1.Image.Size.Width) / Convert.ToSingle(myDoc.OriginalDrawingSize.Width)
-        myVector.OrgScaleY = Convert.ToSingle(PictureBox1.Image.Size.Height) / Convert.ToSingle(myDoc.OriginalDrawingSize.Height)
-
-    End Sub
-
-    Private Sub MoveWeldVectorTail(ByRef myVector As EditDaqumentUtil.VectorMap, _
-                ByVal StartPt As Point, ByVal EndPt As Point)
-        'myVector.VectorModified = True
-        'myVector.StartPointX = StartPt.X : myVector.StartPointY = StartPt.Y
-        'myVector.endPointX = EndPt.X : myVector.endPointY = EndPt.Y
-        'myVector.OrgStartPointX = myVector.StartPointX : myVector.OrgStartPointY = myVector.StartPointY
-        'myVector.OrgEndPointX = myVector.endPointX : myVector.OrgEndPointY = myVector.endPointY
-        ''myVector.OrgScaleX = Convert.ToSingle(PictureBox1.Image.Size.Width) / Convert.ToSingle(myDoc.OriginalDrawingSize.Width)
-        'myVector.OrgScaleY = Convert.ToSingle(PictureBox1.Image.Size.Height) / Convert.ToSingle(myDoc.OriginalDrawingSize.Height)
-        'Dim act As UserAction = New UserAction(UserAction.ActionType.Add, myVector.vectorID)
-        'UserActionList.Add(act)
-
-
-
-        myVector.VectorModified = True
-        'myVector.StartPointX = StartPt.X : myVector.StartPointY = StartPt.Y
-        myVector.endPointX = EndPt.X : myVector.endPointY = EndPt.Y
-        'myVector.OrgStartPointX = StartPt.X : myVector.OrgStartPointY = StartPt.Y
-        myVector.OrgEndPointX = EndPt.X : myVector.OrgEndPointY = EndPt.Y
-        '            myVector.boundRectangle = New Rectangle(Control.MousePosition.X, Control.MousePosition.Y, 0, 0)
-        myVector.OrgScaleX = Convert.ToSingle(PictureBox1.Image.Size.Width) / Convert.ToSingle(myDoc.OriginalDrawingSize.Width)
-        myVector.OrgScaleY = Convert.ToSingle(PictureBox1.Image.Size.Height) / Convert.ToSingle(myDoc.OriginalDrawingSize.Height)
-
-    End Sub
+ 
 
 
 
@@ -1428,80 +1276,7 @@ Public Class EditDaqument
         Return myVector
     End Function
 
-    Private Function MoveWeldVector(ByVal StartPt As Point, ByVal EndPt As Point, ByVal myVector As EditDaqumentUtil.VectorMap) As EditDaqumentUtil.VectorMap
-        'Dim myVector As EditDaqumentUtil.Vector = New EditDaqumentUtil.Vector
-        'VectorIDCtr = VectorIDCtr + 1
-        'myVector.vectorID = VectorIDCtr
-        'myVector.SQLID = 0
-        'myVector.layerID = CurrentLayer
-        'myVector.CabinetID = GetCurrentCabinetID()
-        myVector.VectorModified = True
-        myVector.StartPointX = StartPt.X : myVector.StartPointY = StartPt.Y
-        myVector.endPointX = EndPt.X : myVector.endPointY = EndPt.Y
-        myVector.OrgStartPointX = StartPt.X : myVector.OrgStartPointY = StartPt.Y
-        myVector.OrgEndPointX = EndPt.X : myVector.OrgEndPointY = EndPt.Y
-        'myVector.DrawingID = DocumentID
-        'myVector.OrgLineWidth = CurrentLineWidth
-        'myVector.ScaledLineWidth = CurrentLineWidth
-        'Dim myPen As New Pen(New SolidBrush(CurrentColor), CurrentLineWidth)
-        'myPen.EndCap = Drawing2D.LineCap.Round
-        'myVector.penArgb = myPen.Color.ToArgb
-        '            myVector.Opaque = IIf(btnMarking.Checked, True, False)
-        'myVector.VectorType = daqMode
-        'myVector.lineEnd = myPen.EndCap
-        'myVector.seqNumber = Vectors.Count + 1
-        myVector.ObjectDeleted = False
-        'myVector.VectorObjectType = "Weld"
-        myVector.DateCreated = Now
-        '            myVector.boundRectangle = New Rectangle(Control.MousePosition.X, Control.MousePosition.Y, 0, 0)
-        myVector.OrgScaleX = Convert.ToSingle(PictureBox1.Image.Size.Width) / Convert.ToSingle(myDoc.OriginalDrawingSize.Width)
-        myVector.OrgScaleY = Convert.ToSingle(PictureBox1.Image.Size.Height) / Convert.ToSingle(myDoc.OriginalDrawingSize.Height)
-        'myVector.ObjectMode = "Marking"
-        'myVector.text = ""
-        'myDoc.AddToWeldPointInfoTable(myVector)
-        'myVector.text = myDoc.AddToWeldPointInfoTable(myVector)
-        Dim act As UserAction = New UserAction(UserAction.ActionType.Add, myVector.vectorID)
-        UserActionList.Add(act)
-        Return myVector
-    End Function
-
-    Private Function MakeNewWeldVector(ByVal StartPt As Point, ByVal EndPt As Point) As EditDaqumentUtil.Vector
-        Dim myVector As EditDaqumentUtil.Vector = New EditDaqumentUtil.Vector
-        VectorIDCtr = VectorIDCtr + 1
-        myVector.vectorID = VectorIDCtr
-        myVector.SQLID = ""
-        myVector.layerID = CurrentLayer
-        myVector.CabinetID = GetCurrentCabinetID()
-        myVector.VectorModified = True
-        myVector.StartPointX = StartPt.X : myVector.StartPointY = StartPt.Y
-        myVector.endPointX = EndPt.X : myVector.endPointY = EndPt.Y
-        myVector.OrgStartPointX = StartPt.X : myVector.OrgStartPointY = StartPt.Y
-        myVector.OrgEndPointX = EndPt.X : myVector.OrgEndPointY = EndPt.Y
-        myVector.DrawingID = DocumentID
-        myVector.OrgLineWidth = CurrentLineWidth
-        myVector.ScaledLineWidth = CurrentLineWidth
-        Dim myPen As New Pen(New SolidBrush(CurrentColor), CurrentLineWidth)
-        myPen.EndCap = Drawing2D.LineCap.Round
-        myVector.penArgb = myPen.Color.ToArgb
-        '            myVector.Opaque = IIf(btnMarking.Checked, True, False)
-        myVector.VectorType = daqMode
-        myVector.lineEnd = myPen.EndCap
-        myVector.seqNumber = Vectors.Count + 1
-        myVector.ObjectDeleted = False
-        myVector.VectorObjectType = "Weld"
-        myVector.DateCreated = Now
-        '            myVector.boundRectangle = New Rectangle(Control.MousePosition.X, Control.MousePosition.Y, 0, 0)
-        myVector.OrgScaleX = Convert.ToSingle(PictureBox1.Image.Size.Width) / Convert.ToSingle(myDoc.OriginalDrawingSize.Width)
-        myVector.OrgScaleY = Convert.ToSingle(PictureBox1.Image.Size.Height) / Convert.ToSingle(myDoc.OriginalDrawingSize.Height)
-        myVector.ObjectMode = "Marking"
-        myVector.text = ""
-        'myDoc.AddToWeldPointInfoTable(myVector)
-        myVector.text = myDoc.AddToWeldPointInfoTable(myVector)
-        Dim act As UserAction = New UserAction(UserAction.ActionType.Add, myVector.vectorID)
-        UserActionList.Add(act)
-        Return myVector
-    End Function
-
+  
 
     Private Function MakeNewPictureImageVector(ByVal location As Point) As EditDaqumentUtil.Vector
         '        AddHandler mBox.DoubleClick, AddressOf TextBox1_DoubleClick
@@ -1903,305 +1678,6 @@ Public Class EditDaqument
     End Sub
 
 
-    Private Sub cms1_Opening(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles cms1.Opening
-        If daqMode <> EditDaqumentUtil.mode.None Then Return
-        cms1Loc = New Point(System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y)
-        Dim ScreenPoint As Point = New Point(System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y)
-        Dim ClientPoint As Point = Me.PictureBox1.PointToClient(ScreenPoint)
-
-        ' Acquire references to the owning control and item.
-        Dim c As System.Windows.Forms.Control = cms1.SourceControl
-        Dim tsi As ToolStripDropDownItem = cms1.OwnerItem
-        If (c IsNot Nothing) Then
-            If c.Name <> "PictureBox1" Then Return
-        End If
-
-        For Each vec As EditDaqumentUtil.VectorMap In Vectors
-            If vec.VectorObjectType = "Weld" And vec.layerID = CurrentLayer And vec.ObjectDeleted = False Then
-                If IsWeldPointTailSelected(ClientPoint, vec.thisVector) Then
-                    vec.itmSelected = True
-                    selectedWeldTableIndex = 0
-                    selectedWeldTagNo = ""
-                    For i As Integer = 0 To myDoc.WeldPointInfoTable.Rows.Count - 1
-                        If myDoc.WeldPointInfoTable.Rows(i)("TagNo") = vec.text Then
-                            selectedWeldTableIndex = i
-                            selectedWeldTagNo = vec.text
-                            Exit For
-                        End If
-                    Next
-                    cms1.Items.Clear()
-                    cms1.Items.Add("-")
-                    cms1.Items.Add("Property")
-                    cms1.Items.Add("Change Weld Status")
-                    cms1.Items.Add("Delete")
-                    Return
-                End If
-            End If
-        Next
-
-        If theRectangle.Size.Width = 0 Or theRectangle.Size.Height = 0 Then
-            'If Not cmsPictureBox.Image Is Nothing Then
-            '    cms1.Items.Clear()
-            '    cms1.Items.Add("-")
-            '    cms1.Items.Add("Paste")
-            'End If
-            Return
-        Else
-            ' Populate the ContextMenuStrip control with its default items.
-            'If (theRectangle.Size.Width = 0 Or theRectangle.Size.Height = 0) Then Return
-            cms1.Items.Clear()
-            cms1.Items.Add("-")
-            cms1.Items.Add("Delete")
-            'cms1.Items.Add("Cut")
-            'cms1.Items.Add("Copy")
-            'If Not cmsPictureBox.Image Is Nothing Then
-            '    cms1.Items.Add("Paste")
-            'End If
-        End If
-        e.Cancel = False
-    End Sub
-
-    Private Sub cms1_ItemClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles cms1.ItemClicked
-        Dim ScreenPoint As Point = cms1.Bounds.Location
-        Dim ClientPoint As Point = PointToClient(cms1.Bounds.Location)
-        Dim ClientPointF As PointF = CType(ClientPoint, PointF)
-        Dim tsi As ToolStripDropDownItem = e.ClickedItem
-        If Not LayerSelected() Then
-            Return
-        End If
-
-        ControlPaint.DrawReversibleFrame(theRectangle, Me.BackColor, FrameStyle.Dashed)
-        If tsi.Text = "Cut" Then
-            Dim bm = New Bitmap(theRectangle.Size.Width, theRectangle.Size.Height)
-            Dim picCanvas As Graphics = Graphics.FromImage(bm)
-            picCanvas.CopyFromScreen(theRectangle.Location, New Point(0, 0), theRectangle.Size)
-            If Not cmsPictureBox.Image Is Nothing Then
-                cmsPictureBox.Image.Dispose()
-            End If
-            cmsPictureBox.Image = bm
-            cmsPictureBox.Size = theRectangle.Size
-
-
-            Dim bm1 = New Bitmap(theRectangle.Size.Width, theRectangle.Size.Height)
-            Dim cutCanvas As Graphics = Graphics.FromImage(bm1)
-            cutCanvas.FillRectangle(Brushes.White, 0, 0, theRectangle.Size.Width, theRectangle.Size.Height)
-            If Not PicBox2.Image Is Nothing Then
-                PicBox2.Image.Dispose()
-            End If
-            PicBox2.Image = bm1
-            PicBox2.Size = theRectangle.Size
-            daqMode = EditDaqumentUtil.mode.InsertImage
-            Dim vect As EditDaqumentUtil.Vector = MakeNewPictureImageVector(PictureBox1.PointToClient(theRectangle.Location))
-            embedLayerObject(vect)
-            vect.pBox.Visible = False
-            For Each vec As EditDaqumentUtil.VectorMap In Vectors
-                ClearSelectedBoundryBox(vec)
-                vec.itmSelected = False
-            Next
-            daqMode = EditDaqumentUtil.mode.None
-            ControlPaint.DrawReversibleFrame(theRectangle, Me.BackColor, FrameStyle.Dashed)
-        ElseIf tsi.Text = "Copy" Then
-            '            Dim myRect As Rectangle = theRectangle
-
-            Dim bm = New Bitmap(theRectangle.Size.Width, theRectangle.Size.Height)
-            Dim picCanvas As Graphics = Graphics.FromImage(bm)
-            picCanvas.CopyFromScreen(theRectangle.Location, New Point(0, 0), theRectangle.Size)
-            If Not cmsPictureBox.Image Is Nothing Then
-                cmsPictureBox.Image.Dispose()
-            End If
-            cmsPictureBox.Image = bm
-            cmsPictureBox.Size = theRectangle.Size
-
-            If Not PicBox2.Image Is Nothing Then
-                PicBox2.Image.Dispose()
-            End If
-            PicBox2.Image = bm
-            PicBox2.Size = theRectangle.Size
-
-
-        ElseIf tsi.Text = "Paste" Then
-            If Not PicBox2.Image Is Nothing Then
-                PicBox2.Image.Dispose()
-            End If
-            PicBox2.Size = theRectangle.Size
-            PicBox2.Image = cmsPictureBox.Image.Clone
-            daqMode = EditDaqumentUtil.mode.InsertImage
-            MakeNewPictureImageVector(ClientPoint)
-            daqMode = EditDaqumentUtil.mode.ObjectSelected
-        ElseIf tsi.Text = "Delete" Then
-            For Each vec As EditDaqumentUtil.VectorMap In Vectors
-                If vec.itmSelected And vec.VectorObjectType = "Weld" Then
-                    vec.ObjectDeleted = True
-                    vec.VectorModified = True
-                    Exit For
-                End If
-            Next
-            Redraw()
-        ElseIf tsi.Text = "Property" Then
-            For Each vec As EditDaqumentUtil.VectorMap In Vectors
-                If vec.itmSelected And vec.VectorObjectType = "Weld" Then
-                    For i As Integer = 0 To myDoc.WeldPointInfoTable.Rows.Count - 1
-                        If myDoc.WeldPointInfoTable.Rows(i)("TagNo") = vec.text Then
-                            Dim myForm As New EditDaqumentInfo(myDoc, "Weld Properties", i)
-                            myForm.Show()
-                            Exit For
-                        End If
-                    Next
-                End If
-            Next
-            'DisplayWeldPointPropertyGrid()
-        ElseIf tsi.Text = "Change Weld Status" Then
-            tsi.DropDownItems.Clear()
-            Dim ws() As String = {"Weld Created", "Weld Assigned", "Weld Inspection", "Weld Passed", "Weld Reject", "Weld Reassigned"}
-            For Each s As String In ws
-                Dim ts As ToolStripMenuItem = New ToolStripMenuItem
-                ts.Text = s
-                tsi.DropDownItems.Add(ts)
-                AddHandler ts.Click, AddressOf WeldStatusChange_Click
-            Next
-        End If
-        PictureBox1.Refresh()
-
-    End Sub
-    Private Sub WeldStatusChange_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim ts As ToolStripMenuItem = sender
-        Dim newSt As Integer = EditDaqumentUtil.enumWeldStatus.WeldCreated
-        Select Case ts.text
-            Case "Weld Created"
-                newSt = EditDaqumentUtil.enumWeldStatus.WeldCreated
-            Case "Weld Assigned"
-                newSt = EditDaqumentUtil.enumWeldStatus.WeldAssignedForWork
-            Case "Weld Inspection"
-                newSt = EditDaqumentUtil.enumWeldStatus.WeldAssignedForInspection
-            Case "Weld Passed"
-                newSt = EditDaqumentUtil.enumWeldStatus.WeldPassed
-            Case "Weld Reject"
-                newSt = EditDaqumentUtil.enumWeldStatus.WeldReject
-            Case "Weld Reassigned"
-                newSt = EditDaqumentUtil.enumWeldStatus.WeldReassigned
-        End Select
-        myDoc.WeldPointInfoTable.Rows(Me.selectedWeldTableIndex)("WeldStatus") = newSt
-        Redraw()
-    End Sub
-
-    Private Sub EditDaqument_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        If daqMode = EditDaqumentUtil.mode.ObjectSelected Then
-            For Each vec As EditDaqumentUtil.VectorMap In Vectors
-                If vec.itmSelected Then
-                    Dim objMoved As Boolean = False
-                    Dim X = vectorScreenBoundRectangle(vec.thisVector).X : Dim Y = vectorScreenBoundRectangle(vec.thisVector).Y
-                    If e.KeyCode = Keys.Escape Then
-                        vec.ObjectDeleted = True
-                    End If
-                    If e.KeyCode = Keys.Delete Then
-                        vec.ObjectDeleted = True
-                    End If
-                    If e.KeyCode = Keys.Left Then
-                        X = X - 1 : objMoved = True
-                    End If
-                    If e.KeyCode = Keys.Right Then
-                        X = X + 1 : objMoved = True
-                    End If
-                    If e.KeyCode = Keys.Up Then
-                        Y = Y - 1 : objMoved = True
-                    End If
-                    If e.KeyCode = Keys.Down Then
-                        Y = Y + 1 : objMoved = True
-                    End If
-                    If objMoved Then
-                        'ResizeObject(vec)
-                    End If
-                End If
-            Next
-
-        End If
-        If e.KeyCode = Keys.Delete Then
-            For Each vec As EditDaqumentUtil.VectorMap In Vectors
-                For Each sCtrl As SeqControl In tmpControls
-                    If sCtrl.vecID = vec.vectorID Then
-                        vec.ObjectDeleted = True
-                        vec.VectorModified = True
-                        If Not vec.tBox Is Nothing Then
-                            vec.tBox.Visible = False
-                        End If
-                        If Not vec.pBox Is Nothing Then
-                            vec.pBox.Visible = False
-                        End If
-                    End If
-                Next
-            Next
-            ClearAllSelectedItems()
-            Redraw()
-            PictureBox1.Refresh()
-            'CreatePageOverlay(PictureBox1ImageCopy)
-        End If
-
-        If e.KeyCode = Keys.Escape Then
-            ClearAllSelectedItems()
-            Redraw()
-            PictureBox1.Refresh()
-        End If
-
-        PictureBox1.Refresh()
-    End Sub
-
-    Private Sub HandleKeyDown(ByVal e As System.Windows.Forms.KeyEventArgs)
-        If daqMode = EditDaqumentUtil.mode.ObjectSelected Then
-            For Each vec As EditDaqumentUtil.VectorMap In Vectors
-                If vec.itmSelected Then
-                    Dim objMoved As Boolean = False
-                    Dim X = vectorScreenBoundRectangle(vec.thisVector).X : Dim Y = vectorScreenBoundRectangle(vec.thisVector).Y
-                    If e.KeyCode = Keys.Escape Then
-                        vec.ObjectDeleted = True
-                    End If
-                    If e.KeyCode = Keys.Delete Then
-                        vec.ObjectDeleted = True
-                    End If
-                    If e.KeyCode = Keys.Left Then
-                        X = X - 1 : objMoved = True
-                    End If
-                    If e.KeyCode = Keys.Right Then
-                        X = X + 1 : objMoved = True
-                    End If
-                    If e.KeyCode = Keys.Up Then
-                        Y = Y - 1 : objMoved = True
-                    End If
-                    If e.KeyCode = Keys.Down Then
-                        Y = Y + 1 : objMoved = True
-                    End If
-                    If objMoved Then
-                        'ResizeObject(vec)
-                    End If
-                End If
-            Next
-
-        End If
-        If e.KeyCode = Keys.Delete Or e.KeyCode = Keys.Escape Then
-            For Each vec As EditDaqumentUtil.VectorMap In Vectors
-                For Each sCtrl As SeqControl In tmpControls
-                    If sCtrl.vecID = vec.vectorID Then
-                        vec.ObjectDeleted = True
-                        If Not vec.tBox Is Nothing Then
-                            vec.tBox.Visible = False
-                        End If
-                        If Not vec.pBox Is Nothing Then
-                            vec.pBox.Visible = False
-                        End If
-                    End If
-                Next
-            Next
-            ClearAllSelectedItems()
-            Redraw()
-            PictureBox1.Refresh()
-            'CreatePageOverlay(PictureBox1ImageCopy)
-        End If
-
-        'Dim g As Graphics = Graphics.FromImage(Me.PictureBox1.Image)
-        'g.DrawImage(PageOverlayBM, 0, 0)
-        PictureBox1.Refresh()
-
-    End Sub
-
 
     Private Sub DeleteSelectedObjects()
         For Each vec As EditDaqumentUtil.VectorMap In Vectors
@@ -2281,23 +1757,7 @@ Public Class EditDaqument
 
         PictureBox1.Refresh()
     End Sub
-    Private Sub SaveWeldPointObjects(ByVal vec As EditDaqumentUtil.VectorMap)
-        If vec.VectorObjectType = "Weld" Then
-            If vec.ObjectDeleted Then
-                If vec.text > "" Then
-                    myDoc.RemoveWeldPoint(vec.text)
-                End If
-            ElseIf vec.text = "" Then
-                MessageBox.Show("Could Not Add Weld Point")
-            ElseIf vec.text > "" Then
-                Dim newID = myDoc.AddOrUpdateWeldPointToDataBase(vec.text)
-                If newID = "0" Then
-                    MessageBox.Show("Could Not Update Weld Point")
-                End If
-            End If
-        End If
-    End Sub
-
+    
     Private Sub SaveObjects(ByVal LayerID As String)
         Dim layerCtr As Integer = 0
 
@@ -2305,7 +1765,7 @@ Public Class EditDaqument
 
             If vec.layerID = LayerID Then
 
-                If vec.VectorObjectType = "Weld" Then SaveWeldPointObjects(vec)
+                '  If vec.VectorObjectType = "Weld" Then SaveWeldPointObjects(vec)
 
                 vec.lastUser = runtime.UserMUID
                 If vec.VectorType = EditDaqumentUtil.mode.InsertText Or vec.VectorType = EditDaqumentUtil.mode.EmbedText Then
@@ -2456,14 +1916,7 @@ Public Class EditDaqument
 
             End If
 
-            '   /* •———————————————————————————————————————————————————————————•
-            ' | If myVector.VectorObjectType = "Weld" Then                |
-            ' |     myVector.text = vec.text                              |
-            ' |     myVector.VectorType = EditDaqumentUtil.mode.EmbedWeld |
-            ' |     myVector.itmSelected = False                          |
-            ' |     myDoc.AddToWeldPointInfoTable(vec)                    |
-            ' | End If                                                    |
-            '        •———————————————————————————————————————————————————————————• */
+         
 
             Vectors.Add(New EditDaqumentUtil.VectorMap(myVector))
         Next
@@ -2520,29 +1973,6 @@ Public Class EditDaqument
     End Sub
 
 
-    Private Function requestToSaveLayer() As Windows.Forms.DialogResult
-        Dim Ask As Boolean = True
-        Dim doSave As Boolean = False
-        For Each vec As EditDaqumentUtil.VectorMap In Vectors
-            If vec.VectorModified Then
-                If Ask Then
-                    Ask = False
-                    Return (MessageBox.Show("Drawing has been modifed, would you like to save your changes?", "Save Drawing", MessageBoxButtons.YesNoCancel))
-                End If
-            End If
-        Next
-        Return (Windows.Forms.DialogResult.No)
-    End Function
-
-
-    Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        SaveDrawing()
-    End Sub
-
-    Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click
-        SaveDrawing()
-    End Sub
-
     Private Sub SaveDrawing()
         Me.Cursor = Cursors.WaitCursor
         Me.Enabled = False
@@ -2572,6 +2002,29 @@ Public Class EditDaqument
         Me.Enabled = True
 
     End Sub
+    Private Function requestToSaveLayer() As Windows.Forms.DialogResult
+        Dim Ask As Boolean = True
+        Dim doSave As Boolean = False
+        For Each vec As EditDaqumentUtil.VectorMap In Vectors
+            If vec.VectorModified Then
+                If Ask Then
+                    Ask = False
+                    Return (MessageBox.Show("Drawing has been modifed, would you like to save your changes?", "Save Drawing", MessageBoxButtons.YesNoCancel))
+                End If
+            End If
+        Next
+        Return (Windows.Forms.DialogResult.No)
+    End Function
+
+
+    Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        SaveDrawing()
+    End Sub
+
+    Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click
+        SaveDrawing()
+    End Sub
+
 
 
 
@@ -3162,33 +2615,6 @@ Public Class EditDaqument
     'End Sub
 
 
-    Private Sub btnPageSetup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPageSetup.Click
-        PageSetupDialog1.Document = printDoc
-        ' Sets the print document's color setting to false,
-        ' so that the page will not be printed in color.
-        'PageSetupDialog1.Document.DefaultPageSettings.Color = False
-        Dim msgResult As DialogResult = Me.PageSetupDialog1.ShowDialog()
-    End Sub
-    Private Sub printDoc_BeginPrint(ByVal sender As Object, ByVal ev As PrintEventArgs)
-        intPageCounter = 0
-    End Sub
-
-    Private Sub printDoc_EndPrint(ByVal sender As Object, ByVal ev As PrintEventArgs)
-    End Sub
-
-
-    Private Sub btnPrintPreview_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrintPreview.Click
-        myDoc.SaveDocumentImage()
-        MakePrintImages()
-        Dim printDialog As PrintPreviewDialog = New PrintPreviewDialog()
-
-        printDialog.Document = Me.printDoc
-        printDialog.ShowDialog()
-
-        'Dim lesson As New Lesson1(printingSystem1)
-        'lesson.ShowPreview()
-
-    End Sub
 
 
     Private Sub MakePrintImages()
@@ -3308,14 +2734,6 @@ Public Class EditDaqument
     End Sub
 
 
-    Private Sub btnPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        myDoc.SaveDocumentImage()
-        MakePrintImages()
-        Me.PrintDialog1.Document = Me.printDoc
-        Dim msgResult As DialogResult = Me.PrintDialog1.ShowDialog()
-        If msgResult = Windows.Forms.DialogResult.Cancel Then Return
-    End Sub
-
 
     Private Sub printDoc_PrintPage(ByVal sender As Object, ByVal e As PrintPageEventArgs)
 
@@ -3343,6 +2761,475 @@ Public Class EditDaqument
         intPageCounter = 0
 
 
+    End Sub
+
+
+
+    Private Function GetFileName()
+        With sfd1
+            'The Caption
+            .Title = "Save Document Image as PNG..."
+
+            'Ensure we only get back valid filenames
+            .CheckFileExists() = False
+            .CheckPathExists = True
+            .ValidateNames = True
+            .DereferenceLinks = True
+            .DefaultExt = "png"
+            'Set the starting dir
+            .InitialDirectory = "c:\"
+            .AddExtension = True
+            .FileName = myDoc.DocumentName() + ".png"
+            .Filter = "PNG Files|*.png"
+
+
+            'Show the Window
+            If .ShowDialog(Me) = Windows.Forms.DialogResult.Cancel Then
+                Return ""
+            End If
+            If .FileName > "" Then
+                Return .FileName
+            End If
+        End With
+        Return ""
+    End Function
+
+
+
+    Private Sub ShowPkgLayers()
+        For Each ts As ToolStripMenuItem In Me.tsmi_SelectLayers.DropDownItems
+            If ts.Text = "RL-" + PkgNum Then
+                ts.Checked = True
+            End If
+            If ts.Text = "HL-" + PkgNum Then
+                ts.Checked = True
+            End If
+        Next
+
+        Me.btn_ActiveLayer.DropDownItems.Clear()
+        For Each ts As ToolStripMenuItem In Me.tsmi_SelectLayers.DropDownItems
+            If ts.Checked Then
+                Dim newts As ToolStripMenuItem = New ToolStripMenuItem
+                newts.Name = ts.Name
+                newts.Text = ts.Text
+                newts.CheckOnClick = True
+                Me.btn_ActiveLayer.DropDownItems.Add(newts)
+            End If
+        Next
+
+    End Sub
+
+
+
+    Private Sub WriteDefaultZoom(ByVal _Zoom As String)
+        'write to registry
+        Dim MyKey As RegistryKey
+        Dim regKey As String
+
+        'MyKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\ISSI\Daqart\Settings", True)
+        'MyKey.CreateSubKey("DaqumentZoom")
+        'MyKey.Close()
+
+        regKey = "HKEY_LOCAL_MACHINE\Software\ISSI\Daqart\Settings\"
+        Registry.SetValue(regKey, "DaqumentZoom", _Zoom, RegistryValueKind.String)
+
+    End Sub
+
+
+
+    Private Sub cms1_Opening(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles cms1.Opening
+        If daqMode <> EditDaqumentUtil.mode.None Then Return
+        cms1Loc = New Point(System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y)
+        Dim ScreenPoint As Point = New Point(System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y)
+        Dim ClientPoint As Point = Me.PictureBox1.PointToClient(ScreenPoint)
+
+        ' Acquire references to the owning control and item.
+        Dim c As System.Windows.Forms.Control = cms1.SourceControl
+        Dim tsi As ToolStripDropDownItem = cms1.OwnerItem
+        If (c IsNot Nothing) Then
+            If c.Name <> "PictureBox1" Then Return
+        End If
+
+        For Each vec As EditDaqumentUtil.VectorMap In Vectors
+            If vec.VectorObjectType = "Weld" And vec.layerID = CurrentLayer And vec.ObjectDeleted = False Then
+                If IsWeldPointTailSelected(ClientPoint, vec.thisVector) Then
+                    vec.itmSelected = True
+                    selectedWeldTableIndex = 0
+                    selectedWeldTagNo = ""
+                    For i As Integer = 0 To myDoc.WeldPointInfoTable.Rows.Count - 1
+                        If myDoc.WeldPointInfoTable.Rows(i)("TagNo") = vec.text Then
+                            selectedWeldTableIndex = i
+                            selectedWeldTagNo = vec.text
+                            Exit For
+                        End If
+                    Next
+                    cms1.Items.Clear()
+                    cms1.Items.Add("-")
+                    cms1.Items.Add("Property")
+                    cms1.Items.Add("Change Weld Status")
+                    cms1.Items.Add("Delete")
+                    Return
+                End If
+            End If
+        Next
+
+        If theRectangle.Size.Width = 0 Or theRectangle.Size.Height = 0 Then
+            'If Not cmsPictureBox.Image Is Nothing Then
+            '    cms1.Items.Clear()
+            '    cms1.Items.Add("-")
+            '    cms1.Items.Add("Paste")
+            'End If
+            Return
+        Else
+            ' Populate the ContextMenuStrip control with its default items.
+            'If (theRectangle.Size.Width = 0 Or theRectangle.Size.Height = 0) Then Return
+            cms1.Items.Clear()
+            cms1.Items.Add("-")
+            cms1.Items.Add("Delete")
+            'cms1.Items.Add("Cut")
+            'cms1.Items.Add("Copy")
+            'If Not cmsPictureBox.Image Is Nothing Then
+            '    cms1.Items.Add("Paste")
+            'End If
+        End If
+        e.Cancel = False
+    End Sub
+
+    Private Sub cms1_ItemClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles cms1.ItemClicked
+        Dim ScreenPoint As Point = cms1.Bounds.Location
+        Dim ClientPoint As Point = PointToClient(cms1.Bounds.Location)
+        Dim ClientPointF As PointF = CType(ClientPoint, PointF)
+        Dim tsi As ToolStripDropDownItem = e.ClickedItem
+        If Not LayerSelected() Then
+            Return
+        End If
+
+        ControlPaint.DrawReversibleFrame(theRectangle, Me.BackColor, FrameStyle.Dashed)
+        If tsi.Text = "Cut" Then
+            Dim bm = New Bitmap(theRectangle.Size.Width, theRectangle.Size.Height)
+            Dim picCanvas As Graphics = Graphics.FromImage(bm)
+            picCanvas.CopyFromScreen(theRectangle.Location, New Point(0, 0), theRectangle.Size)
+            If Not cmsPictureBox.Image Is Nothing Then
+                cmsPictureBox.Image.Dispose()
+            End If
+            cmsPictureBox.Image = bm
+            cmsPictureBox.Size = theRectangle.Size
+
+
+            Dim bm1 = New Bitmap(theRectangle.Size.Width, theRectangle.Size.Height)
+            Dim cutCanvas As Graphics = Graphics.FromImage(bm1)
+            cutCanvas.FillRectangle(Brushes.White, 0, 0, theRectangle.Size.Width, theRectangle.Size.Height)
+            If Not PicBox2.Image Is Nothing Then
+                PicBox2.Image.Dispose()
+            End If
+            PicBox2.Image = bm1
+            PicBox2.Size = theRectangle.Size
+            daqMode = EditDaqumentUtil.mode.InsertImage
+            Dim vect As EditDaqumentUtil.Vector = MakeNewPictureImageVector(PictureBox1.PointToClient(theRectangle.Location))
+            embedLayerObject(vect)
+            vect.pBox.Visible = False
+            For Each vec As EditDaqumentUtil.VectorMap In Vectors
+                ClearSelectedBoundryBox(vec)
+                vec.itmSelected = False
+            Next
+            daqMode = EditDaqumentUtil.mode.None
+            ControlPaint.DrawReversibleFrame(theRectangle, Me.BackColor, FrameStyle.Dashed)
+        ElseIf tsi.Text = "Copy" Then
+            '            Dim myRect As Rectangle = theRectangle
+
+            Dim bm = New Bitmap(theRectangle.Size.Width, theRectangle.Size.Height)
+            Dim picCanvas As Graphics = Graphics.FromImage(bm)
+            picCanvas.CopyFromScreen(theRectangle.Location, New Point(0, 0), theRectangle.Size)
+            If Not cmsPictureBox.Image Is Nothing Then
+                cmsPictureBox.Image.Dispose()
+            End If
+            cmsPictureBox.Image = bm
+            cmsPictureBox.Size = theRectangle.Size
+
+            If Not PicBox2.Image Is Nothing Then
+                PicBox2.Image.Dispose()
+            End If
+            PicBox2.Image = bm
+            PicBox2.Size = theRectangle.Size
+
+
+        ElseIf tsi.Text = "Paste" Then
+            If Not PicBox2.Image Is Nothing Then
+                PicBox2.Image.Dispose()
+            End If
+            PicBox2.Size = theRectangle.Size
+            PicBox2.Image = cmsPictureBox.Image.Clone
+            daqMode = EditDaqumentUtil.mode.InsertImage
+            MakeNewPictureImageVector(ClientPoint)
+            daqMode = EditDaqumentUtil.mode.ObjectSelected
+        ElseIf tsi.Text = "Delete" Then
+            For Each vec As EditDaqumentUtil.VectorMap In Vectors
+                If vec.itmSelected And vec.VectorObjectType = "Weld" Then
+                    vec.ObjectDeleted = True
+                    vec.VectorModified = True
+                    Exit For
+                End If
+            Next
+            Redraw()
+        ElseIf tsi.Text = "Property" Then
+            For Each vec As EditDaqumentUtil.VectorMap In Vectors
+                If vec.itmSelected And vec.VectorObjectType = "Weld" Then
+                    For i As Integer = 0 To myDoc.WeldPointInfoTable.Rows.Count - 1
+                        If myDoc.WeldPointInfoTable.Rows(i)("TagNo") = vec.text Then
+                            Dim myForm As New EditDaqumentInfo(myDoc, "Weld Properties", i)
+                            myForm.Show()
+                            Exit For
+                        End If
+                    Next
+                End If
+            Next
+            'DisplayWeldPointPropertyGrid()
+        ElseIf tsi.Text = "Change Weld Status" Then
+
+        End If
+        PictureBox1.Refresh()
+
+    End Sub
+
+
+    Private Sub EditDaqument_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+        If daqMode = EditDaqumentUtil.mode.ObjectSelected Then
+            For Each vec As EditDaqumentUtil.VectorMap In Vectors
+                If vec.itmSelected Then
+                    Dim objMoved As Boolean = False
+                    Dim X = vectorScreenBoundRectangle(vec.thisVector).X : Dim Y = vectorScreenBoundRectangle(vec.thisVector).Y
+                    If e.KeyCode = Keys.Escape Then
+                        vec.ObjectDeleted = True
+                    End If
+                    If e.KeyCode = Keys.Delete Then
+                        vec.ObjectDeleted = True
+                    End If
+                    If e.KeyCode = Keys.Left Then
+                        X = X - 1 : objMoved = True
+                    End If
+                    If e.KeyCode = Keys.Right Then
+                        X = X + 1 : objMoved = True
+                    End If
+                    If e.KeyCode = Keys.Up Then
+                        Y = Y - 1 : objMoved = True
+                    End If
+                    If e.KeyCode = Keys.Down Then
+                        Y = Y + 1 : objMoved = True
+                    End If
+                    If objMoved Then
+                        'ResizeObject(vec)
+                    End If
+                End If
+            Next
+
+        End If
+        If e.KeyCode = Keys.Delete Then
+            For Each vec As EditDaqumentUtil.VectorMap In Vectors
+                For Each sCtrl As SeqControl In tmpControls
+                    If sCtrl.vecID = vec.vectorID Then
+                        vec.ObjectDeleted = True
+                        vec.VectorModified = True
+                        If Not vec.tBox Is Nothing Then
+                            vec.tBox.Visible = False
+                        End If
+                        If Not vec.pBox Is Nothing Then
+                            vec.pBox.Visible = False
+                        End If
+                    End If
+                Next
+            Next
+            ClearAllSelectedItems()
+            Redraw()
+            PictureBox1.Refresh()
+            'CreatePageOverlay(PictureBox1ImageCopy)
+        End If
+
+        If e.KeyCode = Keys.Escape Then
+            ClearAllSelectedItems()
+            Redraw()
+            PictureBox1.Refresh()
+        End If
+
+        PictureBox1.Refresh()
+    End Sub
+
+    Private Sub HandleKeyDown(ByVal e As System.Windows.Forms.KeyEventArgs)
+        If daqMode = EditDaqumentUtil.mode.ObjectSelected Then
+            For Each vec As EditDaqumentUtil.VectorMap In Vectors
+                If vec.itmSelected Then
+                    Dim objMoved As Boolean = False
+                    Dim X = vectorScreenBoundRectangle(vec.thisVector).X : Dim Y = vectorScreenBoundRectangle(vec.thisVector).Y
+                    If e.KeyCode = Keys.Escape Then
+                        vec.ObjectDeleted = True
+                    End If
+                    If e.KeyCode = Keys.Delete Then
+                        vec.ObjectDeleted = True
+                    End If
+                    If e.KeyCode = Keys.Left Then
+                        X = X - 1 : objMoved = True
+                    End If
+                    If e.KeyCode = Keys.Right Then
+                        X = X + 1 : objMoved = True
+                    End If
+                    If e.KeyCode = Keys.Up Then
+                        Y = Y - 1 : objMoved = True
+                    End If
+                    If e.KeyCode = Keys.Down Then
+                        Y = Y + 1 : objMoved = True
+                    End If
+                    If objMoved Then
+                        'ResizeObject(vec)
+                    End If
+                End If
+            Next
+
+        End If
+        If e.KeyCode = Keys.Delete Or e.KeyCode = Keys.Escape Then
+            For Each vec As EditDaqumentUtil.VectorMap In Vectors
+                For Each sCtrl As SeqControl In tmpControls
+                    If sCtrl.vecID = vec.vectorID Then
+                        vec.ObjectDeleted = True
+                        If Not vec.tBox Is Nothing Then
+                            vec.tBox.Visible = False
+                        End If
+                        If Not vec.pBox Is Nothing Then
+                            vec.pBox.Visible = False
+                        End If
+                    End If
+                Next
+            Next
+            ClearAllSelectedItems()
+            Redraw()
+            PictureBox1.Refresh()
+            'CreatePageOverlay(PictureBox1ImageCopy)
+        End If
+
+        'Dim g As Graphics = Graphics.FromImage(Me.PictureBox1.Image)
+        'g.DrawImage(PageOverlayBM, 0, 0)
+        PictureBox1.Refresh()
+
+    End Sub
+
+   
+
+    Private Sub btnPageSetup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPageSetup.Click
+        PageSetupDialog1.Document = printDoc
+        ' Sets the print document's color setting to false,
+        ' so that the page will not be printed in color.
+        'PageSetupDialog1.Document.DefaultPageSettings.Color = False
+        Dim msgResult As DialogResult = Me.PageSetupDialog1.ShowDialog()
+    End Sub
+    Private Sub printDoc_BeginPrint(ByVal sender As Object, ByVal ev As PrintEventArgs)
+        intPageCounter = 0
+    End Sub
+
+    Private Sub printDoc_EndPrint(ByVal sender As Object, ByVal ev As PrintEventArgs)
+    End Sub
+
+
+    Private Sub btnPrintPreview_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrintPreview.Click
+        myDoc.SaveDocumentImage()
+        MakePrintImages()
+        Dim printDialog As PrintPreviewDialog = New PrintPreviewDialog()
+
+        printDialog.Document = Me.printDoc
+        printDialog.ShowDialog()
+
+        'Dim lesson As New Lesson1(printingSystem1)
+        'lesson.ShowPreview()
+
+    End Sub
+
+
+    Private Sub ts_ExportToPNG_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ts_ExportToPNG.Click
+        myDoc.SaveDocumentImage()
+        MakePrintImages()
+        Dim fp As String = GetFileName()
+        If fp > "" Then
+            _PrintImages(0).Save(fp, System.Drawing.Imaging.ImageFormat.Png)
+        End If
+    End Sub
+
+
+    Private Sub PageSetupToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PageSetupToolStripMenuItem.Click
+        PageSetupDialog1.Document = printDoc
+        Dim msgResult As DialogResult = Me.PageSetupDialog1.ShowDialog()
+    End Sub
+
+
+    Private Sub PrintToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PrintToolStripMenuItem.Click
+        myDoc.SaveDocumentImage()
+        MakePrintImages()
+        Dim printDialog As PrintPreviewDialog = New PrintPreviewDialog()
+
+        printDialog.Document = Me.printDoc
+        printDialog.ShowDialog()
+    End Sub
+    Private Sub ToolStripMenuItem2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_TextRed.Click
+        Me.btn_TextColor.ForeColor = Me.btn_TextRed.BackColor
+
+        For Each vec As EditDaqumentUtil.VectorMap In Vectors
+            If vec.VectorType = EditDaqumentUtil.mode.InsertText Then
+                If vec.itmSelected Then
+                    vec.tBox.ForeColor = Me.btn_TextRed.BackColor
+                End If
+            End If
+        Next
+    End Sub
+
+
+    Private Sub btn_TextBlue_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_TextBlue.Click
+        Me.btn_TextColor.ForeColor = Me.btn_TextBlue.BackColor
+        For Each vec As EditDaqumentUtil.VectorMap In Vectors
+            If vec.VectorType = EditDaqumentUtil.mode.InsertText Then
+                If vec.itmSelected Then
+                    vec.tBox.ForeColor = Me.btn_TextBlue.BackColor
+                End If
+            End If
+        Next
+    End Sub
+
+
+    Private Sub btnPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        myDoc.SaveDocumentImage()
+        MakePrintImages()
+        Me.PrintDialog1.Document = Me.printDoc
+        Dim msgResult As DialogResult = Me.PrintDialog1.ShowDialog()
+        If msgResult = Windows.Forms.DialogResult.Cancel Then Return
+    End Sub
+
+    Private Sub cbx_FontSize_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        For Each vec As EditDaqumentUtil.VectorMap In Vectors
+            If vec.VectorType = EditDaqumentUtil.mode.InsertText Then
+                If vec.itmSelected Then
+                    Dim myFont = New Font(vec.tBox.Font.FontFamily, Convert.ToSingle(Me.cbx_FontSize.Text), _
+                                    vec.tBox.Font.Style, GraphicsUnit.Point)
+                    vec.tBox.Font = myFont
+                End If
+            End If
+        Next
+    End Sub
+
+
+    Private Sub btn_Bold_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Bold.Click
+        Dim MyStyle As FontStyle = FontStyle.Regular
+        If Me.btn_Bold.Checked And Me.btn_Italic.Checked Then
+            MyStyle = FontStyle.Bold + FontStyle.Italic
+        ElseIf Me.btn_Bold.Checked Then
+            MyStyle = FontStyle.Bold
+        ElseIf Me.btn_Italic.Checked Then
+            MyStyle = FontStyle.Italic
+        End If
+
+        For Each vec As EditDaqumentUtil.VectorMap In Vectors
+            If vec.VectorType = EditDaqumentUtil.mode.InsertText Then
+                If vec.itmSelected Then
+                    Dim myFont = New Font(vec.tBox.Font.FontFamily, vec.tBox.Font.Size, _
+                                    MyStyle, GraphicsUnit.Point)
+                    vec.tBox.Font = myFont
+                End If
+            End If
+        Next
     End Sub
 
 
@@ -3374,6 +3261,38 @@ Public Class EditDaqument
             End If
         Catch ex As Exception
         End Try
+    End Sub
+
+    Private Sub btn_Italic_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Italic.Click
+        Dim MyStyle As FontStyle = FontStyle.Regular
+        If Me.btn_Bold.Checked And Me.btn_Italic.Checked Then
+            MyStyle = FontStyle.Bold + FontStyle.Italic
+        ElseIf Me.btn_Bold.Checked Then
+            MyStyle = FontStyle.Bold
+        ElseIf Me.btn_Italic.Checked Then
+            MyStyle = FontStyle.Italic
+        End If
+
+        For Each vec As EditDaqumentUtil.VectorMap In Vectors
+            If vec.VectorType = EditDaqumentUtil.mode.InsertText Then
+                If vec.itmSelected Then
+                    Dim myFont = New Font(vec.tBox.Font.FontFamily, vec.tBox.Font.Size, _
+                                    MyStyle, GraphicsUnit.Point)
+                    vec.tBox.Font = myFont
+                End If
+            End If
+        Next
+    End Sub
+
+
+    Private Sub btn_Delete_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_Delete.Click
+        DeleteSelectedObjects()
+    End Sub
+
+    Private Sub GrayscaleInactiveLayer_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles GrayscaleInactiveLayer.CheckStateChanged
+        If Not Loaded Then Return
+
+        Redraw()
     End Sub
 
 
@@ -3471,211 +3390,6 @@ Public Class EditDaqument
         File.Delete(runtime.AbsolutePath + "sites\tmp.png")
     End Sub
 
-    Private Function GetFileName()
-        With sfd1
-            'The Caption
-            .Title = "Save Document Image as PNG..."
-
-            'Ensure we only get back valid filenames
-            .CheckFileExists() = False
-            .CheckPathExists = True
-            .ValidateNames = True
-            .DereferenceLinks = True
-            .DefaultExt = "png"
-            'Set the starting dir
-            .InitialDirectory = "c:\"
-            .AddExtension = True
-            .FileName = myDoc.DocumentName() + ".png"
-            .Filter = "PNG Files|*.png"
-
-
-            'Show the Window
-            If .ShowDialog(Me) = Windows.Forms.DialogResult.Cancel Then
-                Return ""
-            End If
-            If .FileName > "" Then
-                Return .FileName
-            End If
-        End With
-        Return ""
-    End Function
-
-
-    Private Sub ts_ExportToPNG_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ts_ExportToPNG.Click
-        myDoc.SaveDocumentImage()
-        MakePrintImages()
-        Dim fp As String = GetFileName()
-        If fp > "" Then
-            _PrintImages(0).Save(fp, System.Drawing.Imaging.ImageFormat.Png)
-        End If
-    End Sub
-
-
-    Private Sub PageSetupToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PageSetupToolStripMenuItem.Click
-        PageSetupDialog1.Document = printDoc
-        Dim msgResult As DialogResult = Me.PageSetupDialog1.ShowDialog()
-    End Sub
-
-
-    Private Sub PrintToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PrintToolStripMenuItem.Click
-        myDoc.SaveDocumentImage()
-        MakePrintImages()
-        Dim printDialog As PrintPreviewDialog = New PrintPreviewDialog()
-
-        printDialog.Document = Me.printDoc
-        printDialog.ShowDialog()
-    End Sub
-
-    Private Sub ShowPkgLayers()
-        For Each ts As ToolStripMenuItem In Me.tsmi_SelectLayers.DropDownItems
-            If ts.Text = "RL-" + PkgNum Then
-                ts.Checked = True
-            End If
-            If ts.Text = "HL-" + PkgNum Then
-                ts.Checked = True
-            End If
-        Next
-
-        Me.btn_ActiveLayer.DropDownItems.Clear()
-        For Each ts As ToolStripMenuItem In Me.tsmi_SelectLayers.DropDownItems
-            If ts.Checked Then
-                Dim newts As ToolStripMenuItem = New ToolStripMenuItem
-                newts.Name = ts.Name
-                newts.Text = ts.Text
-                newts.CheckOnClick = True
-                Me.btn_ActiveLayer.DropDownItems.Add(newts)
-            End If
-        Next
-
-    End Sub
-
-
-    Private Sub ShowWeldLayers()
-
-        ' btn_InsertWeld.Visible = True
-        'btn_WeldList.Visible = True
-        'btn_DefaultWeld.Visible = True
-        'tsmi_SelectLayers.Enabled = False
-        'Try
-        'Dim dt As DataTable = myDoc.WeldLayerInfoTbl()
-        'If dt.Rows.Count = 0 Then
-        'myDoc.AddNewLayer("Welds", "Weld Tracking")
-        'LayerInfoTbl = myDoc.WeldLayerInfoTbl()
-        'End If
-        'Catch ex As Exception
-        'MessageBox.Show(ex.Message)
-        'End Try
-        'cbx_ActivateLayer.Items.Add("Welds")
-        'cbx_ActivateLayer.SelectedIndex = cbx_ActivateLayer.Items.Count - 1
-        'cbx_ActivateLayer.SelectedText = "Welds"
-        'cbx_ActivateLayer.SelectedItem = "Welds"
-        'cbx_ActivateLayer.Text = "Welds"
-        'For Each tls As ToolStripMenuItem In Me.tsmi_SelectLayers.DropDownItems
-
-        'tls.Checked = False
-        'If tls.Text = "Welds" Then
-        'tls.Checked = True
-        'End If
-        'Next
-        'SelectLayerVectors()
-        'SelectCurrentLayer()
-
-    End Sub
-
-
-    Private Sub ToolStripMenuItem2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_TextRed.Click
-        Me.btn_TextColor.ForeColor = Me.btn_TextRed.BackColor
-
-        For Each vec As EditDaqumentUtil.VectorMap In Vectors
-            If vec.VectorType = EditDaqumentUtil.mode.InsertText Then
-                If vec.itmSelected Then
-                    vec.tBox.ForeColor = Me.btn_TextRed.BackColor
-                End If
-            End If
-        Next
-    End Sub
-
-
-    Private Sub btn_TextBlue_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_TextBlue.Click
-        Me.btn_TextColor.ForeColor = Me.btn_TextBlue.BackColor
-        For Each vec As EditDaqumentUtil.VectorMap In Vectors
-            If vec.VectorType = EditDaqumentUtil.mode.InsertText Then
-                If vec.itmSelected Then
-                    vec.tBox.ForeColor = Me.btn_TextBlue.BackColor
-                End If
-            End If
-        Next
-    End Sub
-
-
-    Private Sub cbx_FontSize_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        For Each vec As EditDaqumentUtil.VectorMap In Vectors
-            If vec.VectorType = EditDaqumentUtil.mode.InsertText Then
-                If vec.itmSelected Then
-                    Dim myFont = New Font(vec.tBox.Font.FontFamily, Convert.ToSingle(Me.cbx_FontSize.Text), _
-                                    vec.tBox.Font.Style, GraphicsUnit.Point)
-                    vec.tBox.Font = myFont
-                End If
-            End If
-        Next
-    End Sub
-
-
-    Private Sub btn_Bold_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Bold.Click
-        Dim MyStyle As FontStyle = FontStyle.Regular
-        If Me.btn_Bold.Checked And Me.btn_Italic.Checked Then
-            MyStyle = FontStyle.Bold + FontStyle.Italic
-        ElseIf Me.btn_Bold.Checked Then
-            MyStyle = FontStyle.Bold
-        ElseIf Me.btn_Italic.Checked Then
-            MyStyle = FontStyle.Italic
-        End If
-
-        For Each vec As EditDaqumentUtil.VectorMap In Vectors
-            If vec.VectorType = EditDaqumentUtil.mode.InsertText Then
-                If vec.itmSelected Then
-                    Dim myFont = New Font(vec.tBox.Font.FontFamily, vec.tBox.Font.Size, _
-                                    MyStyle, GraphicsUnit.Point)
-                    vec.tBox.Font = myFont
-                End If
-            End If
-        Next
-    End Sub
-
-
-    Private Sub btn_Italic_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Italic.Click
-        Dim MyStyle As FontStyle = FontStyle.Regular
-        If Me.btn_Bold.Checked And Me.btn_Italic.Checked Then
-            MyStyle = FontStyle.Bold + FontStyle.Italic
-        ElseIf Me.btn_Bold.Checked Then
-            MyStyle = FontStyle.Bold
-        ElseIf Me.btn_Italic.Checked Then
-            MyStyle = FontStyle.Italic
-        End If
-
-        For Each vec As EditDaqumentUtil.VectorMap In Vectors
-            If vec.VectorType = EditDaqumentUtil.mode.InsertText Then
-                If vec.itmSelected Then
-                    Dim myFont = New Font(vec.tBox.Font.FontFamily, vec.tBox.Font.Size, _
-                                    MyStyle, GraphicsUnit.Point)
-                    vec.tBox.Font = myFont
-                End If
-            End If
-        Next
-    End Sub
-
-
-    Private Sub btn_Delete_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_Delete.Click
-        DeleteSelectedObjects()
-    End Sub
-
-    Private Sub GrayscaleInactiveLayer_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles GrayscaleInactiveLayer.CheckStateChanged
-        If Not Loaded Then Return
-
-        Redraw()
-    End Sub
-
-
     Private Sub btn_InsertWeld_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_InsertWeld.Click
         btn_InsertWeld.Select()
 
@@ -3699,53 +3413,6 @@ Public Class EditDaqument
         myForm.Show()
     End Sub
 
-    'Private Sub DisplayWeldPointPropertyGrid()
-    '    VGridControl1.DataSource = Nothing
-    '    selectedWeldTableIndex = -1
-    '    Try
-
-    '        For Each vec As EditDaqumentUtil.VectorMap In Vectors
-    '            If vec.itmSelected And vec.VectorObjectType = "Weld" Then
-    '                For i As Integer = 0 To myDoc.WeldPointInfoTable.Rows.Count - 1
-    '                    If myDoc.WeldPointInfoTable.Rows(i)("TagNo") = vec.text Then
-    '                        selectedWeldTableIndex = i
-    '                        Me.selectedWeldTagNo = vec.text
-    '                        Exit For
-    '                    End If
-    '                Next
-    '                Exit For
-    '            End If
-    '        Next
-    '        VGridControl1.DataSource = myDoc.WeldPointInfoTable
-    '        VGridControl1.BringToFront()
-    '        VGridControl1.MakeRecordVisible(selectedWeldTableIndex)
-    '        VGridControl1.Dock = DockStyle.Fill
-    '        VGridControl1.Rows("rowWeldStatus").Properties.RowEdit = riCboEdit
-
-    '        InfoTblForm.Visible = True
-    '        InfoTblForm.BringToFront()
-    '        InfoTblForm.Text = "Weld Point Info"
-
-    '        'Dim riCboEdit As RepositoryItemComboBox = New RepositoryItemComboBox()
-    '        'riCboEdit.Name = "myCboEdit"
-    '        ''Dim qry = "SELECT CO_NAME From SubContract"
-    '        ''Dim dt1 As DataTable = WorkLoad.ExecQry(qry)
-    '        ''For i As Integer = 0 To dt1.Rows.Count - 1
-    '        ''    riCboEdit.Items.Add(dt1.Rows(i)(0))
-    '        ''Next
-    '        'riCboEdit.ReadOnly = False
-    '        'VGridControl1.RepositoryItems.Add(riCboEdit)
-    '        'riCboEdit.ReadOnly = False
-    '        'VGridControl1.DataSource = Nothing
-    '        'Dim dr As DataRow = 
-    '        'VGridControl1.DataSource = myDoc.WeldPointInfoTable
-    '        'VGridControl1.DataSource = myDoc.WeldPointInfoTable
-    '        VGridControl1.Rows("rowWeldStatus").Properties.RowEdit = VGridControl1.RepositoryItems(0)
-    '    Catch ex As Exception
-    '        MessageBox.Show(ex.Message)
-    '    End Try
-
-    'End Sub
 
 
     Private Sub cms1_Closing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolStripDropDownClosingEventArgs) Handles cms1.Closing
@@ -3765,117 +3432,9 @@ Public Class EditDaqument
         'Dim category As String = View.GetRowCellDisplayText(e.RowHandle, View.Columns("Category"))
         'End If
     End Sub
-    Private Sub VGridControl1_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-        '    If newCellValue > "" Then
-        '        Dim nu As String = newCellValue
-        '        Dim id As Integer = newSelectedTextBoxIndex
-        '        newCellValue = ""
-        '        newSelectedTextBoxIndex = -1
-        '        If id < 0 Then Return
-        '        For i As Integer = 0 To dt_CustomNames.Rows.Count - 1
-        '            Dim fName = dt_CustomNames.Rows(i)(0)
-        '            If dt_CustomNames.Rows(i)(0) = nu Then
-        '                MessageBox.Show("Name '" + nu + "' already in use")
-        '                Return
-        '            End If
-        '        Next
-        '        For i As Integer = 0 To dt_CustomNames.Rows.Count - 1
-        '            'Dim fName = dt_CustomNames.Rows(i)(0)
-        '            'Dim cName = _MyVarTextBox(i).Name
-        '            If dt_CustomNames.Rows(i)(1) = _MyVarTextBox(id).Name Then
-        '                dt_CustomNames.Rows(i)(0) = nu
-        '                Return
-        '            End If
-        '        Next
-        '    End If
-    End Sub
-
-    'Private Sub VGridControl1_CellValueChanging(ByVal sender As System.Object, ByVal e As DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs)
-    '    '    newCellValue = e.Value
-    '    '    newSelectedTextBoxIndex = GetSelectedTextBoxIndex()
-    'End Sub
 
 
-    'Private Sub VGridControl1_CellValueChanged(ByVal sender As System.Object, ByVal e As DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs)
-    '    'If newCellValue > "" Then
-    '    '    Dim nu As String = newCellValue
-    '    '    Dim id As Integer = newSelectedTextBoxIndex
-    '    '    newCellValue = ""
-    '    '    newSelectedTextBoxIndex = -1
-    '    '    If id < 0 Then Return
-    '    '    For i As Integer = 0 To dt_CustomNames.Rows.Count - 1
-    '    '        Dim fName = dt_CustomNames.Rows(i)(0)
-    '    '        If dt_CustomNames.Rows(i)(0) = nu Then
-    '    '            MessageBox.Show("Name '" + nu + "' already in use")
-    '    '            Return
-    '    '        End If
-    '    '    Next
-    '    '    For i As Integer = 0 To dt_CustomNames.Rows.Count - 1
-    '    '        Dim fName = dt_CustomNames.Rows(i)(0)
-    '    '        Dim cName = _MyVarTextBox(id).Name
-    '    '        If dt_CustomNames.Rows(i)(1) = _MyVarTextBox(id).Name Then
-    '    '            dt_CustomNames.Rows(i)(0) = nu
-    '    '            Return
-    '    '        End If
-    '    '    Next
-    '    'End If
-
-    '    'Dim thisRow As DevExpress.XtraVerticalGrid.Rows.BaseRow = e.Row
-    '    'If thisRow.Name = "rowName" Then
-    '    '    Dim nu As String = e.Value
-    '    '    Dim id As Integer = GetSelectedTextBoxIndex()
-    '    '    If id < 0 Then Return
-    '    '    For i As Integer = 0 To dt_CustomNames.Rows.Count - 1
-    '    '        Dim fName = dt_CustomNames.Rows(i)(0)
-    '    '        If dt_CustomNames.Rows(i)(0) = nu Then
-    '    '            MessageBox.Show("Name '" + nu + "' already in use")
-    '    '            Return
-    '    '        End If
-    '    '    Next
-
-    '    '    For i As Integer = 0 To dt_CustomNames.Rows.Count - 1
-    '    '        Dim fName = dt_CustomNames.Rows(i)(0)
-    '    '        Dim cName = myForm.FormVars(id).FieldName
-    '    '        If dt_CustomNames.Rows(i)(1) = myForm.FormVars(id).FieldName Then
-    '    '            dt_CustomNames.Rows(i)(0) = nu
-    '    '            Return
-    '    '        End If
-    '    '    Next
-    '    'End If
-    'End Sub
-    'Private Sub VGridControl1_RecordCellStyle(ByVal sender As Object, _
-    'ByVal e As GetCustomRowCellStyleEventArgs) Handles VGridControl1.RecordCellStyle
-    '    If e.Row.Name <> "rowWeldStatus" Then Exit Sub
-    '    Dim st = Convert.ToInt32(VGridControl1.GetCellValue(e.Row, e.RecordIndex))
-    '    e.Appearance.BackColor = Color.Yellow
-    '    e.Appearance.ForeColor = Color.Black
-    '    e.Appearance.Font = New Font(e.Appearance.Font.Name, _
-    '       e.Appearance.Font.Size, FontStyle.Bold)
-    '    End If
-    'End Sub
-
-    'Private Sub VGridControl1_RecordCellStyle(ByVal sender As System.Object, ByVal e As DevExpress.XtraVerticalGrid.Events.GetCustomRowCellStyleEventArgs)
-    '    Try
-    '        Dim dg As DevExpress.XtraVerticalGrid.VGridControl = sender
-    '        If e.Row.Name <> "rowWeldStatus" Then Exit Sub
-    '        Dim st = Convert.ToInt32(VGridControl1.GetCellValue(e.Row, e.RecordIndex))
-    '        riCboEdit.Appearance.BackColor = EditDaqumentUtil.WeldStatusColorTranslation.GetColor1(st)
-    '        'riCboEdit.()
-    '        riCboEdit.Appearance.ForeColor = EditDaqumentUtil.WeldStatusColorTranslation.GetColor2(st)
-    '        riCboEdit.Appearance.BackColor2 = Color.AliceBlue
-
-    '        riCboEdit.Appearance.BorderColor = Color.BlanchedAlmond
-    '        'If e.Column.FieldName = "Count" Or e.Column.FieldName = "Unit Price" Then
-    '        'Dim category As String = View.GetRowCellDisplayText(e.RowHandle, View.Columns("Category"))
-    '        'End If
-    '        'e.Appearance.Font = New Font(e.Appearance.Font.Name, _
-    '        '   e.Appearance.Font.Size, FontStyle.Bold)
-    '    Catch ex As Exception
-
-    '    End Try
-    'End Sub
-
+  
  
     Private Sub cbx_FontSize_SelectedIndexChanged1(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbx_FontSize.SelectedIndexChanged
         For Each vec As EditDaqumentUtil.VectorMap In Vectors
@@ -3926,29 +3485,8 @@ Public Class EditDaqument
 
     End Sub
 
-    Private Sub WriteDefaultZoom(ByVal _Zoom As String)
-        'write to registry
-        Dim MyKey As RegistryKey
-        Dim regKey As String
-
-        'MyKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\ISSI\Daqart\Settings", True)
-        'MyKey.CreateSubKey("DaqumentZoom")
-        'MyKey.Close()
-
-        regKey = "HKEY_LOCAL_MACHINE\Software\ISSI\Daqart\Settings\"
-        Registry.SetValue(regKey, "DaqumentZoom", _Zoom, RegistryValueKind.String)
-
-    End Sub
 
 
-    Private Sub btn_RotateLeft_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_RotateLeft.Click
-
-    End Sub
-
-
-    Private Sub btn_RotateRight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_RotateRight.Click
-
-    End Sub
 
 
 End Class
