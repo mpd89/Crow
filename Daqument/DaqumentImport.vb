@@ -33,12 +33,16 @@ Public Class DaqumentImport
             Return
         End If
 
+        ''DefaultTypeID and DefaultTypeName are set after the document is chosen in the frm_Defaults load section
         DefaultTypeID = frm_Defaults.DefaultTypeID
         DefaultTypeName = frm_Defaults.DefaultTypeName
+
+        ''DefaultProjectID and DefaultProjectID are set from the runtime.selectedProjectID and runtime.selectedProject in frm_Defaults load section
         DefaultProjectID = frm_Defaults.DefaultProjectID
         DefaultProjectName = frm_Defaults.DefaultProjectName
 
 
+        ''Allows the user to browse to the folder that contains the documents to be imported
         fbd_Folder.ShowDialog()
 
         If (fbd_Folder.SelectedPath <> "") Then
@@ -75,13 +79,8 @@ Public Class DaqumentImport
 
         Next
 
-
-        'set default project
-
-
-        'set default type
-
-
+        ''CheckBlanks''
+        'For every row in the grid view if there are blanks return an error
         CheckBlanks()
 
         CheckExisting()

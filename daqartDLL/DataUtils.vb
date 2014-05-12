@@ -55,6 +55,10 @@ Public Class DataUtils
                 End If
                 If ThisDB = "System" Then
                     UseStatement = ""
+
+                    If ThisDB = "Document_Cloud" Then
+
+                    End If
                 End If
 
                 If connSQL.State = ConnectionState.Closed Then
