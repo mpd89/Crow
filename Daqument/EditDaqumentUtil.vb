@@ -667,13 +667,9 @@ Public Class EditDaqumentUtil
         LayerVectorArray.Clear()
         Dim qry = "SELECT Cabinet FROM drawing_layers WHERE(DrawingMUID = '" + _DocumentID.ToString + "'" + _
                     " AND MUID ='" + LayerID.ToString + "')"
-        'Dim myTbl As DataTable = Utilities.ExecuteQuery(qry, "Daqument")
-        'Dim sqlDocUtils As DataUtils = New DataUtils("Daqument")
-
-        'sqlDocUtils.OpenConnection()
+       
         Dim myTbl As DataTable = runtime.SQLDaqument.ExecuteQuery(qry)
-        'Dim sqlCabinetUtils As DataUtils = New DataUtils("Daqument001")
-        'sqlCabinetUtils.OpenConnection()
+     
 
         If myTbl.Rows.Count > 0 Then
             Dim cabinetID As String = myTbl.Rows(0)(0)
@@ -724,9 +720,9 @@ Public Class EditDaqumentUtil
                         myVector.fontbackcolor = table.Rows(i)("fontbackcolor")
                     End If
                 End If
-                If myVector.VectorObjectType = "Weld" Then
-                    Dim jj = 0
-                End If
+                ''''     If myVector.VectorObjectType = "Weld" Then
+                ''''Dim jj = 0
+                ''''  End If
                 myVector.OrgScaleX = Convert.ToSingle(table.Rows(i)("OrgScaleX")) 'Vector Object Type
                 myVector.OrgScaleY = Convert.ToSingle(table.Rows(i)("OrgScaleY")) 'Vector Object Type
                 myVector.ObjectMode = table.Rows(i)("ObjectMode")

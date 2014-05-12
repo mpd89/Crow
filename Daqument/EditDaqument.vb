@@ -165,8 +165,12 @@ Public Class EditDaqument
             ''  the layerInfoTbl and for each vector in list of vectors if the vec.layerID=LayerID call embedLayerObjectOverlay
             ResizePageWidth()
 
+
+
             LoadAllLayerVectors()
 
+            ''sets the editing variables Hilite, backcolor, linewidth, currentlinewidth, Title text, 
+            ''and printing buttons and handlers
             LayerMode = "Hilite"
             btnColorChoice.BackColor = Color.PaleTurquoise
             btnLineWidth.Image = Global.Daqument.My.Resources.Resources.Width3
@@ -187,6 +191,7 @@ Public Class EditDaqument
 
             btnCancel.Select()
 
+
             CreatePageOverlay(PictureBox1ImageCopy)
 
             btnEnlarge.Enabled = True
@@ -196,6 +201,8 @@ Public Class EditDaqument
             'SetupGridControls()
             Redraw()
 
+
+            ''Set the registry setting for zoom preferences for the user 
             Dim regKey As String
             Dim regValue As String
             regKey = "HKEY_LOCAL_MACHINE\Software\ISSI\Daqart\Settings"
@@ -215,19 +222,25 @@ Public Class EditDaqument
 
 
         Loaded = True
-        ShowPkgLayers()
-        Select Case DocumentMode
-            Case "Welds"
-                Dim ts As ToolStripMenuItem = New ToolStripMenuItem
-                ts.Text = "Select Weld Layer"
-                'gdv_WeldInfo.DataSource = myDoc.WeldPointInfoTable
-                TestToolStripMenuItem.DropDownItems.Add(ts)
-                AddHandler ts.Click, AddressOf tsmi_ViewWeldLayer_Click
 
-                ShowWeldLayers()
-                btnCreateNewLayer.Enabled = False
-                DeleteActiveLayerToolStripMenuItem.Enabled = False
-        End Select
+
+        ''updates the list of layers in again after layers and vectors have been added
+        ShowPkgLayers()
+
+
+        ' Select Case DocumentMode
+
+        '   Case "Welds"
+        '      Dim ts As ToolStripMenuItem = New ToolStripMenuItem
+        '       ts.Text = "Select Weld Layer"
+        '    'gdv_WeldInfo.DataSource = myDoc.WeldPointInfoTable
+        '        TestToolStripMenuItem.DropDownItems.Add(ts)
+        '        AddHandler ts.Click, AddressOf tsmi_ViewWeldLayer_Click
+
+        '         ShowWeldLayers()
+        '         btnCreateNewLayer.Enabled = False
+        '          DeleteActiveLayerToolStripMenuItem.Enabled = False
+        'End Select
 
     End Sub
 
@@ -435,16 +448,13 @@ Public Class EditDaqument
     End Sub
 
 
+    ''LoadAllLayerVectors()
+    ''for every layerId in the layerInfoTbl call LoadLayerVectors
     Private Sub LoadAllLayerVectors()
         Dim LayerID As String
         VectorIDCtr = 0
         Dim layerCtr As Integer = 0
-        'For Each ts As ToolStripMenuItem In Me.btnViewLayers.DropDownItems
-        '    LayerID = LayerInfoTbl.Rows(layerCtr)(0)
-        '    loadLayerVectors(LayerID)
-        '    layerCtr = layerCtr + 1
-        'Next
-
+      
         For Each ts As ToolStripMenuItem In Me.tsmi_SelectLayers.DropDownItems
             LayerID = LayerInfoTbl.Rows(layerCtr)(0)
             loadLayerVectors(LayerID)
@@ -463,7 +473,7 @@ Public Class EditDaqument
             End If
         Next
         'for comparing to see weld property is beinged
-        CloneOriginalWeldInfoTable = myDoc.WeldPointInfoTable.Copy
+        ''' CloneOriginalWeldInfoTable = myDoc.WeldPointInfoTable.Copy
 
     End Sub
 
@@ -567,7 +577,8 @@ Public Class EditDaqument
 
     End Sub
 
-
+    ''If the vector object isn't deleted and it isnt visible and its objectMode is a marking then
+    ''draw the appropriate graphic for Text, Pic, and Line.
     Public Sub embedLayerObjectOverlay(ByVal vec As EditDaqumentUtil.Vector)
         Dim g As Graphics = Graphics.FromImage(OverlayBM)
 
@@ -599,6 +610,7 @@ Public Class EditDaqument
             End If
         End If
     End Sub
+
 
 
     Private Sub RescaleVector(ByVal vec As EditDaqumentUtil.VectorMap, ByVal MagX As Single, ByVal MagY As Single)
@@ -3539,33 +3551,34 @@ Public Class EditDaqument
 
 
     Private Sub ShowWeldLayers()
-        btn_InsertWeld.Visible = True
-        btn_WeldList.Visible = True
-        btn_DefaultWeld.Visible = True
-        tsmi_SelectLayers.Enabled = False
-        Try
-            Dim dt As DataTable = myDoc.WeldLayerInfoTbl()
-            If dt.Rows.Count = 0 Then
-                'myDoc.AddNewLayer("Welds", "Weld Tracking")
-                'LayerInfoTbl = myDoc.WeldLayerInfoTbl()
-            End If
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        End Try
-        cbx_ActivateLayer.Items.Add("Welds")
-        cbx_ActivateLayer.SelectedIndex = cbx_ActivateLayer.Items.Count - 1
-        cbx_ActivateLayer.SelectedText = "Welds"
-        cbx_ActivateLayer.SelectedItem = "Welds"
-        cbx_ActivateLayer.Text = "Welds"
-        For Each tls As ToolStripMenuItem In Me.tsmi_SelectLayers.DropDownItems
 
-            tls.Checked = False
-            If tls.Text = "Welds" Then
-                tls.Checked = True
-            End If
-        Next
-        SelectLayerVectors()
-        SelectCurrentLayer()
+        ' btn_InsertWeld.Visible = True
+        'btn_WeldList.Visible = True
+        'btn_DefaultWeld.Visible = True
+        'tsmi_SelectLayers.Enabled = False
+        'Try
+        'Dim dt As DataTable = myDoc.WeldLayerInfoTbl()
+        'If dt.Rows.Count = 0 Then
+        'myDoc.AddNewLayer("Welds", "Weld Tracking")
+        'LayerInfoTbl = myDoc.WeldLayerInfoTbl()
+        'End If
+        'Catch ex As Exception
+        'MessageBox.Show(ex.Message)
+        'End Try
+        'cbx_ActivateLayer.Items.Add("Welds")
+        'cbx_ActivateLayer.SelectedIndex = cbx_ActivateLayer.Items.Count - 1
+        'cbx_ActivateLayer.SelectedText = "Welds"
+        'cbx_ActivateLayer.SelectedItem = "Welds"
+        'cbx_ActivateLayer.Text = "Welds"
+        'For Each tls As ToolStripMenuItem In Me.tsmi_SelectLayers.DropDownItems
+
+        'tls.Checked = False
+        'If tls.Text = "Welds" Then
+        'tls.Checked = True
+        'End If
+        'Next
+        'SelectLayerVectors()
+        'SelectCurrentLayer()
 
     End Sub
 
