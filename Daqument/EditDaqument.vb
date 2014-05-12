@@ -154,6 +154,15 @@ Public Class EditDaqument
             ''btn_ActiveLayer ToolStripMenuItem drop down menu
             ShowPkgLayers()
 
+            ''ResizePageWidth resizes the pictureBox1 container to the size of the users viewing window and sets the magnification
+            ''Then it calls secondary subroutine 
+            ''  ResizeDrawingView()
+            ''  resets the originalDocImage size based on the magX and magY variables then creates a new bitmap to that size
+            ''  myDoc.ResizeImage(newSize) scales the image as a ratio newsize/oldsize, creates a new image with the new size and returns it.
+            ''It then sets the image to transperent, places it in the pictureBox and sets the currentScalFactor as a ratio of pictureBox.width/originalSize.width
+            ''  CreatePageOverlay() Creates an overlay bitmap to the width/height of the pictureBox, and creates a drawingArea rectangle the size of the PictureBox
+            ''  CreateOverlay() Creates a drawingArea rectangle with pictureBoxImage1Copy called OverlayBM. For every layer in the dropdownitems get the layerID from 
+            ''  the layerInfoTbl and for each vector in list of vectors if the vec.layerID=LayerID call embedLayerObjectOverlay
             ResizePageWidth()
 
             LoadAllLayerVectors()
@@ -333,6 +342,9 @@ Public Class EditDaqument
         Return 0
     End Function
 
+
+    ''  CreateOverlay() Creates a drawingArea rectangle with pictureBoxImage1Copy called OverlayBM. For every layer in the dropdownitems get the layerID from 
+    ''  the layerInfoTbl and for each vector in list of vectors if the vec.layerID=LayerID call embedLayerObjectOverlay
     Private Sub CreateOverlay()
         OverlayBM = New Bitmap(Me.Width, Me.Height)
         Dim DrawingArea As Graphics = Graphics.FromImage(OverlayBM)
@@ -363,6 +375,8 @@ Public Class EditDaqument
     End Sub
 
     Private PageOverlayBM As Bitmap
+
+    '' CreatePageOverlay() Creates an overlay bitmap to the width/height of the pictureBox, and creates a drawingArea rectangle the size of the PictureBox
     Private Sub CreatePageOverlay(ByVal Img As Image)
         PageOverlayBM = New Bitmap(PictureBox1.Width, PictureBox1.Height)
         Dim DrawingArea As Graphics = Graphics.FromImage(PageOverlayBM)
@@ -649,6 +663,12 @@ Public Class EditDaqument
     End Sub
 
 
+
+    ''  resets the originalDocImage size based on the magX and magY variables then creates a new bitmap to that size
+    ''  myDoc.ResizeImage(newSize) scales the image as a ratio newsize/oldsize, creates a new image with the new size and returns it.
+    ''It then sets the image to transperent, places it in the pictureBox and sets the currentScalFactor as a ratio of pictureBox.width/originalSize.width
+    '' 
+    
     Private Function ResizeDrawingView(ByVal MagX As Single, ByVal MagY As Single) As Boolean
         Dim sX As Integer = MagX * myDoc.OriginalDrawingSize.Width
         Dim sY As Integer = MagY * myDoc.OriginalDrawingSize.Height
@@ -678,8 +698,12 @@ Public Class EditDaqument
         CurrentScaleFactor = PictureBox1.Size.Width / myDoc.OriginalDrawingSize.Width
 
 
-
+        '' CreatePageOverlay() Creates an overlay bitmap to the width/height of the pictureBox, and creates a drawingArea rectangle the size of the PictureBox
         CreatePageOverlay(bmp_Image)
+
+        ''  CreateOverlay() Creates a drawingArea rectangle with pictureBoxImage1Copy called OverlayBM. For every layer in the dropdownitems get the layerID from 
+        ''  the layerInfoTbl and for each vector in list of vectors if the vec.layerID=LayerID call embedLayerObjectOverlay
+
         CreateOverlay()
         For Each vec As EditDaqumentUtil.VectorMap In Vectors
             ClearSelectedBoundryBox(vec)
@@ -801,7 +825,8 @@ Public Class EditDaqument
 
     End Sub
 
-
+    ''Sets the pictureBox1 size to the picSize, sets the magnification variables
+    ''calls resizeDrawingView()
     Private Sub ResizePageWidth()
         Dim picSize As Size = New Size(Me.ClientRectangle.Size.Width - ScreenOffsetX, Me.ClientRectangle.Size.Height - ScreenOffsetY)
         Dim orgSize As Size = myDoc.OriginalDrawingSize
