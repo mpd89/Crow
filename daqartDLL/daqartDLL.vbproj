@@ -140,6 +140,7 @@
     <Compile Include="Calendar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CloudUtils.vb" />
     <Compile Include="DataGridViews.vb" />
     <Compile Include="connections.vb" />
     <Compile Include="DataUtils.vb" />
