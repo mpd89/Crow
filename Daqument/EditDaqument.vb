@@ -3489,5 +3489,12 @@ Public Class EditDaqument
 
 
 
+    Private Sub DesignTest_Click(sender As Object, e As EventArgs) Handles DesignTest.Click
+        Debug.Print("Design button works")
+        Dim docTest As Form1 = New Form1
+        docTest.Show()
+
+
+    End Sub
 End Class
 

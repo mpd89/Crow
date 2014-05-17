@@ -112,6 +112,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\daqartDLL\Interop.IMAGECONVERTERLib.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ReachFramework" />
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
@@ -129,9 +132,13 @@
     <Reference Include="System.Windows.Forms">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml">
       <Private>True</Private>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -155,6 +162,9 @@
     </Compile>
     <Compile Include="Category.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomDocumentViewer.xaml.vb">
+      <DependentUpon>CustomDocumentViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="DaqumentImport.Designer.vb">
       <DependentUpon>DaqumentImport.vb</DependentUpon>
@@ -190,6 +200,12 @@
       <DependentUpon>EditDaqumentViewName.vb</DependentUpon>
     </Compile>
     <Compile Include="EditDaqumentViewName.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmTblImport.Designer.vb">
@@ -319,6 +335,9 @@
     <Compile Include="Search.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UserControl1.xaml.vb">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewAssociations.Designer.vb">
       <DependentUpon>ViewAssociations.vb</DependentUpon>
     </Compile>
@@ -395,6 +414,9 @@
     <EmbeddedResource Include="EditDaqumentViewName.resx">
       <SubType>Designer</SubType>
       <DependentUpon>EditDaqumentViewName.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTblImport.resx">
       <SubType>Designer</SubType>
@@ -506,6 +528,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -528,6 +551,10 @@
     <ProjectReference Include="..\ReportManager\ReportManager.vbproj">
       <Project>{8E919518-AE2D-4A4E-92CF-45EC44CE8B67}</Project>
       <Name>ReportManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfDocumentViewer\WpfDocumentViewer.vbproj">
+      <Project>{764921A4-EA05-4B1E-8428-FC3AAD6B69B3}</Project>
+      <Name>WpfDocumentViewer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -644,6 +671,16 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="CustomDocumentViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
