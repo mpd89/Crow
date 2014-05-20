@@ -16,6 +16,7 @@ Imports DevExpress.Utils
 Imports Microsoft.Win32
 Imports Microsoft.Win32.Registry
 Imports Microsoft.Win32.RegistryKey
+Imports System.Windows.Media.Imaging
 
 
 
@@ -3491,9 +3492,59 @@ Public Class EditDaqument
 
     Private Sub DesignTest_Click(sender As Object, e As EventArgs) Handles DesignTest.Click
         Debug.Print("Design button works")
-        Dim docTest As Form1 = New Form1
-        docTest.Show()
 
+        '  Dim image As Image = myDoc.OriginalDocumentImage
+      
+
+
+        '''
+        Dim _DocumentID As String = DocumentID
+        Dim dt As DataTable
+        ''
+        Try
+            Dim query As String = "select * from document_store  where DocumentMUID = '" + _DocumentID + "'"
+
+            dt = runtime.SQLDaqument001.ExecuteQuery(query)
+
+            query = "select * from documents where MUID = '" + _DocumentID + "'"
+            If dt.Rows.Count = 0 Then
+                Debug.Print("DT ROWS IS O IN CUSTOM IMAGE GRAB")
+                Return
+            End If
+
+        Catch ex As Exception
+            Debug.Print("sql exception in custom image grab")
+        End Try
+
+        
+
+        ''If there are no documents returned from documentStore then return
+
+
+
+        ''Otherwise create a memorystream and set the local variable originalDocImage to the 
+        ''image in bytecode from the document_store
+        Dim imagedata() As Byte
+        Dim imageBytedata As MemoryStream
+        imagedata = dt.Rows(0)("DocumentImage")
+        imageBytedata = New MemoryStream(imagedata)
+        ' OriginalDocImage = image.FromStream(imageBytedata)
+
+        'Dim myImage As System.Windows.Controls.Image
+        ' myImage = System.Windows.Controls.Image.
+        Dim myBitmap As BitmapImage = New BitmapImage()
+        myBitmap.BeginInit()
+        myBitmap.StreamSource = imageBytedata
+        myBitmap.EndInit()
+
+        Dim imageEdit As New UserControl3
+        ' Dim lImage As System.Windows.Controls.Image = imageEdit.getImageView
+        imageEdit.setBitmap(myBitmap)
+        Dim docTest As New Form1
+        docTest.AutoSize = True
+        docTest.setControl(imageEdit)
+
+        docTest.Show()
 
     End Sub
 End Class

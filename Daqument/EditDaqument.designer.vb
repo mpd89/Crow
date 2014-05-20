@@ -128,11 +128,11 @@ Partial Class EditDaqument
         Me.cmsGridControlSaveView = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmsGridControlSelectView = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmdGridControlSaveViewAsNew = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DesignTest = New System.Windows.Forms.Button()
         Me.cmsPictureBox = New System.Windows.Forms.PictureBox()
         Me.picBoxDragHandle = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PicBox2 = New System.Windows.Forms.PictureBox()
-        Me.DesignTest = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -919,6 +919,15 @@ Partial Class EditDaqument
         Me.cmdGridControlSaveViewAsNew.Size = New System.Drawing.Size(244, 22)
         Me.cmdGridControlSaveViewAsNew.Text = "cmsGridControlSaveViewAsNew"
         '
+        'DesignTest
+        '
+        Me.DesignTest.Location = New System.Drawing.Point(656, 29)
+        Me.DesignTest.Name = "DesignTest"
+        Me.DesignTest.Size = New System.Drawing.Size(75, 23)
+        Me.DesignTest.TabIndex = 27
+        Me.DesignTest.Text = "DesignTest"
+        Me.DesignTest.UseVisualStyleBackColor = True
+        '
         'cmsPictureBox
         '
         Me.cmsPictureBox.Location = New System.Drawing.Point(258, 368)
@@ -954,15 +963,6 @@ Partial Class EditDaqument
         Me.PicBox2.Size = New System.Drawing.Size(41, 35)
         Me.PicBox2.TabIndex = 15
         Me.PicBox2.TabStop = False
-        '
-        'DesignTest
-        '
-        Me.DesignTest.Location = New System.Drawing.Point(656, 29)
-        Me.DesignTest.Name = "DesignTest"
-        Me.DesignTest.Size = New System.Drawing.Size(75, 23)
-        Me.DesignTest.TabIndex = 27
-        Me.DesignTest.Text = "DesignTest"
-        Me.DesignTest.UseVisualStyleBackColor = True
         '
         'EditDaqument
         '

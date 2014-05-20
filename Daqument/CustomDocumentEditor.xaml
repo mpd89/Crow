@@ -1,0 +1,38 @@
+﻿<UserControl  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="UserControl3" 
+             mc:Ignorable="d" Width="{Binding ElementName=imageViewer1, Mode=OneWay}" Height="{Binding ElementName=imageViewer1, Mode=OneWay}" 
+   >
+    
+
+    <!-- <UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="UserControl3" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    -->
+    <Grid HorizontalAlignment="Left"  VerticalAlignment="Top"  >
+     
+        <InkCanvas Name="inkCanvas" Background="#11FFFFFF" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="-10,0,0,0" >
+
+            <Image Name="imageViewer1" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="Auto" Height="Auto"/>
+           
+
+        </InkCanvas>
+        <Button Content="Highlighter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="72" Click="Button_Click"/>
+        <Button Content="Pen" HorizontalAlignment="Left" Margin="72,0,0,0" VerticalAlignment="Top" Width="47" Click="Pen_Click"/>
+        <Button  Content="Eraser" HorizontalAlignment="Left" Margin="119,0,0,0" VerticalAlignment="Top" Width="47" Click="Eraser_Click"/>
+        <Button Content="Select" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="47" Click="Select_Click" />
+        <Button Content="Save" HorizontalAlignment="Left" Margin="213,0,0,0" VerticalAlignment="Top" Width="47" Click="Save_Click" />
+        <Button  Content="Load" HorizontalAlignment="Left" Margin="260,0,0,0" VerticalAlignment="Top" Width="47" Click="Load_Click" />
+    </Grid>
+
+
+</UserControl>
+<!--</UserControl> -->
