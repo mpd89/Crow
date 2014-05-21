@@ -22,15 +22,19 @@
         <InkCanvas Name="inkCanvas" Background="#11FFFFFF" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="-10,0,0,0" >
 
             <Image Name="imageViewer1" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="Auto" Height="Auto"/>
-           
+          
+
 
         </InkCanvas>
         <Button Content="Highlighter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="72" Click="Button_Click"/>
         <Button Content="Pen" HorizontalAlignment="Left" Margin="72,0,0,0" VerticalAlignment="Top" Width="47" Click="Pen_Click"/>
         <Button  Content="Eraser" HorizontalAlignment="Left" Margin="119,0,0,0" VerticalAlignment="Top" Width="47" Click="Eraser_Click"/>
         <Button Content="Select" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="47" Click="Select_Click" />
-        <Button Content="Save" HorizontalAlignment="Left" Margin="213,0,0,0" VerticalAlignment="Top" Width="47" Click="Save_Click" />
-        <Button  Content="Load" HorizontalAlignment="Left" Margin="260,0,0,0" VerticalAlignment="Top" Width="47" Click="Load_Click" />
+        <Button Content="Save" HorizontalAlignment="Left" Margin="213,0,0,0" VerticalAlignment="Top" Width="31" Click="Save_Click" />
+        <Button  Content="Load" HorizontalAlignment="Left" Margin="244,0,0,0" VerticalAlignment="Top" Width="33" Click="Load_Click" />
+        <Button  Content="Users" HorizontalAlignment="Left" Margin="277,0,0,0" VerticalAlignment="Top" Width="34" Click="Users_Click" />
+    <ListBox Name="listBox1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    
     </Grid>
 
 

@@ -17,7 +17,8 @@ Imports Microsoft.Win32
 Imports Microsoft.Win32.Registry
 Imports Microsoft.Win32.RegistryKey
 Imports System.Windows.Media.Imaging
-
+Imports System.Data.SqlServerCe
+Imports System.Data.SqlClient
 
 
 Public Class EditDaqument
