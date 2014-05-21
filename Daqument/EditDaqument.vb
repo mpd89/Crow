@@ -3538,7 +3538,7 @@ Public Class EditDaqument
         myBitmap.StreamSource = imageBytedata
         myBitmap.EndInit()
 
-        Dim imageEdit As New UserControl3
+        Dim imageEdit As New CustumDocumentEditor
         ' Dim lImage As System.Windows.Controls.Image = imageEdit.getImageView
         imageEdit.setBitmap(myBitmap)
         Dim docTest As New Form1

@@ -3,3 +3,4 @@ DevExpress.XtraEditors.Repository.RepositoryItemComboBox, DevExpress.XtraEditors
 DevExpress.XtraVerticalGrid.VGridControl, DevExpress.XtraVerticalGrid.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.Xpf.Editors.ImageEdit, DevExpress.Xpf.Core.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.Xpf.Editors.PopupColorEdit, DevExpress.Xpf.Core.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.Xpf.Editors.ColorEdit, DevExpress.Xpf.Core.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
