@@ -11,7 +11,7 @@ Public Class DataUtils
     Dim ThisCabinet As String
     Dim sqlCmd As SqlCommand = Nothing
     Dim sqlCeCmd As SqlCeCommand = Nothing
-
+    Dim connCount As Integer = 0
     Private thisProject As String
 
 
@@ -36,7 +36,8 @@ Public Class DataUtils
                 Dim connStr As String = Nothing
                 ' connStr = "Data Source=""" + runtime.SQLIP + "," + runtime.SQLPort + """;uid=sa;pwd=Al@ska2014"
                 connStr = "Data Source=""" + runtime.SQLIP + "," + runtime.SQLPort + """;uid=daqart_sa;pwd=p@ssW0rd"
-                Debug.Print("string in datautils is " + connStr)
+                connCount = connCount + 1
+                Debug.Print("The OpenConnection Count is currently: " + connCount.ToString)
                 connSQL = New SqlClient.SqlConnection(connStr)
 
                 'UseStatement = "Use [" + ThisDB + "] "

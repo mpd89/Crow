@@ -20,7 +20,7 @@ Imports System.Drawing
 
 
 Public Class Utilities
-
+    Dim testCount As Integer = 0
     Public Shared Function GetDirectory()
         Dim thisDir As String = System.IO.Directory.GetCurrentDirectory
         Return thisDir
@@ -962,6 +962,7 @@ Public Class Utilities
 
 
     Public Shared Function GetOwners() As System.Data.DataTable
+        Debug.Print("utilities.getowners hit")
         Dim query As String = "Select * From owner Order By Aux05"
         Dim dt As DataTable = runtime.SQLServer.ExecuteQuery(query)
 

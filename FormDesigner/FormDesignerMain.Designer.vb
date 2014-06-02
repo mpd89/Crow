@@ -23,65 +23,66 @@ Partial Class FormDesignerMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormDesignerMain))
-        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.ImportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ExportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
-        Me.cboDataType = New System.Windows.Forms.ToolStripComboBox
-        Me.cboColor = New System.Windows.Forms.ToolStripTextBox
-        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog
-        Me.FontDialog1 = New System.Windows.Forms.FontDialog
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
-        Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem
-        Me.SaveToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.SaveExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ExportBaseDocumentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.mnuOptionApplySelection = New System.Windows.Forms.ToolStripMenuItem
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.TsAttributeSelection = New System.Windows.Forms.ToolStripComboBox
-        Me.ApplyWeightPercentageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.TsApplyWtPcnt = New System.Windows.Forms.ToolStripComboBox
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
-        Me.mnuFonts = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel
-        Me.mnuFontFamily = New System.Windows.Forms.ToolStripTextBox
-        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel
-        Me.mnuFontSize = New System.Windows.Forms.ToolStripTextBox
-        Me.mnuBtnTxtColor = New System.Windows.Forms.ToolStripLabel
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator
-        Me.TsBtn_Color = New System.Windows.Forms.ToolStripButton
-        Me.mnuTxtColor = New System.Windows.Forms.ToolStripTextBox
-        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator
-        Me.mnuBtnDefaultValue = New System.Windows.Forms.ToolStripLabel
-        Me.mnuDefaultValue = New System.Windows.Forms.ToolStripTextBox
-        Me.ToolStripLabel5 = New System.Windows.Forms.ToolStripLabel
-        Me.mnuWeight = New System.Windows.Forms.ToolStripTextBox
-        Me.ToolStripLabel6 = New System.Windows.Forms.ToolStripLabel
-        Me.mnuDataType = New System.Windows.Forms.ToolStripComboBox
-        Me.ToolStripPageSelected = New System.Windows.Forms.ToolStripTextBox
-        Me.TsBtn_First = New System.Windows.Forms.ToolStripButton
-        Me.TsBtn_Previous = New System.Windows.Forms.ToolStripButton
-        Me.TsBtn_Next = New System.Windows.Forms.ToolStripButton
-        Me.TsBtn_Last = New System.Windows.Forms.ToolStripButton
-        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer
-        Me.lblSampleFont = New System.Windows.Forms.Label
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.TreeView1 = New System.Windows.Forms.TreeView
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.cboUserVar = New DevExpress.XtraEditors.ComboBoxEdit
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.TabControl1 = New System.Windows.Forms.TabControl
-        Me.TabPage1 = New System.Windows.Forms.TabPage
+        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ImportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.cboDataType = New System.Windows.Forms.ToolStripComboBox()
+        Me.cboColor = New System.Windows.Forms.ToolStripTextBox()
+        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
+        Me.FontDialog1 = New System.Windows.Forms.FontDialog()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExportBaseDocumentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuOptionApplySelection = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TsAttributeSelection = New System.Windows.Forms.ToolStripComboBox()
+        Me.ApplyWeightPercentageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TsApplyWtPcnt = New System.Windows.Forms.ToolStripComboBox()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.mnuFonts = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
+        Me.mnuFontFamily = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.mnuFontSize = New System.Windows.Forms.ToolStripTextBox()
+        Me.mnuBtnTxtColor = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.TsBtn_Color = New System.Windows.Forms.ToolStripButton()
+        Me.mnuTxtColor = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuBtnDefaultValue = New System.Windows.Forms.ToolStripLabel()
+        Me.mnuDefaultValue = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripLabel5 = New System.Windows.Forms.ToolStripLabel()
+        Me.mnuWeight = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripLabel6 = New System.Windows.Forms.ToolStripLabel()
+        Me.mnuDataType = New System.Windows.Forms.ToolStripComboBox()
+        Me.ToolStripPageSelected = New System.Windows.Forms.ToolStripTextBox()
+        Me.TsBtn_First = New System.Windows.Forms.ToolStripButton()
+        Me.TsBtn_Previous = New System.Windows.Forms.ToolStripButton()
+        Me.TsBtn_Next = New System.Windows.Forms.ToolStripButton()
+        Me.TsBtn_Last = New System.Windows.Forms.ToolStripButton()
+        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.lblSampleFont = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.TreeView1 = New System.Windows.Forms.TreeView()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cboUserVar = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
@@ -99,42 +100,42 @@ Partial Class FormDesignerMain
         'NewToolStripMenuItem
         '
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.NewToolStripMenuItem.Text = "New"
         '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.SaveToolStripMenuItem.Text = "Save"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(114, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(107, 6)
         '
         'ImportToolStripMenuItem
         '
         Me.ImportToolStripMenuItem.Name = "ImportToolStripMenuItem"
-        Me.ImportToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.ImportToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.ImportToolStripMenuItem.Text = "Import"
         '
         'ExportToolStripMenuItem
         '
         Me.ExportToolStripMenuItem.Name = "ExportToolStripMenuItem"
-        Me.ExportToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.ExportToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.ExportToolStripMenuItem.Text = "Export"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'StatusStrip1
@@ -149,7 +150,7 @@ Partial Class FormDesignerMain
         '
         Me.cboDataType.Items.AddRange(New Object() {"Text", "CheckBox", "Time&Date", "NumericValue", ""})
         Me.cboDataType.Name = "cboDataType"
-        Me.cboDataType.Size = New System.Drawing.Size(80, 21)
+        Me.cboDataType.Size = New System.Drawing.Size(80, 23)
         '
         'cboColor
         '
@@ -171,72 +172,72 @@ Partial Class FormDesignerMain
         '
         Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveToolStripMenuItem1, Me.ExitToolStripMenuItem1, Me.SaveExitToolStripMenuItem, Me.ExportBaseDocumentToolStripMenuItem})
         Me.mnuFile.Name = "mnuFile"
-        Me.mnuFile.Size = New System.Drawing.Size(35, 20)
+        Me.mnuFile.Size = New System.Drawing.Size(37, 20)
         Me.mnuFile.Text = "File"
         '
         'SaveToolStripMenuItem1
         '
         Me.SaveToolStripMenuItem1.Name = "SaveToolStripMenuItem1"
-        Me.SaveToolStripMenuItem1.Size = New System.Drawing.Size(194, 22)
+        Me.SaveToolStripMenuItem1.Size = New System.Drawing.Size(193, 22)
         Me.SaveToolStripMenuItem1.Text = "Save"
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Image = Global.FormDesigner.My.Resources.Resources.Logout
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(194, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(193, 22)
         Me.ExitToolStripMenuItem1.Text = "Exit"
         '
         'SaveExitToolStripMenuItem
         '
         Me.SaveExitToolStripMenuItem.Name = "SaveExitToolStripMenuItem"
-        Me.SaveExitToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
+        Me.SaveExitToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
         Me.SaveExitToolStripMenuItem.Text = "Save & Exit"
         '
         'ExportBaseDocumentToolStripMenuItem
         '
         Me.ExportBaseDocumentToolStripMenuItem.Name = "ExportBaseDocumentToolStripMenuItem"
-        Me.ExportBaseDocumentToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
+        Me.ExportBaseDocumentToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
         Me.ExportBaseDocumentToolStripMenuItem.Text = "Export Base Document"
         '
         'mnuOptionApplySelection
         '
         Me.mnuOptionApplySelection.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ApplyWeightPercentageToolStripMenuItem})
         Me.mnuOptionApplySelection.Name = "mnuOptionApplySelection"
-        Me.mnuOptionApplySelection.Size = New System.Drawing.Size(56, 20)
+        Me.mnuOptionApplySelection.Size = New System.Drawing.Size(61, 20)
         Me.mnuOptionApplySelection.Text = "Options"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TsAttributeSelection})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(207, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(208, 22)
         Me.ToolStripMenuItem1.Text = "Attribute selection"
         '
         'TsAttributeSelection
         '
         Me.TsAttributeSelection.Items.AddRange(New Object() {"Apply selection to all", "Reset after each entry"})
         Me.TsAttributeSelection.Name = "TsAttributeSelection"
-        Me.TsAttributeSelection.Size = New System.Drawing.Size(121, 21)
+        Me.TsAttributeSelection.Size = New System.Drawing.Size(121, 23)
         Me.TsAttributeSelection.Text = "Reset after each entry"
         '
         'ApplyWeightPercentageToolStripMenuItem
         '
         Me.ApplyWeightPercentageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TsApplyWtPcnt})
         Me.ApplyWeightPercentageToolStripMenuItem.Name = "ApplyWeightPercentageToolStripMenuItem"
-        Me.ApplyWeightPercentageToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.ApplyWeightPercentageToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
         Me.ApplyWeightPercentageToolStripMenuItem.Text = "Apply Weight Percentage"
         '
         'TsApplyWtPcnt
         '
         Me.TsApplyWtPcnt.Items.AddRange(New Object() {"Equally to all", "Select individually"})
         Me.TsApplyWtPcnt.Name = "TsApplyWtPcnt"
-        Me.TsApplyWtPcnt.Size = New System.Drawing.Size(121, 21)
+        Me.TsApplyWtPcnt.Size = New System.Drawing.Size(121, 23)
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'ToolStrip1
@@ -254,7 +255,7 @@ Partial Class FormDesignerMain
         Me.mnuFonts.Image = CType(resources.GetObject("mnuFonts.Image"), System.Drawing.Image)
         Me.mnuFonts.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.mnuFonts.Name = "mnuFonts"
-        Me.mnuFonts.Size = New System.Drawing.Size(38, 22)
+        Me.mnuFonts.Size = New System.Drawing.Size(40, 22)
         Me.mnuFonts.Text = "Fonts"
         '
         'ToolStripLabel1
@@ -536,6 +537,7 @@ Partial Class FormDesignerMain
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel1.PerformLayout()
         Me.SplitContainer1.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         CType(Me.cboUserVar.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)

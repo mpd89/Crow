@@ -75,8 +75,9 @@ Public Class PackageView
     Private TtlFormPercentComplete As Single
     Private TtlFormEarnedManHours As Single
     Private TtlFormRequiredManHours As Single
-
-
+    Private ownerCount As Integer = 0
+    Private groupCount As Integer = 0
+    Private discCount As Integer = 0
     Private SelectedTagMUID As String
     Private SelectedFormMUID As String
 
@@ -240,11 +241,12 @@ Public Class PackageView
         OwnerID.DataSource = GetOwner()
         OwnerID.DisplayMember = GetOwner().Columns("Name").ToString
         OwnerID.ValueMember = GetOwner().Columns("MUID").ToString
-
+        Dim groupData As DataTable = GetGroup()
         GroupID.DataSource = GetGroup()
-        GroupID.DisplayMember = GetGroup().Columns("Name").ToString
-        GroupID.ValueMember = GetGroup().Columns("MUID").ToString
-
+        GroupID.DisplayMember = groupData.Columns("Name").ToString
+        'GroupID.DisplayMember = GetGroup().Columns("Name").ToString
+        ' GroupID.ValueMember = GetGroup().Columns("MUID").ToString
+        GroupID.ValueMember = groupData.Columns("MUID").ToString
         DisciplineID.DataSource = GetDiscipline()
         DisciplineID.DisplayMember = GetDiscipline().Columns("Name").ToString
         DisciplineID.ValueMember = GetDiscipline().Columns("MUID").ToString
@@ -301,6 +303,8 @@ Public Class PackageView
 
 
     Private Function GetOwner() As DataTable
+        ownerCount = ownerCount + 1
+        ' Debug.Print("The number of calls to GetOwner is currently: " + ownerCount.ToString)
         Dim query As String = "Select * From Owner ORDER BY Name ASC"
         Dim dt As DataTable = sqlSrvUtils.ExecuteQuery(query)
         Return dt
@@ -308,6 +312,8 @@ Public Class PackageView
 
 
     Private Function GetGroup() As DataTable
+        groupCount = groupCount + 1
+        Debug.Print("The number of calls to GetGroup is currently: " + groupCount.ToString)
         Dim query As String = "Select * From groups ORDER BY Name ASC"
         Dim dt As DataTable = sqlSrvUtils.ExecuteQuery(query)
         Return dt
@@ -315,6 +321,8 @@ Public Class PackageView
 
 
     Private Function GetDiscipline() As DataTable
+        discCount = discCount + 1
+        Debug.Print("Get Discipline has been called: " + discCount.ToString)
         Dim query As String
         query = "Select * From discipline ORDER BY Name ASC"
         Dim dt As DataTable = sqlSrvUtils.ExecuteQuery(query)

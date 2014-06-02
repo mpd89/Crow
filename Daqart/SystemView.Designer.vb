@@ -22,54 +22,55 @@ Partial Class SystemView
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SystemView))
-        Me.SystemWindow = New System.Windows.Forms.SplitContainer
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.SystemTree = New System.Windows.Forms.TreeView
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
-        Me.btn_ProjectITS = New System.Windows.Forms.ToolStripButton
-        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer
-        Me.SystemMenu = New System.Windows.Forms.Panel
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.cbx_Owners = New System.Windows.Forms.ComboBox
-        Me.btn_GetOverview = New System.Windows.Forms.Button
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.tbx_SystemNumber = New System.Windows.Forms.TextBox
-        Me.tbc_Main = New System.Windows.Forms.TabControl
-        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
-        Me.tsb_RefreshOverview = New System.Windows.Forms.ToolStripButton
-        Me.tsb_PrintOverview = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.tsb_OverviewClose = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.tsb_GetSystemDiscrepancies = New System.Windows.Forms.ToolStripButton
-        Me.tsb_GetSystemPunchlist = New System.Windows.Forms.ToolStripButton
-        Me.tsb_PkgShortForm = New System.Windows.Forms.ToolStripDropDownButton
-        Me.PrintPkgShortFormToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PrintSystemPackagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.btn_EniExport = New System.Windows.Forms.ToolStripButton
-        Me.cmsMessages = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.NewToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.EditToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.DeleteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.RefreshToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
-        Me.lbl_Message = New System.Windows.Forms.ToolStripStatusLabel
-        Me.tsl_SiteLabel = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ProjectStatusInd = New System.Windows.Forms.ToolStripStatusLabel
+        Me.SystemWindow = New System.Windows.Forms.SplitContainer()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.SystemTree = New System.Windows.Forms.TreeView()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.btn_ProjectITS = New System.Windows.Forms.ToolStripButton()
+        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.SystemMenu = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.cbx_Owners = New System.Windows.Forms.ComboBox()
+        Me.btn_GetOverview = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.tbx_SystemNumber = New System.Windows.Forms.TextBox()
+        Me.tbc_Main = New System.Windows.Forms.TabControl()
+        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsb_RefreshOverview = New System.Windows.Forms.ToolStripButton()
+        Me.tsb_PrintOverview = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsb_OverviewClose = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsb_GetSystemDiscrepancies = New System.Windows.Forms.ToolStripButton()
+        Me.tsb_GetSystemPunchlist = New System.Windows.Forms.ToolStripButton()
+        Me.tsb_PkgShortForm = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.PrintPkgShortFormToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintSystemPackagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btn_EniExport = New System.Windows.Forms.ToolStripButton()
+        Me.cmsMessages = New System.Windows.Forms.ContextMenuStrip()
+        Me.NewToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RefreshToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip()
+        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.lbl_Message = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tsl_SiteLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ProjectStatusInd = New System.Windows.Forms.ToolStripStatusLabel()
+        CType(Me.SystemWindow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SystemWindow.Panel1.SuspendLayout()
         Me.SystemWindow.Panel2.SuspendLayout()
         Me.SystemWindow.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.SystemMenu.SuspendLayout()
@@ -419,8 +420,8 @@ Partial Class SystemView
         '
         Me.tsl_SiteLabel.BackColor = System.Drawing.SystemColors.Control
         Me.tsl_SiteLabel.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
-                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
-                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.tsl_SiteLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner
         Me.tsl_SiteLabel.Name = "tsl_SiteLabel"
         Me.tsl_SiteLabel.Size = New System.Drawing.Size(117, 19)
@@ -430,8 +431,8 @@ Partial Class SystemView
         '
         Me.ProjectStatusInd.BackColor = System.Drawing.SystemColors.Control
         Me.ProjectStatusInd.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
-                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
-                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.ProjectStatusInd.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner
         Me.ProjectStatusInd.Name = "ProjectStatusInd"
         Me.ProjectStatusInd.Size = New System.Drawing.Size(124, 19)
@@ -450,12 +451,14 @@ Partial Class SystemView
         Me.SystemWindow.Panel1.ResumeLayout(False)
         Me.SystemWindow.Panel2.ResumeLayout(False)
         Me.SystemWindow.Panel2.PerformLayout()
+        CType(Me.SystemWindow, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SystemWindow.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.SplitContainer1.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.SystemMenu.ResumeLayout(False)
         Me.SystemMenu.PerformLayout()

@@ -504,6 +504,7 @@ Public Class FormUtils
 
     Public Sub New(ByVal FormID As String, ByVal aTagID As String, ByVal OwnerID As String, ByVal FormMode As String)
         Dim qry As String = " SELECT MultiElement,NumberofElements FROM forms WHERE MUID = '" + FormID.ToString + "'"
+        Debug.Print("New formUtils created")
         'Dim sqlPrjUtils As DataUtils = New DataUtils("project")
         'sqlPrjUtils.OpenConnection()
         _FormMode = FormMode
@@ -526,7 +527,7 @@ Public Class FormUtils
             Dim myTbl As DataTable = runtime.SQLProject.ExecuteQuery(qry)
             PackageID = myTbl.Rows(0)(2)
 
-
+            ''Unused Query
             qry = " SELECT * FROM tags WHERE PackageMUID = '" + PackageID.ToString + "' AND " + _
                 " TypeMUID = '" + _TypeID + "'"
             'dt_TagList = sqlPrjUtils.ExecuteQuery(qry)
@@ -540,6 +541,7 @@ Public Class FormUtils
             For i As Integer = 0 To dt.Rows.Count - 1
                 qry = "SELECT * From tags WHERE TypeMUID = '" + dt.Rows(i)(0) + "'" + " AND PackageMUID = '" + PackageID.ToString + "'"
                 Dim dtTag As DataTable = runtime.SQLProject.ExecuteQuery(qry)
+                'First time through
                 If dt_TagList.Columns.Count = 0 Then
                     For Each col As DataColumn In dtTag.Columns
                         dt_TagList.Columns.Add(col.ColumnName)
@@ -547,9 +549,14 @@ Public Class FormUtils
                     dt_TagList.Columns.Add("ReqMUID")
                 End If
                 If dtTag.Rows.Count > 0 Then
+                    Debug.Print("FormUtils hit test")
+                    'For every row in the tag List
                     For u As Integer = 0 To dtTag.Rows.Count - 1
+                        'Add a row
                         dt_TagList.Rows.Add()
+                        '  For every column in dt_tagList (which is the same as the tag columns except for the ReqMUID column
                         For a As Integer = 0 To dt_TagList.Columns.Count - 2
+                            '               'The last row of the dt_tagList and for each column set it equal to 
                             dt_TagList.Rows(dt_TagList.Rows.Count - 1)(a) = dtTag.Rows(u)(a)
                         Next
                         dt_TagList.Rows(dt_TagList.Rows.Count - 1)(dt_TagList.Columns.Count - 1) = dt.Rows(i)(0)
@@ -1823,11 +1830,20 @@ Public Class FormUtils
     Private Sub GetElementVarValue(ByRef itm As formItem)
         Dim query As String = Nothing
         'Dim dt As New DataTable
+        'Example of aux_field_info
+        'Element17@contractor_initials&001Element2@contractor_initials&001&001&0010&001-986896&001Number&0011&001&0019&001532&001310&001115&00125&001109&001Segoe UI&0019&001False&001False&001False&0010&001Element2@contractor_initials&001
+        'This will be hit if the field says Element
+        'itm.FieldName = Element17@contractorinitials
+
 
         Dim NameArray() As String = Split(itm.FieldName, "@")
-        Dim ElementNumber As Integer = CInt(Replace(NameArray(0), "Element", ""))
-        Dim ElementField As String = NameArray(1)
+        'NameArray will contain [Element17, contractorinitials ]
 
+        Dim ElementNumber As Integer = CInt(Replace(NameArray(0), "Element", ""))
+        'ElementNumber = 17
+
+        Dim ElementField As String = NameArray(1)
+        'ElementField = contractorinitials
         If ElementNumber < TagCount + 1 Then
 
             If ElementField = "TagNumber" Then
@@ -1870,15 +1886,15 @@ Public Class FormUtils
                 End If
             End If
 
+            'Select FieldValue that corresponds to the elementNumber 
             query = "SELECT * FROM forms_update WHERE " & _
                     " RequirementMUID = '" + GetMERequirementID(dt_TagList.Rows(ElementNumber - 1)(0).ToString, "Tag") + "'" & _
                     " AND FieldMUID = '" + itm.FieldID.ToString + "'" & _
                     " AND SourceMUID = '" + dt_TagList.Rows(ElementNumber - 1)(0).ToString + "'" & _
                     " AND SourceType = 'Tag'"
-            'dt = Utilities.ExecuteQuery(query, "project")
-            'sqlPrjUtils.OpenConnection()
+       
             dt = runtime.SQLProject.ExecuteQuery(query)
-            'sqlPrjUtils.CloseConnection()
+
 
             If Not dt.Rows.Count = 0 Then
                 itm.Value = dt.Rows(0)("FieldValue")
@@ -1905,7 +1921,7 @@ Public Class FormUtils
         Dim query As String = "SELECT AuxData, MUID FROM aux_forms_info WHERE FormMUID = '" + _FrmID.ToString + "'"
         'sqlPrjUtils.OpenConnection()
         Dim dt As DataTable = runtime.SQLProject.ExecuteQuery(query)
-
+        Debug.Print("row count for form is " + dt.Rows.Count.ToString)
         For i As Integer = 0 To dt.Rows.Count - 1
             Try
                 'Dim myVars() As String = Split(read(0), "&001")

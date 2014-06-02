@@ -19,7 +19,6 @@ Partial Class EditDaqument
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditDaqument))
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.btnSave = New System.Windows.Forms.ToolStripButton()
@@ -103,7 +102,7 @@ Partial Class EditDaqument
         Me.tsmi_HideAllLayers = New System.Windows.Forms.ToolStripMenuItem()
         Me.GrayscaleInactiveLayer = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmi_SelectLayers = New System.Windows.Forms.ToolStripMenuItem()
-        Me.cms1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.cms1 = New System.Windows.Forms.ContextMenuStrip()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.sfd1 = New System.Windows.Forms.SaveFileDialog()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
@@ -123,7 +122,7 @@ Partial Class EditDaqument
         Me.btn_InsertWeld = New System.Windows.Forms.ToolStripButton()
         Me.btn_WeldList = New System.Windows.Forms.ToolStripButton()
         Me.btn_DefaultWeld = New System.Windows.Forms.ToolStripButton()
-        Me.cmsGridControl = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.cmsGridControl = New System.Windows.Forms.ContextMenuStrip()
         Me.cmsGridControlClose = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmsGridControlSaveView = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmsGridControlSelectView = New System.Windows.Forms.ToolStripMenuItem()

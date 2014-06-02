@@ -1139,4 +1139,5 @@ Public Class FormDesignerMain
     '    End If
     '    FormEditManager.FormClosed(Me.Text)
     'End Sub
+
 End Class

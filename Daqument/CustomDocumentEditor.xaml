@@ -27,7 +27,10 @@
 
 
         </InkCanvas>
-        <Button Content="Highlighter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="72" Click="Button_Click"/>
+        <Button Name="Highlighter" HorizontalAlignment="Left" VerticalAlignment="Top"  Height="39" Width="39" Click="Button_Click" Margin="0,1,0,0" >
+           
+        </Button>
+
         <Button Content="Pen" HorizontalAlignment="Left" Margin="72,0,0,0" VerticalAlignment="Top" Width="47" Click="Pen_Click"/>
         <Button  Content="Eraser" HorizontalAlignment="Left" Margin="119,0,0,0" VerticalAlignment="Top" Width="47" Click="Eraser_Click"/>
         <Button Content="Select" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="47" Click="Select_Click" />
@@ -35,7 +38,7 @@
         <Button  Content="Load" HorizontalAlignment="Left" Margin="244,0,0,0" VerticalAlignment="Top" Width="33" Click="Load_Click" />
         <Button  Content="Users" HorizontalAlignment="Left" Margin="277,0,0,0" VerticalAlignment="Top" Width="34" />
         <ComboBox  Name="comboBox1"  HorizontalAlignment="Right"  VerticalAlignment="Top"/>
-        <Slider Name="slider1" HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="0,22,0,0" Width="63"/>
+        <Slider Name="slider1" HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="0,22,-24,0" Width="63"/>
         <dxe:PopupColorEdit Name="popColor1" HorizontalAlignment="Left" Margin="-78,38,0,0" VerticalAlignment="Top" Width="150" ShowBorder="False"/>
 
 

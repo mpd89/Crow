@@ -33,6 +33,7 @@ Public Class SystemView
     Dim strtemp As String
     Dim stredit As String
     Dim logoPath As String
+    Dim hitCount As Integer = 0
     Dim logoImg As Image
     Dim PercentCompleteImagePath As String
     Private printPgHdr As String = ""
@@ -331,6 +332,8 @@ Public Class SystemView
             Dim qry = " SELECT MUID, PackageNumber, Description, GroupMUID, OwnerMUID, DisciplineMUID " + _
                     " FROM  Package WHERE SystemMUID LIKE '%" + tbx_SystemNumber.Tag + "%' AND OwnerMUID = '" + _
                     thisOwnerMUID + "'"
+            hitCount = hitCount + 1
+            Debug.Print("Grid Short Form Report has been called: " + hitCount.ToString + " times")
             Dim sqlPrjUtils As DataUtils = New DataUtils("project")
             sqlPrjUtils.OpenConnection()
             Dim pkgTbl As DataTable = sqlPrjUtils.ExecuteQuery(qry)
@@ -864,4 +867,7 @@ Public Class SystemView
     End Sub
 
 
+    Private Sub tbc_Main_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tbc_Main.SelectedIndexChanged
+
+    End Sub
 End Class

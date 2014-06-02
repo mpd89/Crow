@@ -20,34 +20,34 @@ Partial Class FormView
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormView))
-        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip
-        Me.btnPageSetup = New System.Windows.Forms.ToolStripButton
-        Me.Btn_Print = New System.Windows.Forms.ToolStripButton
-        Me.ViewFormLog = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.TsBtn_Save = New System.Windows.Forms.ToolStripButton
-        Me.TsBtn_Submit = New System.Windows.Forms.ToolStripButton
-        Me.btn_Recall = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.TsBtn_Reject = New System.Windows.Forms.ToolStripButton
-        Me.TsBtn_Accept = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
-        Me.TsBtn_Help = New System.Windows.Forms.ToolStripButton
-        Me.btnFirst = New System.Windows.Forms.ToolStripButton
-        Me.btnPrevious = New System.Windows.Forms.ToolStripButton
-        Me.tbxPgNum = New System.Windows.Forms.ToolStripTextBox
-        Me.btnNext = New System.Windows.Forms.ToolStripButton
-        Me.btnLast = New System.Windows.Forms.ToolStripButton
-        Me.TsBtn_Unlock = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator
-        Me.btnZoomIn = New System.Windows.Forms.ToolStripButton
-        Me.btnZoomOut = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel
-        Me.cboVarSearch = New System.Windows.Forms.ToolStripComboBox
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
-        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog
+        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.btnPageSetup = New System.Windows.Forms.ToolStripButton()
+        Me.Btn_Print = New System.Windows.Forms.ToolStripButton()
+        Me.ViewFormLog = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.TsBtn_Save = New System.Windows.Forms.ToolStripButton()
+        Me.TsBtn_Submit = New System.Windows.Forms.ToolStripButton()
+        Me.btn_Recall = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.TsBtn_Reject = New System.Windows.Forms.ToolStripButton()
+        Me.TsBtn_Accept = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.TsBtn_Help = New System.Windows.Forms.ToolStripButton()
+        Me.btnFirst = New System.Windows.Forms.ToolStripButton()
+        Me.btnPrevious = New System.Windows.Forms.ToolStripButton()
+        Me.tbxPgNum = New System.Windows.Forms.ToolStripTextBox()
+        Me.btnNext = New System.Windows.Forms.ToolStripButton()
+        Me.btnLast = New System.Windows.Forms.ToolStripButton()
+        Me.TsBtn_Unlock = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnZoomIn = New System.Windows.Forms.ToolStripButton()
+        Me.btnZoomOut = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
+        Me.cboVarSearch = New System.Windows.Forms.ToolStripComboBox()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.ToolStrip2.SuspendLayout()
         Me.SuspendLayout()
         '
